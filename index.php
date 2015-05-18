@@ -10,6 +10,7 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        TEST
+        NUSPlan - Plan to be efficient ;)
+        <a href="/aboutus.php">About us</a>
     </body>
 </html>
