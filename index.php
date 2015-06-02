@@ -10,7 +10,7 @@ and open the template in the editor.
         <title></title> 
     </head>
     <body>
-        NUSPlan - Plan to be efficient ;) TEST TEST
+        NUSPlan - Plan to be efficient ;) TEST TEST TEST by boon jun
         <a href="/aboutus.php">About us</a>
         Steps to do GIT
         1. Always PULL first
