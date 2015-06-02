@@ -7,10 +7,10 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title></title> 
     </head>
     <body>
-        NUSPlan - Plan to be efficient ;)
+        NUSPlan - Plan to be efficient ;) TEST TEST
         <a href="/aboutus.php">About us</a>
     </body>
 </html>
