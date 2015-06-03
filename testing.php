@@ -1,9 +1,30 @@
 <?php
-$string = file_get_contents("/Applications/MAMP/htdocs/nusplan/assets/json/201415moduleList.json");
 
-echo file_get_contents("../assets/json/201415moduleInformation.json");
+$path = "/assets/json/201415moduleList.json";
 
-echo $string;
+//$finalpath = set_include_path(get_include_path() . PATH_SEPARATOR . $path);
+
+echo get_include_path();
+
+echo "<br>";
+
+echo $finalpath;
+
+echo "<br>";
+
+$finalpath = $_SERVER['REQUEST_URI'] . "/assets/json/201415moduleList.json";
+
+echo $finalpath;
+
+echo "<br>";
+
+$string = file_get_contents($finalpath);
+
+//echo file_get_contents("../assets/json/201415moduleInformation.json");
+
+//echo $string;
+
+echo ini_get('include_path');
 
 $json_a = json_decode($string, true);
 
@@ -15,6 +36,3 @@ foreach ($json_a as $key => $value){
 }
 
 ?>
-
-
-echo <?php echo $_SERVER['HTTP_HOST']; ?>
