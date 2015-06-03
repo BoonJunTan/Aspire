@@ -12,6 +12,7 @@
     <body>
         Welcome to NUSPlan<br>
     Navigation Bar -> <a href="#"><font color='red'>Home</font></a> | <a href="aboutus.php">About us</a> | <a href="moduleInfo.php">Module Information</a> | <a href="stepsToGit.php">GIT Steps</a> | <br>
+    <br>
     We hope you have enjoy yourself over here <br>
 </body>
 </html>

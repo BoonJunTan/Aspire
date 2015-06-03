@@ -9,6 +9,7 @@
     <body>
         NUSPlan - About Us<br>
     Navigation Bar -> <a href="index.php">Home </a> | <a href="#"><font color='red'>About us</font></a> | <a href="moduleInfo.php">Module Information</a> | <a href="stepsToGit.php">GIT Steps</a> | <br>
-        We trust xAspire <3 <br>
+    <br>    
+    We trust xAspire <3 <br>
     </body>
 </html>

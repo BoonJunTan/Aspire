@@ -9,6 +9,7 @@
     <body>
         NUSPlan - Module Information<br>
     Navigation Bar -> <a href="index.php">Home </a> | <a href="aboutus.php">About us</a> | <a href="#"><font color='red'>Module Information</font></a> | <a href="stepsToGit.php">GIT Steps</a> | <br>
+    <br>
     <?php
     $path = "/assets/json/201415moduleList.json";
 
@@ -21,10 +22,28 @@
     //print_r($json_a);
     // To verify that there is something -> var_dump($json_a);
 
-    for ($i = 0; $i <= count($json_a); $i++) {
-        echo $json_a[$i]["ModuleCode"];
-        echo "<br>";
+    echo "<table border=1>";
+    echo "<tr><td>Module Code</td>";
+    echo "<td>Module Title</td></tr>";
+
+    $listOfItem = array("ModuleCode", "ModuleTitle", "Semesters");
+
+    for ($i = 0; $i < count($json_a); $i++) {
+        echo "<tr>";
+        for ($x = 0; $x < count($json_a[$i]) - 1; $x++) {
+            echo "<td>";
+            if ($x == 0) {
+                echo "<a href='moduleDetailInfo.php/" . $json_a[$i][$listOfItem[$x]] . "'>" .$json_a[$i][$listOfItem[$x]]."</a>";
+            }
+            else {
+                echo $json_a[$i][$listOfItem[$x]];
+            }
+            echo "</td>";
+        }
+        echo "</tr>";
     }
+
+    echo "</table>";
     ?>
 </body>
 </html>

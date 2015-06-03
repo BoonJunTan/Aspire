@@ -9,6 +9,7 @@
     <body>
         NUSPlan - Steps to Git<br>
     Navigation Bar -> <a href="index.php">Home </a> | <a href="aboutus.php">About us</a> | <a href="moduleInfo.php">Module Information</a> | <a href="#"><font color='red'>GIT Steps</font></a> | <br>
+    <br>
     Steps to do GIT <br>
     1. Always PULL (Not Pull to upstream) <br>
     2. Check if we working on same file - If No, continue. If yes, see who has higher priority <br>
