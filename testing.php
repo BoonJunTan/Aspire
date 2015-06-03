@@ -1,5 +1,5 @@
 <?php
-$string = file_get_contents("/assets/json/201415moduleList.json");
+$string = file_get_contents("/Applications/MAMP/htdocs/nusplan/assets/json/201415moduleList.json");
 
 echo file_get_contents("../assets/json/201415moduleInformation.json");
 
