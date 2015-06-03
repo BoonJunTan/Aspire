@@ -4,7 +4,7 @@ This is a testing page
 
 $path = "/assets/json/201415moduleList.json";
 
-$finalpath = "../nusplan/nusplan/assets/json/201415moduleList.json";
+$finalpath = getcwd() . "/assets/json/201415moduleList.json";
 
 $string = file_get_contents($finalpath);
 
