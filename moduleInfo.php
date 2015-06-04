@@ -11,8 +11,6 @@
     Navigation Bar -> <a href="index.php">Home </a> | <a href="aboutus.php">About us</a> | <a href="#"><font color='red'>Module Information</font></a> | <a href="stepsToGit.php">GIT Steps</a> | <br>
     <br>
     <?php
-    $path = "/assets/json/201415moduleList.json";
-
     $finalpath = getcwd() . "/assets/json/201415moduleList.json";
 
     $string = file_get_contents($finalpath);
