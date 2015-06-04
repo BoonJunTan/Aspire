@@ -21,11 +21,11 @@
     $finalpath2 = getcwd() . "/assets/json/201415moduleInformation.json";
     $string2 = file_get_contents($finalpath2);
     $json_b = json_decode($string2, true);
-    
+
     $finalpath3 = "http://api.nusmods.com/2014-2015/modules/" . $last . ".json";
     $string3 = file_get_contents($finalpath3);
     $json_c = json_decode($string3, true);
-    
+
     //print_r($json_a);
     //print_r($json_b);
     // To verify that there is something -> var_dump($json_a);
@@ -82,13 +82,15 @@
     echo "Department : " . $currentObject2["Department"] . "<br><br>";
 
     // Module's Workload
-    echo "Weekly Workload: <br>";
     $workLoadCode = array("Lecture: ", "Tutorial: ", "Laboratory: ", "Project: ", "Preparation: ");
     $currentModuleWorkLoad = split('[-]', $currentObject2["Workload"]);
-    for ($i = 0; $i < count($currentModuleWorkLoad); $i++) {
-        echo $workLoadCode[$i] . " " . $currentModuleWorkLoad[$i] . " hrs<br>";
+    if (!count($currentModuleWorkLoad) == 0) {
+        echo "Weekly Workload: <br>";
+        for ($i = 0; $i < count($currentModuleWorkLoad); $i++) {
+            echo $workLoadCode[$i] . " " . $currentModuleWorkLoad[$i] . " hrs<br>";
+        }
+        echo "<br>";
     }
-    echo "<br>";
 
     // Module's Exam Date and Time
     for ($i = 0; $i < count($currentObject2["History"]); $i++) {
@@ -102,27 +104,53 @@
         }
     }
 
-    echo "Prerequisites Tree: <br>"; 
+    // Module's Prerequisites Tree
+    echo "Prerequisites Tree: <br>";
     echo "On Top: ";
     // Find LockedModules (Above)
     // Find ModmavenTrees then find children -> children and so on
     //echo count($json_c["LockedModules"]);
-    
+
     if ($json_c["LockedModules"] == null) {
         echo "-Nil-";
     } else {
         for ($i = 0; $i < count($json_c["LockedModules"]); $i++) {
             echo $json_c["LockedModules"][$i] . " ";
-        }   
+        }
+    }
+
+    echo "<br>";
+    $currentModuleChildren = $json_c["ModmavenTree"]["children"];
+    echo "Below: ";
+    if ($currentModuleChildren == null) {
+        echo "No Child";
+    } else {
+        /*
+        $i = 0;
+        while (!empty($currentModuleChildren)) {
+            $current = $currentModuleChildren[$i]["name"];
+            echo $current;
+            if ($currentModuleChildren[$i]["name"] == "or" || $currentModuleChildren[$i]["name"] == "and") {
+                for ($x = 0; $x < count($currentModuleChildren[$i]["children"]); $x++) {
+                    echo $currentModuleChildren[$i]["children"][$x]["name"];
+                }
+            }
+            $currentModuleChildren = $currentModuleChildren[0]["children"];
+            $i++;
+            echo " ";
+        }
+         * */
+        echo "<br><br>";
+        echo $currentModuleChildren[0]["name"] . " "; //or
+        echo $currentModuleChildren[0]["children"][0]["name"] . " "; //CS2250
+        echo $currentModuleChildren[0]["children"][1]["name"] . " "; //and
+        echo $currentModuleChildren[0]["children"][1]["children"][0]["name"] . " "; //IS1103
+        echo $currentModuleChildren[0]["children"][1]["children"][1]["name"] . " "; //IS1105
+       
     }
     
-    echo "<br>";
-    echo "Below: ";
-    //for ($i = 0; $i < count($json_c)
-    echo $json_c["ModmavenTree"]["children"] . " ";
     echo "<br><br>";
-    
-    
+
     //echo "CORS Bidding History (Needed?) " . $currentObject2["ModuleCredit"] . "<br><br>";
     //echo "Lesson Schedule (WIP) " . $currentObject2["ModuleCredit"] . "<br><br>";
     ?>
