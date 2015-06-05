@@ -106,11 +106,9 @@
 
     // Module's Prerequisites Tree
     echo "Prerequisites Tree: <br>";
-    echo "On Top: ";
-    // Find LockedModules (Above)
-    // Find ModmavenTrees then find children -> children and so on
-    //echo count($json_c["LockedModules"]);
 
+    // What requires chosen module
+    echo "On Top: ";
     if ($json_c["LockedModules"] == null) {
         echo "-Nil-";
     } else {
@@ -120,39 +118,43 @@
     }
 
     echo "<br>";
+
+    // What current module requires
     $currentModuleChildren = $json_c["ModmavenTree"]["children"];
-    echo "Below: ";
+    echo "Below: <br>";
     if ($currentModuleChildren == null) {
         echo "No Child";
     } else {
-        /*
-        $i = 0;
-        while (!empty($currentModuleChildren)) {
-            $current = $currentModuleChildren[$i]["name"];
-            echo $current;
-            if ($currentModuleChildren[$i]["name"] == "or" || $currentModuleChildren[$i]["name"] == "and") {
-                for ($x = 0; $x < count($currentModuleChildren[$i]["children"]); $x++) {
-                    echo $currentModuleChildren[$i]["children"][$x]["name"];
-                }
+
+        // To extract all children elements of the selected modules
+        function recursiveWrite($array, $level) {
+            $level++;
+            foreach ($array as $vals) {
+                echo str_repeat("----", $level);
+                echo ">";
+                echo ">" . $vals['name'] . "<br>";
+                //echo $vals['name'] . " -> Level: " . $level . " <br>";
+                recursiveWrite($vals['children'], $level);
             }
-            $currentModuleChildren = $currentModuleChildren[0]["children"];
-            $i++;
-            echo " ";
+            //echo "<br><br>"; // This will give all the single trees
         }
-         * */
+
+        recursiveWrite($currentModuleChildren, 0);
+
+        // This is to test the level
         echo "<br><br>";
-        echo $currentModuleChildren[0]["name"] . " "; //or
-        echo $currentModuleChildren[0]["children"][0]["name"] . " "; //CS2250
-        echo $currentModuleChildren[0]["children"][1]["name"] . " "; //and
-        echo $currentModuleChildren[0]["children"][1]["children"][0]["name"] . " "; //IS1103
-        echo $currentModuleChildren[0]["children"][1]["children"][1]["name"] . " "; //IS1105
-       
+        echo "Test Function print_r";
+        echo '<pre>';
+        print_r($currentModuleChildren);
+        echo '<pre/>';
     }
-    
+
     echo "<br><br>";
 
-    //echo "CORS Bidding History (Needed?) " . $currentObject2["ModuleCredit"] . "<br><br>";
-    //echo "Lesson Schedule (WIP) " . $currentObject2["ModuleCredit"] . "<br><br>";
+    /* Future implementation
+      -> "CORS Bidding History (Needed?)
+      -> echo "Lesson Schedule (WIP)
+     */
     ?>
 </body>
 </html>
