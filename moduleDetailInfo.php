@@ -6,6 +6,7 @@
         <title>NUSPlan - Plan to be efficient ;)</title>
     </head>
     <body>
+      
         NUSPlan - Module Information<br>
     Navigation Bar -> <a href="../index.php">Home </a> | <a href="../aboutus.php">About us</a> | <a href="../moduleInfo.php"><font color='red'>Module Information</font></a> | <a href="../stepsToGit.php">GIT Steps</a> | <br>
     <br>
