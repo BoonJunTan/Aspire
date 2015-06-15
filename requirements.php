@@ -18,7 +18,7 @@ and open the template in the editor.
           $getActive = "160 MCs Requirement";
           include('master.php');
          */
-        $url = parse_url(getenv("mysql://b0461b17726fba:0b54e729@us-cdbr-iron-east-02.cleardb.net/heroku_aa20cd51843572e?reconnect=true"));
+        $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
         
         print_r($url);
         
