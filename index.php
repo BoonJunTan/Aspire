@@ -10,9 +10,12 @@
         <title>NUSPlan - Plan to be efficient ;)</title> 
     </head>
     <body>
-        Welcome to NUSPlan<br>
-    Navigation Bar -> <a href="#"><font color='red'>Home</font></a> | <a href="aboutus.php">About us</a> | <a href="moduleInfo.php">Module Information</a> | <a href="stepsToGit.php">GIT Steps</a> | <br>
+        <?php
+        $getActive = "Introduction";
+        $content = "We hope you enjoy this application";
+        $header = 'Welcome to NUSPlan';
+        include('master.php');
+        ?>
     <br>
-    We hope you have enjoy yourself over here <br>
 </body>
 </html>
