@@ -13,7 +13,7 @@ and open the template in the editor.
         <?php
         $page_content = 'moduleInfo.php';
         $content = "";
-        $header = 'Searching for Module';
+        $header = 'Search for Module';
         $getActive = "Search for Module";
         include('master.php');
         ?>

@@ -10,13 +10,7 @@
         <title>NUSPlan - Plan to be efficient ;)</title> 
     </head>
     <body>
-        <?php
-        $getActive = "";
-        $page_content = "";
-        $content = "We hope you enjoy this application";
-        $header = 'Welcome to NUSPlan';
-        include('master.php');
-        ?>
+        
     <br>
 </body>
 </html>
