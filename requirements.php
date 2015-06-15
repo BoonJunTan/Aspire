@@ -34,14 +34,17 @@ and open the template in the editor.
             echo "Connected successfully";
         }
 
+        echo "Test1";
+        
         $sql = "SELECT * FROM requirements";
         $result = $conn->query($sql);
 
+        echo "Test2";
         echo $result;
 
         print_r($result);
 
-        echo "Test";
+        echo "Test3";
 
         if ($result->num_rows > 0) {
             // output data of each row
