@@ -52,8 +52,8 @@ and open the template in the editor.
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <?php
-                        $navigation_content = ["Introduction", "About Us", "160 MCs Requirement", "Search for Module", "Plan your Module"];
-                        $page_url = ["index.php", "aboutUsView.php", "#", "moduleInfoView.php", "#"];
+                        $navigation_content = ["About Us", "160 MCs Requirement", "Search for Module", "Plan your Module"];
+                        $page_url = ["aboutUsView.php", "#", "moduleInfoView.php", "#"];
                         
                         for ($i = 0; $i < count($navigation_content); $i++) {
                             if ($navigation_content[$i] == $getActive) {

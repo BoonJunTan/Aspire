@@ -11,7 +11,7 @@
     </head>
     <body>
         <?php
-        $getActive = "Introduction";
+        $getActive = "";
         $page_content = "";
         $content = "We hope you enjoy this application";
         $header = 'Welcome to NUSPlan';
