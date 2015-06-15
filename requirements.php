@@ -41,9 +41,6 @@ and open the template in the editor.
 
         echo "Test2";
         echo $result;
-
-        print_r($result);
-
         echo "Test3";
 
         if ($result->num_rows > 0) {
