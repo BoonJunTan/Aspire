@@ -12,6 +12,7 @@ and open the template in the editor.
     <body>
         <?php
         $page_content = 'aboutUs.php';
+        $content = "";
         $header = 'About Us';
         $getActive = "About Us";
         include('master.php');

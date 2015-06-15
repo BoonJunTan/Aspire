@@ -28,7 +28,7 @@
             for ($x = 0; $x < count($json_a[$i]) - 1; $x++) {
                 echo "<td>";
                 if ($x == 0) {
-                    echo "<a href='moduleDetailInfo.php/" . $json_a[$i][$listOfItem[$x]] . "'>" . $json_a[$i][$listOfItem[$x]] . "</a>";
+                    echo "<a href='moduleDetailInfoView.php/" . $json_a[$i][$listOfItem[$x]] . "'>" . $json_a[$i][$listOfItem[$x]] . "</a>";
                 } else {
                     echo $json_a[$i][$listOfItem[$x]];
                 }

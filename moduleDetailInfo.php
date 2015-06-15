@@ -6,15 +6,9 @@
         <title>NUSPlan - Plan to be efficient ;)</title>
     </head>
     <body>
-      
-        NUSPlan - Module Information<br>
-    Navigation Bar -> <a href="../index.php">Home </a> | <a href="../aboutus.php">About us</a> | <a href="../moduleInfo.php"><font color='red'>Module Information</font></a> | <a href="../stepsToGit.php">GIT Steps</a> | <br>
-    <br>
-
     <?php
     $parts = explode('/', $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF']);
     $last = end($parts);
-
     $finalpath1 = getcwd() . "/assets/json/201415moduleList.json";
     $string1 = file_get_contents($finalpath1);
     $json_a = json_decode($string1, true);

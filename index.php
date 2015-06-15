@@ -12,6 +12,7 @@
     <body>
         <?php
         $getActive = "Introduction";
+        $page_content = "";
         $content = "We hope you enjoy this application";
         $header = 'Welcome to NUSPlan';
         include('master.php');

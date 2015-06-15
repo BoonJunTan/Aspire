@@ -20,7 +20,7 @@ and open the template in the editor.
         <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- HTML5 Shim aÏnd Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -36,13 +36,7 @@ and open the template in the editor.
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
+              
                     <table> 
                         <td>
                             <a class="navbar-brand" href="index.php"><img src="assets/images/logo.jpg" alt="" width =30px; height = 30px;/></a>
@@ -60,7 +54,7 @@ and open the template in the editor.
                         <?php
                         $navigation_content = ["Introduction", "About Us", "160 MCs Requirement", "Search for Module", "Plan your Module"];
                         $page_url = ["index.php", "aboutUsView.php", "#", "moduleInfoView.php", "#"];
-                                
+                        
                         for ($i = 0; $i < count($navigation_content); $i++) {
                             if ($navigation_content[$i] == $getActive) {
                                 echo "<li class ='active'>";
@@ -70,7 +64,6 @@ and open the template in the editor.
                             echo "<a href=" . $page_url[$i] . " > " . $navigation_content[$i] . "</a>";
                             echo "</li>";
                         }
-                        
                         ?>
                     </ul>
                 </div>
@@ -85,9 +78,9 @@ and open the template in the editor.
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-<?php
-echo $header;
-?>
+                                <?php
+                                echo $header;
+                                ?>
                             </h1>
                             <!-- <ol class="breadcrumb">
                                 <li>
@@ -104,10 +97,15 @@ echo $header;
                             <!-- Main jumbotron for a primary marketing message or call to action -->
 
                             <div class="jumbotron">
-<?php
-include($page_content);
-echo $content; //Testing for without $page_content
-?>
+                                <?php
+                                if ($page_content != "") {
+                                    include($page_content);
+                                }
+
+                                if ($content != "") {
+                                    echo $content; //Testing for without $page_content
+                                }
+                                ?>
                             </div>
 
                         </div>
