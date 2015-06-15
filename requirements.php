@@ -19,15 +19,13 @@ and open the template in the editor.
           include('master.php');
          */
         $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-        
-        print_r($url);
-        
-        $server = $url["us-cdbr-iron-east-02.cleardb.net"];
-        $username = $url["b0461b17726fba"];
-        $password = $url["0b54e729"];
-        echo $server;
-        echo "TEST" . $url["path"];
+
+        $server = $url["host"];
+        $username = $url["user"];
+        $password = $url["pass"];
         $db = substr($url["path"], 1);
+
+        $conn = new mysqli($server, $username, $password, $db);
 
         $conn = new mysqli($server, $username, $password, $db);
 
