@@ -39,13 +39,15 @@ and open the template in the editor.
         echo "Information System - Batch 15/16 <br>";
         echo "Core Modules";
         
-        $sql = "SELECT test.modules.module_code AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit'
-            FROM test.curriculum, test.requirements, test.modules, test.module_types 
-            WHERE test.requirements.cohort = '15/16' 
-                AND test.requirements.major = 'IS'
-                AND test.curriculum.requirement_id = test.requirements.requirement_id
-                AND test.curriculum.module_id = test.modules.module_id
-                AND test.curriculum.type_id = test.module_types.type_id";
+        // Just take note localhost need schema name, ClearDB don't need
+        $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit'
+            FROM curriculum, requirements, modules, module_types 
+            WHERE requirements.cohort = '15/16' 
+                    AND requirements.major = 'IS'
+                    AND curriculum.requirement_id = requirements.requirement_id
+                    AND curriculum.module_id = modules.module_id
+                    AND curriculum.type_id = module_types.type_id";
+        
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
