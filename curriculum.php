@@ -28,19 +28,30 @@ and open the template in the editor.
         $conn = new mysqli($server, $username, $password, $db);
 
         // Check connection
+        /*
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         } else {
             echo "Connected successfully";
         }
+        */
         
-        $sql = "SELECT * FROM requirements";
+        echo "Information System - Batch 15/16 <br>";
+        echo "Core Modules";
+        
+        $sql = "SELECT test.modules.module_code AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit'
+            FROM test.curriculum, test.requirements, test.modules, test.module_types 
+            WHERE test.requirements.cohort = '15/16' 
+                AND test.requirements.major = 'IS'
+                AND test.curriculum.requirement_id = test.requirements.requirement_id
+                AND test.curriculum.module_id = test.modules.module_id
+                AND test.curriculum.type_id = test.module_types.type_id";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) {
-                echo "id: " . $row["requirement_id"] . " - Cohort: " . $row["cohort"] . "<br>";
+                echo "Module Codes: " . $row["Modules Code"] . "Modules Name: " . $row["Modules Name"] . " - Module Credits: " . $row["Modules Credit"] . "<br>";
             }
         } else {
             echo "0 results";
