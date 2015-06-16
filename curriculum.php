@@ -37,7 +37,7 @@ and open the template in the editor.
         */
         
         echo "Information System - Batch 15/16 <br>";
-        echo "Core Modules";
+        echo "Core Modules<br>";
         
         // Just take note localhost need schema name, ClearDB don't need
         $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit'
@@ -50,14 +50,18 @@ and open the template in the editor.
         
         $result = $conn->query($sql);
 
+        echo "<table>";
         if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) {
-                echo "Module Codes: " . $row["Modules Code"] . "Modules Name: " . $row["Modules Name"] . " - Module Credits: " . $row["Modules Credit"] . "<br>";
+                echo "<tr>";
+                echo "<td>Module Codes: " . $row["Module Code"] . "</td><td>Modules Name: " . $row["Modules Name"] . "</td><td> Module Credits: " . $row["Modules Credit"] . "</td>";
+                echo "</tr>";
             }
         } else {
             echo "0 results";
         }
+        echo "</table>";
 
         $conn->close();
         ?>
