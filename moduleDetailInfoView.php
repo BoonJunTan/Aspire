@@ -11,11 +11,10 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        $parts = explode('/', $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF']);
-        $last = end($parts);
-        $page_content = "";
+        $moduleCode = $_GET["q"];
+        $page_content = "moduleDetailInfo.php";
         $content = "";
-        $header = 'Searching for Module ' . $last;
+        $header = 'Searching for Module - ' . $moduleCode;
         $getActive = "Search for Module";
         include('master.php');
         ?>

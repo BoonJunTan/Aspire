@@ -54,14 +54,13 @@ and open the template in the editor.
                         <?php
                         $navigation_content = ["About Us", "160 MCs Requirement", "Search for Module", "Plan your Module"];
                         $page_url = ["aboutUsView.php", "curriculumView.php", "moduleInfoView.php", "#"];
-                        
                         for ($i = 0; $i < count($navigation_content); $i++) {
                             if ($navigation_content[$i] == $getActive) {
                                 echo "<li class ='active'>";
                             } else {
                                 echo "<li>";
                             }
-                            echo "<a href=" . $page_url[$i] . " > " . $navigation_content[$i] . "</a>";
+                            echo "<a href='http://" . $_SERVER['HTTP_HOST'] . "/nusplan/" . $page_url[$i] . "'>" . $navigation_content[$i] . "</a>";
                             echo "</li>";
                         }
                         ?>
