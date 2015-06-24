@@ -52,8 +52,8 @@ and open the template in the editor.
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <?php
-                        $navigation_content = ["About Us", "160 MCs Requirement", "Search for Module", "Plan your Module"];
-                        $page_url = ["aboutUsView.php", "curriculumView.php", "moduleInfoView.php", "#"];
+                        $navigation_content = ["About Us", "Curriculum List", "Search Module", "Plan Curriculum"];
+                        $page_url = ["aboutUsView.php", "curriculumView.php", "moduleInfoView.php", "planCurriculumView.php"];
                         for ($i = 0; $i < count($navigation_content); $i++) {
                             if ($navigation_content[$i] == $getActive) {
                                 echo "<li class ='active'>";
@@ -61,9 +61,9 @@ and open the template in the editor.
                                 echo "<li>";
                             }
                             // Local
-                            //echo "<a href='http://" . $_SERVER['HTTP_HOST'] . "/nusplan/" . $page_url[$i] . "'>" . $navigation_content[$i] . "</a>";
+                            echo "<a href='http://" . $_SERVER['HTTP_HOST'] . "/nusplan/" . $page_url[$i] . "'>" . $navigation_content[$i] . "</a>";
                             // Heroku
-                            echo "<a href='http://" . $_SERVER['HTTP_HOST'] . "/" .$page_url[$i] . "'>" . $navigation_content[$i] . "</a>";
+                            //echo "<a href='http://" . $_SERVER['HTTP_HOST'] . "/" .$page_url[$i] . "'>" . $navigation_content[$i] . "</a>";
                             
                             echo "</li>";
                         }
