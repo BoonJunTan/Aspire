@@ -68,7 +68,7 @@
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
-                        <h3><a href ="aboutUsView.php.php">About Us</a></h3>
+                        <h3><a href ="aboutUsView.php">About Us</a></h3>
                         <p class="text-muted">Our templates are updated regularly so they don't break.</p>
                     </div>
                 </div>
