@@ -14,7 +14,7 @@ and open the template in the editor.
         $page_content = 'moduleInfo.php';
         $content = "";
         $header = 'Search for Module';
-        $getActive = "Search for Module";
+        $getActive = "Search Module";
         include('master.php');
         ?>
     </body>

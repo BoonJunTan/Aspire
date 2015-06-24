@@ -13,8 +13,8 @@ and open the template in the editor.
         <?php
         $page_content = 'curriculum.php';
         $content = "";
-        $header = '160 MCs Requirement';
-        $getActive = "160 MCs Requirement";
+        $header = 'Curriculum List';
+        $getActive = "Curriculum List";
         include('master.php');
         ?>
     </body>
