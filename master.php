@@ -63,7 +63,7 @@ and open the template in the editor.
                             // Local
                             //echo "<a href='http://" . $_SERVER['HTTP_HOST'] . "/nusplan/" . $page_url[$i] . "'>" . $navigation_content[$i] . "</a>";
                             // Heroku
-                            echo "<a href='http://" . $_SERVER['HTTP_HOST'] . $page_url[$i] . "'>" . $navigation_content[$i] . "</a>";
+                            echo "<a href='http://" . $_SERVER['HTTP_HOST'] . "/" .$page_url[$i] . "'>" . $navigation_content[$i] . "</a>";
                             
                             echo "</li>";
                         }
