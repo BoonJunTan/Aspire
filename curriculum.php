@@ -7,9 +7,10 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>NUSPlan - Curriculum List</title>
     </head>
     <body>
+        
         <?php
         /*
           $page_content = "";
@@ -110,10 +111,10 @@ and open the template in the editor.
 
         $tablePrinting .= "<tr><th colspan='3'>Programme Requirements - Core Modules (80 MCs)</th></tr>";
         $tablePrinting .= $programCore;
-        
+
         // Finding Program Electives
         $programElectives;
-        
+
         $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit'
             FROM test.curriculum, test.requirements, test.modules, test.module_types, test.specialization
             WHERE test.requirements.cohort = '14/15' 
@@ -132,17 +133,17 @@ and open the template in the editor.
                 $programElectives .= "<tr><td>" . $row["Module Code"] . "</td><td>" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td>";
             }
         }
-        
+
         // BUG -> 6 and 7 out of 8 LOGIC
         $tablePrinting .= "<tr><th colspan='3'>Programme Requirements - Core Electives (28 MCs)</th></tr>";
         $tablePrinting .= "<tr><td colspan='3' align='center'>Requirement: Choose 7 modules to make up 28 MCs from the list of Programme Electives below. <br>3 of the 7 modules must be at level-4000</td></tr>";
         $tablePrinting .= "<tr><td colspan='3' align='center'>Option 1: Information Security Specialisation - Choose 7 of the 8 Modules listed (28MCs)</td></tr>";
         $tablePrinting .= "<tr><td colspan='3' align='center'>Option 2: Information Security Specialisation - Choose 6 of the 8 Modules listed (24MCs)<br>And one from the list</td></tr>";
-        
+
         //$tablePrinting .= "<tr><td colspan='3'>Option 1:<br>Choose 7 modules to make up 28 MCs from the list of Programme Electives below. 3 of the 7 modules must be at level-4000.</td><tr>";
         //$tablePrinting .= "<tr><td colspan='3' align='center'> asd</td></tr>";
         $tablePrinting .= $programElectives;
-        $totalCreditNow += 28; 
+        $totalCreditNow += 28;
         $tablePrinting .= "<tr><th colspan='3'>Programme Internship</th></tr>";
         $tablePrinting .= $programInternship;
         $tablePrinting .= "<tr><th colspan='3'>Unrestricted Electives (20 MCs)</th></tr>";

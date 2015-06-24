@@ -49,7 +49,6 @@
                         <img alt="Bootstrap Mission Control" src="http://logonoid.com/images/bootstrap-logo.png" width="20px">
                     </a>
                 </div>
-
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
