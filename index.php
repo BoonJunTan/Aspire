@@ -4,92 +4,98 @@
 <html>
     <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-    <title>NUSPlan - Plan to be Efficient (:</title>
+        <title>NUSPlan - Plan to be Efficient (:</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-   
+        <!-- Bootstrap Core CSS -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
-    <!-- Custom Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    
-    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
-    <!-- Plugin CSS -->
-    
-    <link href="assets/css/animate.min.css" rel="stylesheet" type="text/css"/>
-    <!-- Custom CSS -->
-   
-    <link href="assets/css/creative.css" rel="stylesheet" type="text/css"/>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        <!-- Custom Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
-</head>
-<body id="page-top">
-<div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
-    	<!-- Carousel indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            
-        </ol>   
-       <!-- Wrapper for carousel items -->
-        <div class="carousel-inner">
-            <div class="active item">
-                <br>
-                
-                <h2 style="color:#fff">We've got what you need!</h2>
-                
-                 <hr class="light">
-                
-                 <div class ="carousel-caption"
-                    <p class="text-faded">NUSPlan has what you want when it comes to module planning for the rest of your studying journey!
-                    Be it searching for a module, planning your module, or finding more about how NUSPlan works!
-                    
-                    </p>
-                     <a href="" class="btn btn-default btn-xl">Get Started!</a>
-                     <br>
-                     <br>
+        <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+        <!-- Plugin CSS -->
+
+        <link href="assets/css/animate.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Custom CSS -->
+
+        <link href="assets/css/creative.css" rel="stylesheet" type="text/css"/>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <script>
+            function thankYou() {
+                alert("Thank you for your feedback");
+                window.location.reload();
+            }
+        </script>
+
+    </head>
+    <body id="page-top">
+        <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+            <!-- Carousel indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+
+            </ol>   
+            <!-- Wrapper for carousel items -->
+            <div class="carousel-inner">
+                <div class="active item">
+                    <br>
+
+                    <h2 style="color:#fff">We've got what you need!</h2>
+
+                    <hr class="light">
+
+                    <div class ="carousel-caption"
+                         <p class="text-faded">NUSPlan has what you want when it comes to module planning for the rest of your studying journey!
+                            Be it searching for a module, planning your module, or finding more about how NUSPlan works!
+
+                        </p>
+                        <a href="" class="btn btn-default btn-xl">Get Started!</a>
+                        <br>
+                        <br>
+                    </div>
+
                 </div>
-                   
-            </div>
-            <div class="item">
-                <br>
-                <h2>Slide 2</h2>
-                <div class="carousel-caption">
-                  <h3>Second slide label</h3>
-                  <p>Aliquam sit amet gravida nibh, facilisis gravida odio.</p>
+                <div class="item">
+                    <br>
+                    <h2>Slide 2</h2>
+                    <div class="carousel-caption">
+                        <h3>Second slide label</h3>
+                        <p>Aliquam sit amet gravida nibh, facilisis gravida odio.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <br>
+                    <h2>Slide 3</h2>
+                    <div class="carousel-caption">
+                        <h3>Third slide label</h3>
+                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    </div>
                 </div>
             </div>
-            <div class="item">
-                <br>
-                <h2>Slide 3</h2>
-                <div class="carousel-caption">
-                  <h3>Third slide label</h3>
-                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                </div>
-            </div>
+            <!-- Carousel controls -->
+            <a class="carousel-control centre" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
         </div>
-        <!-- Carousel controls -->
-        <a class="carousel-control centre" href="#myCarousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        <a class="carousel-control right" href="#myCarousel" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
-    </div>
 
     <section id="services">
         <div class="container">
@@ -135,62 +141,61 @@
         </div>
     </section>
 
-   
+
     <aside class="bg-dark">
         <div class="container text-center">
-            
+
             <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Let's Get In Touch!</h2>
-                    <hr class="primary">
-                    <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!
-                    <p>If not you can also leave your feedback at the form below!</p>
-                </div>
-                <div class="col-lg-4 col-lg-offset-2 text-center">
-                    <i class="fa fa-phone fa-3x wow bounceIn"></i>
-                    <p>+65-9755 5721</p>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                    <p><a href="mailto:a0125464h@nus.edu.sg">feedback@nusplan.com</a></p>
-                    <br>
-                </div>
-           
-            <form>
+                <h2 class="section-heading">Let's Get In Touch!</h2>
+                <hr class="primary">
+                <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!
+                <p>If not you can also leave your feedback at the form below!</p>
+            </div>
+            <div class="col-lg-4 col-lg-offset-2 text-center">
+                <i class="fa fa-phone fa-3x wow bounceIn"></i>
+                <p>+65-9755 5721</p>
+            </div>
+            <div class="col-lg-4 text-center">
+                <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                <p><a href="mailto:a0125464h@nus.edu.sg">feedback@nusplan.com</a></p>
+                <br>
+            </div>
+
+            <form method="post" action="submitFeedback.php" onsubmit="thankYou()">
                 <div class="form-group">
-                    <input type="name" class="form-control" id="exampleInputName1" placeholder="Enter name" style="width:400px;">
-                </div>
-                <div class="form-group">
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" style="width:400px;">
+                    <input name="name" class="form-control" id="exampleInputName1" placeholder="Enter name" style="width:400px;">
                 </div>
                 <div class="form-group">
-                    <input type="subject" class="form-control" id="exampleInputSubject1" placeholder="Enter subject" style="width:400px;">
+                    <input name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" style="width:400px;">
                 </div>
                 <div class="form-group">
-                    <textarea name= "Message" class="form-control" id="exampleInputMessage" placeholder="Enter message" rows="4"></textarea>
+                    <input name="subject" class="form-control" id="exampleInputSubject1" placeholder="Enter subject" style="width:400px;">
                 </div>
-             <a href="#" class="btn btn-default btn-xl wow tada col-lg-4 col-md-4 col-md-offset-4">
-                 <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span> Submit!</a>
+                <div class="form-group">
+                    <textarea name= "message" class="form-control" id="exampleInputMessage" placeholder="Enter message" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn btn-default btn-xl wow tada col-lg-4 col-md-4 col-md-offset-4"><span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>Submit!</button>
             </form>
-            
+
         </div>
     </aside>
 
 
 
     <!-- jQuery -->
-    
+
     <script src="assets/js/jquery.js" type="text/javascript"></script>
     <!-- Bootstrap Core JavaScript -->
-    
+
     <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- Plugin JavaScript -->
     <script src="assets/js/jquery.easing.min.js" type="text/javascript"></script>
     <script src="assets/js/jquery.fittext.js" type="text/javascript"></script>
     <script src="assets/js/wow.min.js" type="text/javascript"></script>
-    
+
 
     <!-- Custom Theme JavaScript -->
     <script src="assets/js/creative.js" type="text/javascript"></script>
-    
+
 </body>
 </html>
