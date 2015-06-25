@@ -104,7 +104,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
-                        <i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
+                        <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
                         <h3><a href ="aboutUsView.php">About Us</a></h3>
                         <p class="text-muted">Wanna know more about founders of NUSPlan?</p>
                     </div>
@@ -125,7 +125,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
-                        <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                        <i class="fa fa-4x fa-search wow bounceIn text-primary" data-wow-delay=".3s"></i>
                         <!-- <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star -->
                         <h3><a href ="moduleInfoView.php"> Search for Module</a></h3>
                         <p class="text-muted">We make things seem easier for you.</p>
@@ -163,7 +163,7 @@
                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" style="width:400px;">
                 </div>
                 <div class="form-group">
-                    <input type="subject" class="form-control" id="exampleInputSubject1" placeholder="Enter subject" style="width:300px;">
+                    <input type="subject" class="form-control" id="exampleInputSubject1" placeholder="Enter subject" style="width:400px;">
                 </div>
                 <div class="form-group">
                     <textarea name= "Message" class="form-control" id="exampleInputMessage" placeholder="Enter message" rows="4"></textarea>
