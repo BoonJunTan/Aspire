@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>NUS Plan - Plan to be Efficient (:</title>
+    <title>NUSPlan - Plan to be Efficient (:</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -36,23 +36,60 @@
     <![endif]-->
 
 </head>
-
 <body id="page-top">
-
-    <section class="bg-primary" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">We've got what you need!</h2>
-                    <hr class="light">
+<div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+    	<!-- Carousel indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            
+        </ol>   
+       <!-- Wrapper for carousel items -->
+        <div class="carousel-inner">
+            <div class="active item">
+                <br>
+                
+                <h2 style="color:#fff">We've got what you need!</h2>
+                
+                 <hr class="light">
+                
+                 <div class ="carousel-caption"
                     <p class="text-faded">NUSPlan has what you want when it comes to module planning for the rest of your studying journey!
                     Be it searching for a module, planning your module, or finding more about how NUSPlan works!
+                    
                     </p>
-                    <a href="" class="btn btn-default btn-xl">Get Started!</a>
+                     <a href="" class="btn btn-default btn-xl">Get Started!</a>
+                     <br>
+                     <br>
+                </div>
+                   
+            </div>
+            <div class="item">
+                <br>
+                <h2>Slide 2</h2>
+                <div class="carousel-caption">
+                  <h3>Second slide label</h3>
+                  <p>Aliquam sit amet gravida nibh, facilisis gravida odio.</p>
+                </div>
+            </div>
+            <div class="item">
+                <br>
+                <h2>Slide 3</h2>
+                <div class="carousel-caption">
+                  <h3>Third slide label</h3>
+                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                 </div>
             </div>
         </div>
-    </section>
+        <!-- Carousel controls -->
+        <a class="carousel-control centre" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
 
     <section id="services">
         <div class="container">

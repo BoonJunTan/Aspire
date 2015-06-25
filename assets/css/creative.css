@@ -474,3 +474,11 @@ img::-moz-selection {
 body {
     webkit-tap-highlight-color: #222;
 }
+.item{
+    background: #f05f40;    
+    text-align: center;
+    height: 325px !important;
+}
+.carousel{
+    margin-top: 0px;
+}
