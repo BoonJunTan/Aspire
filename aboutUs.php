@@ -36,28 +36,18 @@
                 <img src="assets/images/WanSin.jpg" alt="" width="300" height="300"/>
                     
                 </tr>
-                <tr>
+                 <tr>
                     
                 <p>This is me. And I love to create new things out of nowhere</p>
-                    
-                    
-                </tr>    
                  
-                    
-                    
-                    
+                    </tr>    
+                 
                 </td>
-                
-                
-                
-                
-                
+              
             </table>
-            
-            
-            
+          
         </div>
-        
+ 
         <hr class="style18">
         <div>
         <h2>About NUSPlan</h2>
