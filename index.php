@@ -106,14 +106,14 @@
                     <div class="service-box">
                         <i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
                         <h3><a href ="aboutUsView.php">About Us</a></h3>
-                        <p class="text-muted">Our templates are updated regularly so they don't break.</p>
+                        <p class="text-muted">Wanna know more about founders of NUSPlan?</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>
                         <h3><a href="planCurriculumView.php">Plan your Modules</a></h3>
-                        <p class="text-muted">You can use this theme as is, or you can make changes!</p>
+                        <p class="text-muted">Start your module planning with this click!</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
@@ -128,7 +128,7 @@
                         <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
                         <!-- <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star -->
                         <h3><a href ="moduleInfoView.php"> Search for Module</a></h3>
-                        <p class="text-muted">You have to make your websites with love these days!</p>
+                        <p class="text-muted">We make things seem easier for you.</p>
                     </div>
                 </div>
             </div>
@@ -143,7 +143,7 @@
                     <h2 class="section-heading">Let's Get In Touch!</h2>
                     <hr class="primary">
                     <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!
-                    <p>If not you can leave your feedback at the form below!</p>
+                    <p>If not you can also leave your feedback at the form below!</p>
                 </div>
                 <div class="col-lg-4 col-lg-offset-2 text-center">
                     <i class="fa fa-phone fa-3x wow bounceIn"></i>
@@ -152,11 +152,26 @@
                 <div class="col-lg-4 text-center">
                     <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
                     <p><a href="mailto:a0125464h@nus.edu.sg">feedback@nusplan.com</a></p>
-                    
-                    
-                    
+                    <br>
                 </div>
-            <a href="#" class="btn btn-default btn-xl wow tada col-lg-4 col-md-4 col-md-offset-4">Download Now!</a>
+           
+            <form>
+                <div class="form-group">
+                    <input type="name" class="form-control" id="exampleInputName1" placeholder="Enter name" style="width:400px;">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" style="width:400px;">
+                </div>
+                <div class="form-group">
+                    <input type="subject" class="form-control" id="exampleInputSubject1" placeholder="Enter subject" style="width:300px;">
+                </div>
+                <div class="form-group">
+                    <textarea name= "Message" class="form-control" id="exampleInputMessage" placeholder="Enter message" rows="4"></textarea>
+                </div>
+             <a href="#" class="btn btn-default btn-xl wow tada col-lg-4 col-md-4 col-md-offset-4">
+                 <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span> Submit!</a>
+            </form>
+            
         </div>
     </aside>
 
