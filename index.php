@@ -34,12 +34,7 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <script>
-            function thankYou() {
-                alert("Thank you for your feedback");
-                window.location.reload();
-            }
-        </script>
+        
 
     </head>
     <body id="page-top">
@@ -144,12 +139,15 @@
 
     <aside class="bg-dark">
         <div class="container text-center">
-
+            
             <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h2 class="section-heading">Let's Get In Touch!</h2>
+                <h2 class="section-heading">Let's Get In Touch!             
+                </h2>
+                 
                 <hr class="primary">
                 <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!
                 <p>If not you can also leave your feedback at the form below!</p>
+             
             </div>
             <div class="col-lg-4 col-lg-offset-2 text-center">
                 <i class="fa fa-phone fa-3x wow bounceIn"></i>
@@ -159,8 +157,22 @@
                 <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
                 <p><a href="mailto:a0125464h@nus.edu.sg">feedback@nusplan.com</a></p>
                 <br>
+                 
             </div>
-
+            <div class ="col-lg-10 col-lg-offset-4 text-center">
+               
+                <div
+                    class="fb-like"
+                    data-share="true"
+                    data-width="450"
+                    data-show-faces="false">
+                    
+                  </div> 
+                </tr>
+               
+            </div>
+           
+            <div>
             <form method="post" action="submitFeedback.php" onsubmit="thankYou()">
                 <div class="form-group">
                     <input name="name" class="form-control" id="exampleInputName1" placeholder="Enter name" style="width:400px;">
@@ -176,7 +188,7 @@
                 </div>
                 <button type="submit" class="btn btn-default btn-xl wow tada col-lg-4 col-md-4 col-md-offset-4"><span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>Submit!</button>
             </form>
-
+            </div>
         </div>
     </aside>
 
@@ -196,6 +208,33 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="assets/js/creative.js" type="text/javascript"></script>
+    
+    <!-- Feedback Form Submission -->
+    <script>
+            function thankYou() {
+                alert("Thank you for your feedback");
+                window.location.reload();
+            }
+    </script>
+    
+    <!-- FaceBook SDK -->
+    <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '689822974457698',
+        xfbml      : true,
+        version    : 'v2.3'
+      });
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+    </script>
 
 </body>
 </html>
