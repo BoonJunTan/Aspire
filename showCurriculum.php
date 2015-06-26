@@ -22,8 +22,6 @@ $conn = new mysqli($server, $username, $password, $db);
   }
  */
 
-
-
 echo $course . " - Batch " . $cohort . " - " . $specialization . "<br><br>";
 
 // Just take note localhost need schema name, ClearDB don't need
@@ -37,7 +35,7 @@ echo $course . " - Batch " . $cohort . " - " . $specialization . "<br><br>";
   AND curriculum.type_id = module_types.type_id";
  */
 
-$tablePrinting = "<table border=1 cellspacing=5 cellpadding=5><tr><td>Module Code</td><td>Module Name</td><td align>Module Credits</td></tr>";
+$tablePrinting = "<table width='100%' border=1 cellspacing=5 cellpadding=5><tr><td>Module Code</td><td>Module Name</td><td align>Module Credits</td></tr>";
 $totalCreditNow = 0;
 
 // Finding GEM
@@ -46,7 +44,7 @@ $gemList;
 $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit'
             FROM test.curriculum, test.requirements, test.modules, test.module_types
             WHERE test.requirements.cohort = '" . $cohort . "' 
-                    AND test.requirements.major = '" . $course ."'
+                    AND test.requirements.major = '" . $course . "'
                     AND test.curriculum.type_id = '5'
                     AND test.curriculum.requirement_id = test.requirements.requirement_id
                     AND test.curriculum.module_id = test.modules.module_id
@@ -102,7 +100,7 @@ $tablePrinting .= $programCore;
 // Finding Program Electives
 $programElectives;
 
-$sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit'
+$sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit', test.specialization.specialization_name AS 'Specialization'
             FROM test.curriculum, test.requirements, test.modules, test.module_types, test.specialization
             WHERE test.requirements.cohort = '" . $cohort . "' 
                     AND test.requirements.major = '" . $course . "'
@@ -111,24 +109,31 @@ $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name
                     AND test.curriculum.module_id = test.modules.module_id
                     AND test.curriculum.type_id = test.module_types.type_id
                     AND test.curriculum.specialization_id = test.specialization.specialization_id
-                    AND test.specialization.specialization_name = '" . $specialization . "'";
+                    ORDER BY test.modules.module_id";
 
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $programElectives .= "<tr><td>" . $row["Module Code"] . "</td><td>" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td>";
+        if ($row["Specialization"] == $specialization) {
+            $programElectives .= "<tr><td><b>" . $row["Module Code"] . "</b></td><td><b>" . $row["Modules Name"] . "</b></td><td align=center><b>" . $row["Modules Credit"] . "</b></td>";
+        } else {
+            $programElectives .= "<tr><td>" . $row["Module Code"] . "</td><td>" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td>";
+        }
     }
 }
 
 // BUG -> 6 and 7 out of 8 LOGIC
 $tablePrinting .= "<tr><th colspan='3'>Programme Requirements - Core Electives (28 MCs)</th></tr>";
-$tablePrinting .= "<tr><td colspan='3' align='center'>Requirement: Choose 7 modules to make up 28 MCs from the list of Programme Electives below. <br>3 of the 7 modules must be at level-4000</td></tr>";
-$tablePrinting .= "<tr><td colspan='3' align='center'>Option 1: Information Security Specialisation - Choose 7 of the 8 Modules listed (28MCs)</td></tr>";
-$tablePrinting .= "<tr><td colspan='3' align='center'>Option 2: Information Security Specialisation - Choose 6 of the 8 Modules listed (24MCs)<br>And one from the list</td></tr>";
-
-//$tablePrinting .= "<tr><td colspan='3'>Option 1:<br>Choose 7 modules to make up 28 MCs from the list of Programme Electives below. 3 of the 7 modules must be at level-4000.</td><tr>";
-//$tablePrinting .= "<tr><td colspan='3' align='center'> asd</td></tr>";
+$tablePrinting .= "<tr><td colspan='3' align='center'>Requirement 1: Choose 7 modules to make up 28 MCs from the list of Programme Electives below. <br>3 of the 7 modules must be at level-4000</td></tr>";
+    
+if ($specialization == "Information Security") {
+    $tablePrinting .= "<tr><td colspan='3' align='center'>Requirement 2: For " . $specialization . " Specialization - Choose at least 6 of the 8 Modules listed (28MCs)</td></tr>";
+} else if ($specialization == "Services Science, Management and Engineering") {
+    
+} else {
+    $tablePrinting .= "<tr><td colspan='3' align='center'>Option 2: <br> Choose CP4101 and 4 modules to make up 28 MCs from the list of Programme Electives below.</td></tr>";
+}
 $tablePrinting .= $programElectives;
 $totalCreditNow += 28;
 $tablePrinting .= "<tr><th colspan='3'>Programme Internship</th></tr>";
@@ -137,7 +142,12 @@ $tablePrinting .= "<tr><th colspan='3'>Unrestricted Electives (20 MCs)</th></tr>
 $tablePrinting .= "<tr><td colspan='3' align='center'>5 Modules from outside of home faculty</td></tr>";
 $totalCreditNow += 20;
 $tablePrinting .= "<tr><td colspan='2' align='right'>Total <td align='center'>" . $totalCreditNow . "</td></tr>";
-$tablePrint .= "</table>";
+
+if ($_GET['plan'] == false) {
+    $tablePrinting .= "<tr><td colspan='3'><button type='submit' class='btn btn-default btn-xl wow tada col-lg-4 col-md-4 col-md-offset-4'>"
+            . "<span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span> Select current curriculum</button></td></tr></table><br>";
+}
+
 echo $tablePrinting;
 
 $conn->close();

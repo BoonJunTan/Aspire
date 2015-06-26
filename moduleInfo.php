@@ -34,38 +34,5 @@
             <input placeholder="Please key in module code or name ;)" type="text" size="35" onkeyup="showResult(this.value)">
             <div id="livesearch"></div>
         </form>
-        <?php
-        /*
-        $finalpath = getcwd() . "/assets/json/201415moduleList.json";
-
-        $string = file_get_contents($finalpath);
-
-        $json_a = json_decode($string, true);
-
-        //print_r($json_a);
-        // To verify that there is something -> var_dump($json_a);
-
-        echo "<table border=1>";
-        echo "<tr><td>Module Code</td>";
-        echo "<td>Module Title</td></tr>";
-
-        $listOfItem = array("ModuleCode", "ModuleTitle", "Semesters");
-
-        for ($i = 0; $i < count($json_a); $i++) {
-            echo "<tr>";
-            for ($x = 0; $x < count($json_a[$i]) - 1; $x++) {
-                echo "<td>";
-                if ($x == 0) {
-                    echo "<a href='moduleDetailInfoView.php/" . $json_a[$i][$listOfItem[$x]] . "'>" . $json_a[$i][$listOfItem[$x]] . "</a>";
-                } else {
-                    echo $json_a[$i][$listOfItem[$x]];
-                }
-                echo "</td>";
-            }
-            echo "</tr>";
-        }
-
-        echo "</table>";*/
-        ?>
     </body>
 </html>
