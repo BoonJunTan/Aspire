@@ -1,8 +1,10 @@
 <?php
 
-$course = $_GET["course"];
-$cohort = $_GET["cohort"];
-$specialization = $_GET["specialization"];
+session_start();
+
+$course = $_SESSION["course"];
+$cohort = $_SESSION["cohort"];
+$specialization = $_SESSION["specialization"];
 
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
@@ -183,11 +185,6 @@ $tablePrinting .= "<tr><th colspan='3'>Unrestricted Electives (20 MCs)</th></tr>
 $tablePrinting .= "<tr><td colspan='3' align='center'>5 Modules from outside of home faculty</td></tr>";
 $totalCreditNow += 20;
 $tablePrinting .= "<tr><td colspan='2' align='right'>Total <td align='center'>" . $totalCreditNow . "</td></tr>";
-
-if ($_GET['plan'] == false) {
-    $tablePrinting .= "<tr><td colspan='3'><button type='submit' class='btn btn-default btn-xl wow tada col-lg-4 col-md-4 col-md-offset-4'>"
-            . "<span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span> Select current curriculum</button></td></tr></table><br>";
-}
 
 echo $tablePrinting;
 
