@@ -159,8 +159,11 @@
                 <br>
                  
             </div>
-            <div class ="col-lg-10 col-lg-offset-4 text-center">
-               
+            <div class ="col-lg-10 col-lg-offset-4 text-left">
+            <!-- FaceBook Like and Share -->
+            <table>
+                <tr>
+                <tr>
                 <div
                     class="fb-like"
                     data-share="true"
@@ -169,11 +172,17 @@
                     data-show-faces="false">
                     
                   </div> 
-                </tr>
-               
+            </tr>
+             <!-- Goggle +1 -->
+             <tr>
+            <div class="g-plusone" data-annotation="inline" data-width="300" data-href="https://nusplan.herokuapp.com/"></div>
+            </tr>   
+               </table>
             </div>
-           
+        
+            
             <div>
+               
             <form method="post" action="submitFeedback.php" onsubmit="thankYou()">
                 <div class="form-group">
                     <input name="name" class="form-control" id="exampleInputName1" placeholder="Enter name" style="width:400px;">
@@ -235,6 +244,15 @@
        js.src = "//connect.facebook.net/en_US/sdk.js";
        fjs.parentNode.insertBefore(js, fjs);
      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    
+    <!-- Google +1 -->
+    <script type="text/javascript">
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/platform.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
     </script>
 
 </body>
