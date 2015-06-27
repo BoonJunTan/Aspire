@@ -165,6 +165,7 @@
                     class="fb-like"
                     data-share="true"
                     data-width="450"
+                    colorscheme ="dark"
                     data-show-faces="false">
                     
                   </div> 
