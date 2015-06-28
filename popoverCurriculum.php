@@ -6,7 +6,22 @@ $course = $_SESSION["course"];
 $cohort = $_SESSION["cohort"];
 $specialization = $_SESSION["specialization"];
 
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+if (isset($_GET["poly"])) {
+    if ($_GET["poly"] == 'yes') {
+        $exemption = $_GET["poly"];
+        $_SESSION["poly"] = $exemption;
+    } else if ($_GET["poly"] == 'no') {
+        $_SESSION["poly"] = "";
+    }
+    $_SESSION['whereAmI'] = 'poly';
+} else if (isset($_SESSION["poly"])) {
+    $exemption = $_SESSION["poly"];
+    $_SESSION['whereAmI'] = "";
+}
+
+if ($_SESSION['whereAmI'] == 'poly') {
+    header('Location: planCurriculumView.php');
+}
 
 $server = $url["host"];
 $username = $url["user"];
@@ -63,11 +78,19 @@ if ($result->num_rows > 0) {
     }
 }
 
-$tablePrinting .= "<tr><th colspan='3'>University Level Requirements (ULR) (20 MCs)</th></tr>";
-$tablePrinting .= $gemList;
-$tablePrinting .= "<tr><td colspan='3' align='center'> Remaining ULR - " . (20 - count($gemList) * 4) . " MCs<br>";
-$tablePrinting .= (2 - count($gemList)) . " General Education, 1 Singapore Studies & 2 Breadth";
-$totalCreditNow += (20 - count($gemList) * 4);
+if ($exemption == "yes") {
+    $tablePrinting .= "<tr><th colspan='3'>University Level Requirements (ULR) (12 MCs)</th></tr>";
+    $tablePrinting .= $gemList;
+    $tablePrinting .= "<tr><td colspan='3' align='center'> Remaining ULR - 8 MCs<br>";
+    $tablePrinting .= "1 Singapore Studies & 1 Breadth";
+    $totalCreditNow += 8;
+} else {
+    $tablePrinting .= "<tr><th colspan='3'>University Level Requirements (ULR) (20 MCs)</th></tr>";
+    $tablePrinting .= $gemList;
+    $tablePrinting .= "<tr><td colspan='3' align='center'> Remaining ULR - " . (20 - count($gemList) * 4) . " MCs<br>";
+    $tablePrinting .= (2 - count($gemList)) . " General Education, 1 Singapore Studies & 2 Breadth";
+    $totalCreditNow += (20 - count($gemList) * 4);
+}
 
 // Finding Program Requirement - Core and Internship
 $programCore;
@@ -181,10 +204,16 @@ $tablePrinting .= $programElectivesNon;
 $totalCreditNow += 28;
 $tablePrinting .= "<tr><th colspan='3'>Programme Internship</th></tr>";
 $tablePrinting .= $programInternship;
-$tablePrinting .= "<tr><th colspan='3'>Unrestricted Electives (20 MCs)</th></tr>";
-$tablePrinting .= "<tr><td colspan='3' align='center'>5 Modules from outside of home faculty</td></tr>";
-$totalCreditNow += 20;
-$tablePrinting .= "<tr><td colspan='2' align='right'>Total <td align='center'>" . $totalCreditNow . "</td></tr>";
+if ($exemption == "yes") {
+    $tablePrinting .= "<tr><th colspan='3'>Unrestricted Electives (8 MCs)</th></tr>";
+    $tablePrinting .= "<tr><td colspan='3' align='center'>2 Modules from outside of home faculty</td></tr>";
+    $totalCreditNow += 8;
+} else {
+    $tablePrinting .= "<tr><th colspan='3'>Unrestricted Electives (20 MCs)</th></tr>";
+    $tablePrinting .= "<tr><td colspan='3' align='center'>5 Modules from outside of home faculty</td></tr>";
+    $totalCreditNow += 20;
+}
+$tablePrinting .= "<tr><td colspan='2' align='right'>Total Remaining <td align='center'>" . $totalCreditNow . "</td></tr>";
 
 echo $tablePrinting;
 

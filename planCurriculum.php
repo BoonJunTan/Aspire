@@ -37,18 +37,41 @@
         }
         ?>
         </script>
+        <script>
+            function updateList() {
+                var radios = document.getElementsByName('poly');
+                var polyOrNot;
+                
+                for (var i = 0; i < radios.length; i++) {       
+                    if (radios[i].checked) {
+                        polyOrNot = radios[i].value;
+                        break;
+                    }
+                }
+                location.reload();
+                
+            }
+        </script>
     </head>
     <body ng-controller="MainCtrl">
         Still in development phase. -> Planning to aim 2014/15 and 2015/16 batch only<br><br>
         <div>
-            <button mypopover data-placement="right" class='btn btn-default btn-xl wow tada col-lg-4 col-md-4 '><span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span> Click to see Curriculum List </button><br>
+            <button mypopover data-placement="right" class='btn btn-primary btn-xl wow tada col-lg-4 col-md-4 '><span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span> Click to see Updated Curriculum </button><br>
         </div><br><br>
-        Step 1: Exemption -> Poly (20MCs) <br>
-        Please indicate if you are from poly? <br>
+        
+        <form action="popoverCurriculum.php?" method="Get">
+            Step 1: Exemption -> Poly (20MCs) <br>
+            Please indicate if you are from poly? <br>
+            <input type="radio" name="poly" value="yes" <?php if ($_SESSION["poly"] == "yes") { echo "checked"; } ?>>    Yes  
+            <input type="radio" name="poly" value="no" <?php if ($_SESSION["poly"] == "") { echo "checked"; } ?>>    No
+            <br><br>
+            Step 2: Exemption -> Additional Modules<br>
+            Please indicate if you have any additional modules to be exempted from. <br>
+            <br>
+            <button data-placement="right" class='btn btn-primary btn-xl wow tada col-lg-4 col-md-4 '><span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span> Update List </button><br>
+        </form>
         <br>
-        Step 2: Exemption -> Additional Modules<br>
-        Please indicate if you have any additional modules to be exempted from. <br>
-        <br>
+        
         Step 3: Given the choice to: <br>
         -------> 1: Add Semester<br>
         -------> 2: Search and Add Module<br>
@@ -59,5 +82,10 @@
         Things to check: <br>
         1. Pre-requisite/conclusion when entering new module information<br>
         2. Auto Calculate GPA/CAP<br>
+        <br>
+        List of Exemption:<br>
+        <table border='1' width="100%">
+            <tr><td>Module Code</td><td>Module Name</td><td>Module Credits</td></tr>
+        </table>
     </body>
 </html>
