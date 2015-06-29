@@ -48,18 +48,17 @@ $totalCreditNow = 0;
 $gemList;
 
 // For ClearDB
-/*
-  $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit'
-  FROM curriculum, requirements, modules, module_types
-  WHERE requirements.cohort = '" . $cohort . "'
-  AND requirements.major = '" . $course . "'
-  AND curriculum.type_id = '5'
-  AND curriculum.requirement_id = requirements.requirement_id
-  AND curriculum.module_id = modules.module_id
-  AND curriculum.type_id = module_types.type_id";
- */
+$sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit'
+            FROM curriculum, requirements, modules, module_types
+            WHERE requirements.cohort = '" . $cohort . "' 
+                    AND requirements.major = '" . $course . "'
+                    AND curriculum.type_id = '5'
+                    AND curriculum.requirement_id = requirements.requirement_id
+                    AND curriculum.module_id = modules.module_id
+                    AND curriculum.type_id = module_types.type_id";
 
 // For Localhost MySQL
+/*
 $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit'
             FROM test.curriculum, test.requirements, test.modules, test.module_types
             WHERE test.requirements.cohort = '" . $cohort . "' 
@@ -68,6 +67,7 @@ $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name
                     AND test.curriculum.requirement_id = test.requirements.requirement_id
                     AND test.curriculum.module_id = test.modules.module_id
                     AND test.curriculum.type_id = test.module_types.type_id";
+*/
 
 $result = $conn->query($sql);
 
@@ -97,18 +97,17 @@ $programCore;
 $programInternship;
 
 // For ClearDB
-/*
-  $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit'
-  FROM curriculum, requirements, modules, module_types
-  WHERE requirements.cohort = '" . $cohort . "'
-  AND requirements.major = '" . $course . "'
-  AND curriculum.type_id = '1'
-  AND curriculum.requirement_id = requirements.requirement_id
-  AND curriculum.module_id = modules.module_id
-  AND curriculum.type_id = module_types.type_id";
- */
+$sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit'
+            FROM curriculum, requirements, modules, module_types
+            WHERE requirements.cohort = '" . $cohort . "' 
+                    AND requirements.major = '" . $course . "'
+                    AND curriculum.type_id = '1'
+                    AND curriculum.requirement_id = requirements.requirement_id
+                    AND curriculum.module_id = modules.module_id
+                    AND curriculum.type_id = module_types.type_id";
 
 // For localhost
+/*
 $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit'
             FROM test.curriculum, test.requirements, test.modules, test.module_types
             WHERE test.requirements.cohort = '" . $cohort . "' 
@@ -117,6 +116,7 @@ $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name
                     AND test.curriculum.requirement_id = test.requirements.requirement_id
                     AND test.curriculum.module_id = test.modules.module_id
                     AND test.curriculum.type_id = test.module_types.type_id";
+*/
 
 $result = $conn->query($sql);
 
@@ -141,20 +141,20 @@ $tablePrinting .= $programCore;
 $programElectives;
 
 // For ClearDB
-/*
-  $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit', specialization.specialization_name AS 'Specialization'
-  FROM curriculum, requirements, modules, module_types, specialization
-  WHERE requirements.cohort = '" . $cohort . "'
-  AND requirements.major = '" . $course . "'
-  AND curriculum.type_id = '6'
-  AND curriculum.requirement_id = requirements.requirement_id
-  AND curriculum.module_id = modules.module_id
-  AND curriculum.type_id = module_types.type_id
-  AND curriculum.specialization_id = specialization.specialization_id
-  ORDER BY modules.module_id";
- */
+
+$sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit', specialization.specialization_name AS 'Specialization'
+            FROM curriculum, requirements, modules, module_types, specialization
+            WHERE requirements.cohort = '" . $cohort . "' 
+                    AND requirements.major = '" . $course . "'
+                    AND curriculum.type_id = '6'
+                    AND curriculum.requirement_id = requirements.requirement_id
+                    AND curriculum.module_id = modules.module_id
+                    AND curriculum.type_id = module_types.type_id
+                    AND curriculum.specialization_id = specialization.specialization_id
+                    ORDER BY modules.module_id";
 
 // For Localhost
+/*
 $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit', test.specialization.specialization_name AS 'Specialization'
             FROM test.curriculum, test.requirements, test.modules, test.module_types, test.specialization
             WHERE test.requirements.cohort = '" . $cohort . "' 
@@ -165,7 +165,7 @@ $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name
                     AND test.curriculum.type_id = test.module_types.type_id
                     AND test.curriculum.specialization_id = test.specialization.specialization_id
                     ORDER BY test.modules.module_id";
-
+*/
 
 $result = $conn->query($sql);
 

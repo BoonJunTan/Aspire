@@ -20,9 +20,15 @@ $db = substr($url["path"], 1);
 
 $conn = new mysqli($server, $username, $password, $db);
 
-// Remember ClearDB don't need schema name
+// For ClearDB
+$sql = "INSERT INTO feedback (name, email, subject, message, date) VALUES 
+    ('" . $name . "' , '" . $email . "' , '" . $subject . "' , '" . $message . "' , '" . $date . "')";
+
+// For Localhost
+/*
 $sql = "INSERT INTO test.feedback (name, email, subject, message, date) VALUES 
     ('" . $name . "' , '" . $email . "' , '" . $subject . "' , '" . $message . "' , '" . $date . "')";
+*/
 
 $result = $conn->query($sql);
 ?>
