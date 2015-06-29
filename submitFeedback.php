@@ -9,7 +9,6 @@ $subject = $_POST['subject'];
 $message = $_POST['message'];
 date_default_timezone_set( 'Asia/Singapore' ) ;
 $date = date("o-m-d H:i:s" ) ;
-echo $date;
 
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
