@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 $finalpath1 = getcwd() . "/assets/json/201415moduleList.json";
 $string1 = file_get_contents($finalpath1);
 $json_a = json_decode($string1, true);
@@ -12,7 +13,11 @@ if (strlen($q) > 0) {
     $hint = "";
     for ($i = 0; $i < count($json_a); $i++) {
         if (strstr($json_a[$i]["ModuleCode"], $q) or strstr(strtoupper($json_a[$i]["ModuleTitle"]), $q)) {
-            $hint = $hint . "<a href='moduleDetailInfoView.php?q=" . $json_a[$i]["ModuleCode"] . "'>" . $json_a[$i]["ModuleCode"] . " - " . $json_a[$i]["ModuleTitle"] . "</a><br />";
+            if ($_SESSION['planCurriculum'] == 'True') {
+                $hint = $hint . "<button value='" . $json_a[$i]["ModuleCode"] . "' onclick='additionalMod(this.value)'>" . $json_a[$i]["ModuleCode"] . " - " . $json_a[$i]["ModuleTitle"] . "</button><br />";
+            } else {
+                $hint = $hint . "<a href='moduleDetailInfoView.php?q=" . $json_a[$i]["ModuleCode"] . "'>" . $json_a[$i]["ModuleCode"] . " - " . $json_a[$i]["ModuleTitle"] . "</a><br />";
+            }
         }
     }
 }
@@ -24,7 +29,6 @@ if ($hint == "") {
 } else {
     $response = $hint;
 }
-
 //output the response
 echo $response;
 ?>

@@ -81,8 +81,8 @@ session_start();
         </script>
     </head>
     <body>
-        Still in development phase. -> Planning to aim 2014/15 and 2015/16 batch only<br>
-        Currently tested for -> Cohort: (14/15, 15/16) -|||- Course: Information System -|||- Specialization: Information Specialization<br><br>
+        Still in development phase. -> Planning to aim 2014/15 and 2015/16 batch only<br><br>
+        <b>Currently only integrated for: <br> Cohort: 14/15 <br> Course: Information System <br> Specialization: All</b><br><br>
         <form method="post" action="addCurriculum.php" onsubmit="planCurriculum()">
             <table cellspacing="10">
                 <tr>

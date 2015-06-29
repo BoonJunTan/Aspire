@@ -28,11 +28,32 @@
             xmlhttp.open("GET", "liveSearch.php?q=" + str, true);
             xmlhttp.send();
         }
+
+        var modulesExemption = "";
+        function additionalMod(str) {
+            modulesExemption += " " + str;
+            if (str.length == 0) {
+                document.getElementById("liveUpdate").innerHTML = "";
+                document.getElementById("liveUpdate").style.border = "0px";
+                return;
+            } else {
+                document.getElementById("liveUpdate").innerHTML = modulesExemption;
+                document.getElementById("liveUpdate").style.border = "0px";
+                document.getElementById("livesearch").innerHTML = "";
+                document.getElementById("livesearch").style.border = '0px';
+            }
+        }
     </script>
     <body>
-        <form>
+        <?php if ($_SESSION['planCurriculum'] != 'True') { ?>
+            <form>
+                <input placeholder="Please key in module code or name ;)" type="text" size="35" onkeyup="showResult(this.value)">
+                <div id="livesearch"></div>
+            </form>
+        <?php } else { ?>
+            <div id="liveUpdate"></div><br>
             <input placeholder="Please key in module code or name ;)" type="text" size="35" onkeyup="showResult(this.value)">
             <div id="livesearch"></div>
-        </form>
-    </body>
+        <?php } ?>
+</body>
 </html>
