@@ -31,13 +31,13 @@ $db = substr($url["path"], 1);
 $conn = new mysqli($server, $username, $password, $db);
 
 // Check connection
-/*
+
   if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
   } else {
   echo "Connected successfully";
   }
- */
+ 
 
 echo $course . " - Batch " . $cohort . " - " . $specialization . "<br><br>";
 
