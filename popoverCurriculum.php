@@ -141,7 +141,6 @@ $tablePrinting .= $programCore;
 $programElectives;
 
 // For ClearDB
-
 $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit', specialization.specialization_name AS 'Specialization'
             FROM curriculum, requirements, modules, module_types, specialization
             WHERE requirements.cohort = '" . $cohort . "' 
