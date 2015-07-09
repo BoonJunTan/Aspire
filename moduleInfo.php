@@ -42,6 +42,8 @@
                 document.getElementById("livesearch").innerHTML = "";
                 document.getElementById("livesearch").style.border = '0px';
             }
+            xmlhttp.open("GET", "addExemptionSession.php?q=" + str, true);
+            xmlhttp.send();
         }
     </script>
     <body>

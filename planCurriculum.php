@@ -45,7 +45,8 @@
         </div><br><br>
         
         Step 1: Exemption -> Additional Modules<br>
-        Please indicate if you have any additional modules to be exempted from. <br>
+        Please indicate if you have any additional modules to be exempted from. <br><br>
+        <?php include("exemptedModules.php"); ?>
         <br>
         <?php $_SESSION['planCurriculum'] = 'True'; include('moduleInfo.php');  ?> <br><br>
             
@@ -58,7 +59,7 @@
             <button data-placement="right" class='btn btn-primary btn-xl wow tada col-lg-4 col-md-4 '><span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span> Update List </button><br>
         </form>
             <br><br>
-        
+            
         
         Step 3: Given the choice to: <br>
         -------> 1: Add Semester<br>
@@ -71,9 +72,8 @@
         1. Pre-requisite/conclusion when entering new module information<br>
         2. Auto Calculate GPA/CAP<br>
         <br>
-        List of Exemption:<br>
-        <table border='1' width="100%">
-            <tr><td>Module Code</td><td>Module Name</td><td>Module Credits</td></tr>
-        </table>
+        
+        
+        
     </body>
 </html>
