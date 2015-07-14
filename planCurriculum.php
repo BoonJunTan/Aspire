@@ -45,7 +45,9 @@
         </div><br><br>
         
         Step 1: Exemption -> Additional Modules<br>
-        Please indicate if you have any additional modules to be exempted from. <br><br>
+        Please indicate if you have any additional modules to be exempted from. <br>
+        <b>* Only relevant modules to your curriculum list will be shown in the exempted list</b><br>
+        <b>* CP3200 is only applicable to Computer Science student.</b><br><br>
         <?php include("exemptedModules.php"); ?>
         <br>
         <?php $_SESSION['planCurriculum'] = 'True'; include('moduleInfo.php');  ?> <br><br>

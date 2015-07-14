@@ -16,7 +16,7 @@
         $string2 = file_get_contents($finalpath2);
         $json_b = json_decode($string2, true);
 
-        $finalpath3 = "http://api.nusmods.com/2014-2015/modules/" . $last . ".json";
+        $finalpath3 = "http://api.nusmods.com/2015-2016/modules/" . $last . ".json";
         $string3 = file_get_contents($finalpath3);
         $json_c = json_decode($string3, true);
 
