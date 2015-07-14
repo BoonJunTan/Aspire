@@ -29,8 +29,6 @@ if ($_SESSION['whereAmI'] == 'poly') {
     header('Location: planCurriculumView.php');
 }
 
-print_r($_SESSION['modulesExempted']);
-
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 $server = $url["host"];
