@@ -59,74 +59,17 @@
             <input type="radio" name="poly" value="yes" <?php if ($_SESSION["poly"] == "yes") { echo "checked"; } ?>>    Yes  
             <input type="radio" name="poly" value="no" <?php if ($_SESSION["poly"] == "") { echo "checked"; } ?>>    No
             <br><br>
-            <button data-placement="right" class='btn btn-primary btn-xl wow tada col-lg-4 col-md-4 '><span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span> Update List </button><br>
+            <button data-placement="right" class='btn btn-primary btn-xl wow tada col-lg-4 col-md-4 '><span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span> Update List for Step 1 & 2</button><br>
         </form>
             <br><br>
             
         <b>Step 3: </b><br>
         <b>* SOC requires students to take at least 16 MCs per semester except for IS4010 Industry Internship Programme</b><br><br>
+        
+        <button popoverplan data-placement="right" class='btn btn-primary btn-xl wow tada col-lg-4 col-md-4 '><span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span> Click to see Planned Curriculum </button><br>
         <br><br>
-        <button id="add_new" data-placement="right" class='btn btn-primary btn-xl wow tada col-lg-4 col-md-4 '><span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span> Add Module </button><br>
-        
-        <br><br>
-        <table border="1" width="100%">
-            <tr><td colspan="4" align="center"><b>Year 1</b></td></tr>
-            <tr>
-                <td colspan="2" align="center">Semester 1</td>
-                <td colspan="2" align="center">Semester 2</td>
-            </tr>
-            <tr>
-                <td align="center">No.</td>
-                <td align="center">Module Name</td>
-                <td align="center">No.</td>
-                <td align="center">Module Name</td>
-            </tr>
-        </table>
-        <br>
-        <div class="entry-form">
-		<form name="userinfo" id="userinfo"> 
-		<table width="100%" border="0" cellpadding="4" cellspacing="0">
-			<tr>
-				<td colspan="2" align="right"><a href="#" id="close">Close</a></td>
-			</tr>
-			<tr>
-				<td>Input Year</td>
-				<td><input type="text" name="fname"></td>
-			</tr>
-			<tr>
-				<td>Input Semester (1-2)</td>
-				<td><input type="text" name="lname"></td>
-			</tr>
-			<tr>
-				<td>Enter Module</td>
-				<td><input type="text" name="email"></td>
-			</tr>
-			<tr>
-				<td align="right"></td>
-				<td><input type="button" value="Save" id="save"><input type="button" value="cancel" id="cancel"></td>
-			</tr>
-		</table>
-		</form>
-	</div>
-        <br>
-        1. Allow user to press a button to add modules<br>
-        2. Allow user to press a button to add semester or year
-        <br><br>
-        <br><br>
-        
-        Given the choice to: <br>
-        -------> 1: Add Semester<br>
-        -------> 2: Search and Add Module<br>
-        -------> 3: Insert/Edit/Remove Grades<br>
-        <br>
-        Disclaimer Notice: Whatever plan you have now is subjected to changes in the future. Enjoy yourself.<br>
-        <br>
-        Things to check: <br>
-        1. Pre-requisite/conclusion when entering new module information<br>
-        2. Auto Calculate GPA/CAP<br>
-        <br>
-        
-        
-        
+        <?php
+            include('planTable.php');
+        ?>
     </body>
 </html>

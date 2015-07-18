@@ -8,6 +8,7 @@ and open the template in the editor.
 session_start();
 if (!isset($_SESSION['modulesExempted'])) {
     $_SESSION['modulesExempted'] = [];
+    $_SESSION['test'] = [];
 }
 ?>
 <html>

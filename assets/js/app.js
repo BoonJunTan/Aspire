@@ -42,18 +42,18 @@ app.directive('mypopover', function ($compile, $templateCache, $q, $http) {
     };
 });
 
-app.directive('popovercurriculum', function ($compile, $templateCache, $q, $http) {
+app.directive('popoverplan', function ($compile, $templateCache, $q, $http) {
     var getTemplate = function (contentType) {
         var def = $q.defer();
 
         var template = '';
         switch (contentType) {
             case 'user':
-                template = $templateCache.get('popoverSemester.php');
+                template = $templateCache.get('popoverPlan.php');
                 if (typeof template === "undefined") {
-                    $http.get('popoverSemester.php')
+                    $http.get('popoverPlan.php')
                             .success(function (data) {
-                                $templateCache.put('popoverSemester.php', data);
+                                $templateCache.put('popoverPlan.php', data);
                                 def.resolve(data);
                             });
                 } else {
