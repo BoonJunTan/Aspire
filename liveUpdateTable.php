@@ -30,11 +30,11 @@ if (isset($_POST) && count($_POST)) {
         $id = $_POST['rid'];
         $escapedPost = array_map('mysql_real_escape_string', $_POST);
         $escapedPost = array_map('htmlentities', $escapedPost);
-        $_SESSION['test1'] = $_POST;
-        $_SESSION['test2'] = $_SESSION['test'][array_search($id, array_column($_SESSION['test'], 'id'))];
-        $_SESSION['test'][array_search($id, array_column($_SESSION['test'], 'id'))] = $_POST;
-        // Bug 1 : Refresh then edit will have error
-        // Bug 2 : After edit once, cannot edit anymore
+        $newData = $_POST;
+        unset($newData['rid']);
+        $newData['success'] = 1;
+        $newData['id'] = $id;
+        $_SESSION['test'][array_search($id, array_column($_SESSION['test'], 'id'))] = $newData;
         echo json_encode(array_merge(array("success" => "1", "id" => $id), $escapedPost));
     } else if ($action == "updated") {
         /*

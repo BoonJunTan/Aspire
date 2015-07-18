@@ -38,14 +38,15 @@ session_start();
     <head>
         <script>
             // Column names must be identical to the actual column names in the database, if you dont want to reveal the column names, you can map them with the different names at the server side.
-            var columns = new Array("semester", "year", "moduleCode", "gpa");
-            var placeholder = new Array("", "", "Enter Module", "");
-            var inputType = new Array("select", "select", "text", "select");
+            var columns = new Array("semester", "year", "moduleCode", "requirement", "gpa");
+            var placeholder = new Array("", "", "Enter Module", "", "");
+            var inputType = new Array("select", "select", "text", "select", "select");
             var table = "tableDemo";
             var selectOptSem = new Array("1", "2");
             var selectOptYear = new Array("1", "2", "3", "4", "5");
-            var selectOptGPA = new Array("A+/A : 5", "A- : 4.5", "B+ : 4", "B : 3.5", "B- : 3", "C+ : 2.5", "C : 2", "D+ : 1.5", "D : 1", "F : 0");
-
+            var selectOptGPA = new Array("A+/A : 5", "A- : 4.5", "B+ : 4", "B : 3.5", "B- : 3", "C+ : 2.5", "C : 2", "Satisfactory", "Unsatisfactory", "D+ : 1.5", "D : 1", "F : 0");
+            var selectOptRequirement = new Array("General Education", "Breadth", "Singapore Studies", "Core", "Electives", "Internship", "Unrestricted Electives");
+                    
             // Set button class names 
             var savebutton = "ajaxSave";
             var deletebutton = "ajaxDelete";
@@ -74,25 +75,25 @@ session_start();
     <body>
         <table border="0" class="tableDemo bordered">
             <tr class="ajaxTitle">
-                <th width="18%">Semester</th>
-                <th width="18%">Year</th>
-                <th width="26%">Module Code</th>
-                <th width="18%">Expected GPA</th>
-                <th width="18%">Action</th>
+                <th width="15%">Semester</th>
+                <th width="15%">Year</th>
+                <th width="22%">Module Code</th>
+                <th width="18">Requirement</th>
+                <th width="15%">Expected GPA</th>
+                <th width="15%">Action</th>
             </tr>
             <?php
+            print_r($_SESSION['test']);
             if (count($_SESSION['test']) == 0) {
                 if (count($records)) {
-                    $i = 1;
                     $eachRecord = 0;
-                    $counter = 0;
                     foreach ($records as $key => $eachRecord) {
-                        $counter++;
                         ?>
                         <tr id="<?= $eachRecord['id']; ?>">
                             <td class="semester"><?= $eachRecord['semester']; ?></td>
                             <td class="year"><?= $eachRecord['year']; ?></td>
                             <td class="moduleCode"><?= $eachRecord['moduleCode']; ?></td>
+                            <td class="requirement"><?= $eachRecord['requirement']; ?></td>
                             <td class="gpa"><?= $eachRecord['gpa']; ?></td>
                             <td>
                                 <a href="javascript:;" id="<?= $eachRecord['id']; ?>" class="ajaxEdit"><img src="" class="eimage"></a>
@@ -109,6 +110,7 @@ session_start();
                             <td class="semester"><?= $_SESSION['test'][$i]['semester']; ?></td>
                             <td class="year"><?= $_SESSION['test'][$i]['year']; ?></td>
                             <td class="moduleCode"><?= $_SESSION['test'][$i]['moduleCode']; ?></td>
+                            <td class="requirement"><?= $_SESSION['test'][$i]['requirement']; ?></td>
                             <td class="gpa"><?= $_SESSION['test'][$i]['gpa']; ?></td>
                             <td>
                                 <a href="javascript:;" id="<?= $_SESSION['test'][$i]['id']; ?>" class="ajaxEdit"><img src="" class="eimage"></a>

@@ -35,7 +35,7 @@ var editing = 0;
 var tdediting = 0;
 var editingtrid = 0;
 var editingtdcol = 0;
-var inputs = 'select,select,:text,select';
+var inputs = 'select,select,:text,select,select';
 
 $(document).ready(function () {
 
@@ -134,12 +134,14 @@ $(document).ready(function () {
             console.log(this.value);
             return this.value;
         }).get();
-        
-        var data = "&semester=" + array[0] + "&year=" + array[1] + "&moduleCode=" + array[2] + "&gpa=" + array[3] + "&rid=" + id;
+        alert(array);
+        var data = "&semester=" + array[0] + "&year=" + array[1] + "&moduleCode=" + array[2] + "&requirement=" + array[3] + "&gpa=" + array[4] + "&rid=" + id;
+        editing = 0;
+        alert(data);
         ajax(data, "update");
         
         // clear editing flag
-        editing = 0;
+        
     });
 
     // td doubleclick event
@@ -189,7 +191,6 @@ createInput = function (i, str, editMode) {
     if (inputType[i] == "text") {
         if (editMode == "edit") {
             input = '<input type=' + inputType[i] + ' name=' + columns[i] + ' placeholder="' + placeholder[i] + '" value=' + str + ' readonly>';
-
         } else {
             input = '<input type=' + inputType[i] + ' name=' + columns[i] + ' placeholder="' + placeholder[i] + '" value=' + str + ' >';
         }
@@ -204,11 +205,13 @@ createInput = function (i, str, editMode) {
         } else if (columns[i] == "year") {
             length = 5;
         } else if (columns[i] == "gpa") {
-            length = 10;
+            length = 12;
+        } else if (columns[i] == "requirement") {
+            length = 7;
         }
         for (a = 0; a < length; a++) {
             selected = "";
-            if (str == selectOptSem[a] || str == selectOptYear[a] || str == selectOptGPA[a]) {
+            if (str == selectOptSem[a] || str == selectOptYear[a] || str == selectOptGPA[a] || str == selectOptRequirement[a]) {
                 selected = "selected";
             }
             // This place
@@ -218,6 +221,8 @@ createInput = function (i, str, editMode) {
                 input += '<option value="' + selectOptYear[a] + '" ' + selected + '>' + selectOptYear[a] + '</option>';
             } else if (columns[i] == "gpa") {
                 input += '<option value="' + selectOptGPA[a] + '" ' + selected + '>' + selectOptGPA[a] + '</option>';
+            } else if (columns[i] == "requirement") {
+                input += '<option value="' + selectOptRequirement[a] + '" ' + selected + '>' + selectOptRequirement[a] + '</option>';
             }
         }
         input += '</select>';
