@@ -28,6 +28,7 @@
         </style>
         <script src='assets/js/app.js'></script>
         <script>
+            
         <?php
         if ($_SESSION["cohort"] == "") {
             ?>
@@ -38,6 +39,12 @@
         ?>
         </script>
         <script src='assets/js/script.js'></script>
+        <script>
+            function reloadFunction() {
+                alert("Updated successfully");
+                window.location.reload();
+            }
+        </script>
     </head>
     <body ng-controller="MainCtrl">
         Still in development phase. -> Planning to aim 2014/15 and 2015/16 batch only<br><br>
@@ -71,5 +78,9 @@
         <?php
             include('planTable.php');
         ?>
+        <br><br>
+        * Click onto me when you are done editing<br>
+        <button onclick="reloadFunction()" data-placement="right" class='btn btn-primary btn-xl wow tada col-lg-4 col-md-4 '><span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span> Update Curriculum </button><br>
+        
     </body>
 </html>

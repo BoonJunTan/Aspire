@@ -47,7 +47,12 @@ $conn = new mysqli($server, $username, $password, $db);
   }
  */
 
-echo $course . " - Batch " . $cohort . " - " . $specialization . "<br><br>";
+echo "<div class='panel panel-primary'>";
+echo "<div class='panel-heading'>";
+echo "<h3 class='panel-title'>" . $course . " - Batch " . $cohort . " - " . $specialization . "</h3>";
+echo "</div>";
+
+echo "<div class='panel-body'>";
 
 $tablePrinting = "<table width='100%' border=1 cellspacing=5 cellpadding=5><tr><td>Module Code</td><td>Module Name</td><td align>Module Credits</td></tr>";
 $totalCreditNow = 0;
@@ -244,5 +249,7 @@ $tablePrinting .= "<tr><td colspan='2' align='right'>Total Remaining <td align='
 
 echo $tablePrinting;
 
+echo "</div>";
+echo "</div>";
 $conn->close();
 ?>

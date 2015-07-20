@@ -37,6 +37,7 @@ var editingtrid = 0;
 var editingtdcol = 0;
 var inputs = 'select,select,:text,select,select';
 
+
 $(document).ready(function () {
 
     // set images for edit and delete 
@@ -50,7 +51,7 @@ $(document).ready(function () {
         input = createInput(i, '', '');
         blankrow += '<td class="ajaxReq">' + input + '</td>';
     }
-    blankrow += '<td><a href="javascript:;" class="' + savebutton + '"><img src="' + saveImage + '"></a></td></tr>';
+    blankrow += '<td><a href="javascript:;" class="' + savebutton + '"><img src="' + saveImage + '"></button></td></tr>';
 
     // append blank row at the end of table
     $("." + table).append(blankrow);
@@ -66,7 +67,9 @@ $(document).ready(function () {
 
     // Add new record
     $("." + savebutton).on("click", function () {
+        var modulesAlreadyInside = [];
         var validation = 1;
+        var requirementCheck = 0;
         var $inputs =
                 $(document).find("." + table).find(inputs).filter(function () {
             // check if input element is blank ??
@@ -83,10 +86,21 @@ $(document).ready(function () {
             return this.value;
         }).get();
 
-        var serialized = $inputs.serialize();
-        alert(serialized);
-        if (validation == 1) {
-            ajax(serialized, "save");
+        if (validation == 0) {
+            alert("Please fill in all necessary field");
+        } else {
+            $.getJSON("assets/json/201415moduleInformation.json", function (data) {
+                for (i = 0; i < data.length; i++) {
+                    if (data[i]['ModuleCode'] == array[2]) {
+                        alert(data[i]['Prerequisite']);
+                    }
+                }
+            });
+
+            var serialized = $inputs.serialize();
+            if (requirementCheck == 1) {
+                ajax(serialized, "save");
+            }
         }
     });
 
@@ -134,47 +148,46 @@ $(document).ready(function () {
             console.log(this.value);
             return this.value;
         }).get();
-        alert(array);
         var data = "&semester=" + array[0] + "&year=" + array[1] + "&moduleCode=" + array[2] + "&requirement=" + array[3] + "&gpa=" + array[4] + "&rid=" + id;
         editing = 0;
-        alert(data);
         ajax(data, "update");
-        
+
         // clear editing flag
-        
+
     });
 
     // td doubleclick event
-    $(document).on("dblclick", "." + table + " td", function (e) {
-        // check if any other TD is in editing mode ? If so then dont show editing box
-        //alert(tdediting+"==="+editing);
-        var isEditingform = $(this).closest("tr").attr("class");
-        if (tdediting == 0 && editing == 0 && isEditingform != "inputform") {
-            editingtrid = $(this).closest('tr').attr("id");
-            editingtdcol = $(this).attr("class");
-            var text = $(this).html();
-            var tr = $(this).parent();
-            var tbody = tr.parent();
-            for (var i = 0; i < tr.children().length; i++) {
-                if (tr.children().get(i) == this) {
-                    var column = i;
-                    break;
-                }
-            }
-
-            // decrement column value by one to avoid sr no column
-            column--;
-            //alert(column+"==="+placeholder[column]);
-            if (column <= columns.length) {
-                var text = $(this).html();
-                //alert(text);
-                input = createInput(column, text, "");
-                $(this).html(input);
-                $(this).find(inputs).focus();
-                tdediting = 1;
-            }
-        }
-    });
+    /*
+     $(document).on("dblclick", "." + table + " td", function (e) {
+     // check if any other TD is in editing mode ? If so then dont show editing box
+     //alert(tdediting+"==="+editing);
+     var isEditingform = $(this).closest("tr").attr("class");
+     if (tdediting == 0 && editing == 0 && isEditingform != "inputform") {
+     editingtrid = $(this).closest('tr').attr("id");
+     editingtdcol = $(this).attr("class");
+     var text = $(this).html();
+     var tr = $(this).parent();
+     var tbody = tr.parent();
+     for (var i = 0; i < tr.children().length; i++) {
+     if (tr.children().get(i) == this) {
+     var column = i;
+     break;
+     }
+     }
+     
+     // decrement column value by one to avoid sr no column
+     column--;
+     //alert(column+"==="+placeholder[column]);
+     if (column <= columns.length) {
+     var text = $(this).html();
+     //alert(text);
+     input = createInput(column, text, "");
+     $(this).html(input);
+     $(this).find(inputs).focus();
+     tdediting = 1;
+     }   
+     }
+     }); */
 
     // td lost focus event
     $(document).on("blur", "." + table + " td", function (e) {
@@ -284,7 +297,19 @@ ajax = function (params, action) {
                 case "update":
                     $("." + cancelbutton).trigger("click");
                     for (i = 0; i < columns.length; i++) {
-                        $("tr[id='" + response.id + "'] td[class='" + columns[i] + "']").html(response[columns[i]]);
+                        if (i = columns.length - 1) {
+                            var result = response[columns[i]].substring(response[columns[i]].indexOf(":") + 2);
+                            var data = ['5', '4.5', '4', '3.5', '3', '2.5', '2', '1.5', '1', '0'];
+                            var data2 = ["A+/A : 5", "A- : 4.5", "B+ : 4", "B : 3.5", "B- : 3", "C+ : 2.5", "C : 2", "D+ : 1.5", "D : 1", "F : 0"];
+                            for (x = 0; x < data.length; x++) {
+                                if (data[x] == result) {
+                                    $("tr[id='" + response.id + "'] td[class='" + columns[i] + "']").html(data2[x]);
+                                }
+                            }
+                        } else {
+                            alert(response.id + " " + columns[i] + " " + response[columns[i]]);
+                            $("tr[id='" + response.id + "'] td[class='" + columns[i] + "']").html(response[columns[i]]);
+                        }
                     }
                     break;
                     /*

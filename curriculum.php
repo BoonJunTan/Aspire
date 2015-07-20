@@ -89,6 +89,7 @@ session_start();
                     <td>
                         Please select Cohort: 
                     </td>
+                    <td>&nbsp;</td>
                     <td>
                         <select name="cohort" onchange="showItem(this.value, 'cohort')">
                             <option value = ""></option>
@@ -101,6 +102,7 @@ session_start();
                     <td>
                         Please select Course: 
                     </td>
+                    <td>&nbsp;</td>
                     <td>
                         <select name="course" id="courseHint" onchange="showItem(this.value, 'course')"></select>
                     </td>
@@ -109,6 +111,7 @@ session_start();
                     <td>
                         Please select Specialization:
                     </td>
+                    <td>&nbsp;</td>
                     <td>
                         <select name="specialization" id="specializationHint" onchange="generateCurriculum(this.value)"></div>
                     </td>

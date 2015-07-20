@@ -46,7 +46,7 @@ session_start();
             var selectOptYear = new Array("1", "2", "3", "4", "5");
             var selectOptGPA = new Array("A+/A : 5", "A- : 4.5", "B+ : 4", "B : 3.5", "B- : 3", "C+ : 2.5", "C : 2", "Satisfactory", "Unsatisfactory", "D+ : 1.5", "D : 1", "F : 0");
             var selectOptRequirement = new Array("General Education", "Breadth", "Singapore Studies", "Core", "Electives", "Internship", "Unrestricted Electives");
-                    
+
             // Set button class names 
             var savebutton = "ajaxSave";
             var deletebutton = "ajaxDelete";
@@ -69,7 +69,8 @@ session_start();
 
         </script>
         <script src="assets/js/jquery-ui.js"></script>	
-        <script src="assets/js/scriptForTable.js"></script>	
+        <script src="assets/js/scriptForTable.js"></script>
+        <script src="assets/js/require.js"></script>
         <link rel="stylesheet" href="assets/css/styleForTable.css">
     </head>
     <body>
@@ -84,41 +85,20 @@ session_start();
             </tr>
             <?php
             print_r($_SESSION['test']);
-            if (count($_SESSION['test']) == 0) {
-                if (count($records)) {
-                    $eachRecord = 0;
-                    foreach ($records as $key => $eachRecord) {
-                        ?>
-                        <tr id="<?= $eachRecord['id']; ?>">
-                            <td class="semester"><?= $eachRecord['semester']; ?></td>
-                            <td class="year"><?= $eachRecord['year']; ?></td>
-                            <td class="moduleCode"><?= $eachRecord['moduleCode']; ?></td>
-                            <td class="requirement"><?= $eachRecord['requirement']; ?></td>
-                            <td class="gpa"><?= $eachRecord['gpa']; ?></td>
-                            <td>
-                                <a href="javascript:;" id="<?= $eachRecord['id']; ?>" class="ajaxEdit"><img src="" class="eimage"></a>
-                                <a href="javascript:;" id="<?= $eachRecord['id']; ?>" class="ajaxDelete"><img src="" class="dimage"></a>
-                            </td>
-                        </tr>
-                    <?php
-                    }
-                }
-            } else {
-                for ($i = 0; $i < count($_SESSION['test']); $i++) {
-                    ?>
-                        <tr id="<?= $_SESSION['test'][$i]['id']; ?>">
-                            <td class="semester"><?= $_SESSION['test'][$i]['semester']; ?></td>
-                            <td class="year"><?= $_SESSION['test'][$i]['year']; ?></td>
-                            <td class="moduleCode"><?= $_SESSION['test'][$i]['moduleCode']; ?></td>
-                            <td class="requirement"><?= $_SESSION['test'][$i]['requirement']; ?></td>
-                            <td class="gpa"><?= $_SESSION['test'][$i]['gpa']; ?></td>
-                            <td>
-                                <a href="javascript:;" id="<?= $_SESSION['test'][$i]['id']; ?>" class="ajaxEdit"><img src="" class="eimage"></a>
-                                <a href="javascript:;" id="<?= $_SESSION['test'][$i]['id']; ?>" class="ajaxDelete"><img src="" class="dimage"></a>
-                            </td>
-                        </tr>
-                    <?php
-                }
+            for ($i = 0; $i < count($_SESSION['test']); $i++) {
+                ?>
+                <tr id="<?= $_SESSION['test'][$i]['id']; ?>">
+                    <td class="semester"><?php echo $_SESSION['test'][$i]['semester']; ?></td>
+                    <td class="year"><?= $_SESSION['test'][$i]['year']; ?></td>
+                    <td class="moduleCode"><?= $_SESSION['test'][$i]['moduleCode']; ?></td>
+                    <td class="requirement"><?= $_SESSION['test'][$i]['requirement']; ?></td>
+                    <td class="gpa"><?= $_SESSION['test'][$i]['gpa']; ?></td>
+                    <td>
+                        <a href="javascript:;" id="<?= $_SESSION['test'][$i]['id']; ?>" class="ajaxEdit"><img src="" class="eimage"></a>
+                        <a href="javascript:;" id="<?= $_SESSION['test'][$i]['id']; ?>" class="ajaxDelete"><img src="" class="dimage"></a>
+                    </td>
+                </tr>
+                <?php
             }
             ?>
         </table>  

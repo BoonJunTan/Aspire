@@ -21,8 +21,13 @@ $conn = new mysqli($server, $username, $password, $db);
   echo "Connected successfully";
   }
  */
+echo "<div class='panel panel-primary'>";
+echo "<div class='panel-heading'>";
+echo "<h3 class='panel-title'>" . $course . " - Batch " . $cohort . " - " . $specialization . "</h3>";
+echo "</div>";
 
-echo $course . " - Batch " . $cohort . " - " . $specialization . "<br><br>";
+echo "<div class='panel-body'>";
+
 
 $tablePrinting = "<table width='100%' border=1 cellspacing=5 cellpadding=5><tr><td>Module Code</td><td>Module Name</td><td align>Module Credits</td></tr>";
 $totalCreditNow = 0;
@@ -40,8 +45,8 @@ $gemList;
   AND curriculum.requirement_id = requirements.requirement_id
   AND curriculum.module_id = modules.module_id
   AND curriculum.type_id = module_types.type_id";
-*/
-  
+ */
+
 // For Localhost MySQL
 $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit'
             FROM test.curriculum, test.requirements, test.modules, test.module_types
@@ -51,7 +56,7 @@ $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name
                     AND test.curriculum.requirement_id = test.requirements.requirement_id
                     AND test.curriculum.module_id = test.modules.module_id
                     AND test.curriculum.type_id = test.module_types.type_id";
-  
+
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -81,7 +86,7 @@ $programInternship;
   AND curriculum.requirement_id = requirements.requirement_id
   AND curriculum.module_id = modules.module_id
   AND curriculum.type_id = module_types.type_id";
-*/
+ */
 
 // For localhost
 $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit'
@@ -127,7 +132,7 @@ $programElectives;
   AND curriculum.type_id = module_types.type_id
   AND curriculum.specialization_id = specialization.specialization_id
   ORDER BY modules.module_id";
-*/
+ */
 
 // For Localhost
 $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit', test.specialization.specialization_name AS 'Specialization'
@@ -184,11 +189,12 @@ $totalCreditNow += 20;
 $tablePrinting .= "<tr><td colspan='2' align='right'>Total <td align='center'>" . $totalCreditNow . "</td></tr>";
 
 if ($_GET['plan'] == false) {
-    $tablePrinting .= "<tr><td colspan='3'><button type='submit' class='btn btn-default btn-xl wow tada col-lg-4 col-md-4 col-md-offset-4'>"
+    $tablePrinting .= "<tr><td colspan='3'><button type='submit' class='btn btn-primary btn-xl wow tada col-lg-4 col-md-4 col-md-offset-4'>"
             . "<span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span> Select current curriculum</button></td></tr></table><br>";
 }
 
 echo $tablePrinting;
-
+echo "</div>";
+echo "</div>";
 $conn->close();
 ?>
