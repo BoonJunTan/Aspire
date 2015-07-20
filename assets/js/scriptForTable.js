@@ -92,15 +92,18 @@ $(document).ready(function () {
             $.getJSON("assets/json/201415moduleInformation.json", function (data) {
                 for (i = 0; i < data.length; i++) {
                     if (data[i]['ModuleCode'] == array[2]) {
-                        alert(data[i]['Prerequisite']);
+                        if (data[i]['Prerequisite'] == null) {
+                            alert("No prerequisite");
+                        } else {
+                            alert(data[i]['Prerequisite']);
+                        }
                     }
                 }
             });
-
             var serialized = $inputs.serialize();
-            if (requirementCheck == 1) {
+            //if (requirementCheck == 1) {
                 ajax(serialized, "save");
-            }
+            //}
         }
     });
 
