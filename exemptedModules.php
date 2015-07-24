@@ -1,10 +1,15 @@
 <?php
+
 session_start();
+
+$finalpath1 = getcwd() . "/assets/json/201415moduleInformation.json";
+$string1 = file_get_contents($finalpath1);
+$json_a = json_decode($string1, true);
 
 if (!empty($_SESSION['modulesExempted'])) {
     echo "List of Exemption:<br>";
     echo "<table border = '1' width = '100%'>";
-    echo "<tr><td>Module Code</td><td>Module Name</td><td>Module Credits</td></tr >";
+    echo "<tr><td width='10%'><center>No.</center></td><td width='20%'>&nbsp;&nbsp;Module Code</td><td width='50%'>&nbsp;&nbsp;Module Name</td><td width='10%'><center>Module Credits</center></td><td width='10%'><center>Applicable</center></td></tr>";
 
     $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
@@ -23,10 +28,29 @@ if (!empty($_SESSION['modulesExempted'])) {
 
     $result = $conn->query($sql);
 
+    $allModules = [];
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            if (in_array($row["Module Code"], $_SESSION['modulesExempted'])) {
-                echo "<tr><td>" . $row["Module Code"] . "</td><td>" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td>";
+            array_push($allModules, $row);
+        }
+    }
+    
+    for ($i = 1; $i <= count($_SESSION['modulesExempted']); $i++) {
+        $verified = false;
+        for ($a = 0; $a < count($allModules); $a++) {
+            if ($_SESSION['modulesExempted'][$i-1] == $allModules[$a]["Module Code"]) {
+                $verified = true;
+                break;
+            }
+        }
+        
+        if ($verified == true) {
+            echo "<tr><td><center>" . $i . "</center></td><td>&nbsp;&nbsp;" . $_SESSION['modulesExempted'][$i-1] . "</td><td>&nbsp;&nbsp;" . $allModules[$a]['Modules Name'] . "</td><td align=center>" . $allModules[$a]['Modules Credit'] . "</td><td><center>Yes</center></td></tr>";
+        } else {
+            for ($a = 0; $a < count($json_a); $a++) {
+                if ($_SESSION['modulesExempted'][$i-1] == $json_a[$a]["ModuleCode"]) {
+                    echo "<tr><td><center>" . $i . "</center></td><td>&nbsp;&nbsp;" . $_SESSION['modulesExempted'][$i-1] . "</td><td>&nbsp;&nbsp;" . $json_a[$a]['ModuleTitle'] . "</td><td align=center>" . $json_a[$a]['ModuleCredit'] . "</td><td><center>No</center></td></tr>";
+                }
             }
         }
     }

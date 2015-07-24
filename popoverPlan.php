@@ -20,7 +20,7 @@ for ($i = 1; $i <= 5; $i++) {
 }
 
 for ($i = 0; $i < count($_SESSION['test']); $i++) {
-
+    
     // Calculate min/max year
     if ($_SESSION['test'][$i]['year'] <= 1) {
         $minYear = 1;
@@ -60,7 +60,7 @@ if ($minYear != 0) {
                             echo "<td><center>" . ${'year' . $i . 'sem' . $a}[$x - 1]['gpa'] . "</center></td>";
                             echo "</tr>";
                             if (${'year' . $i . 'sem' . $a}[$x - 1]['gpa'] == 'Satisfactory' || ${'year' . $i . 'sem' . $a}[$x - 1]['gpa'] == 'Unsatisfactory') {
-                                
+                                // Do nothing
                             } else {
                                 ${'year' . $i . 'sem' . $a . 'grade'} += substr(${'year' . $i . 'sem' . $a}[$x - 1]['gpa'], strpos(${'year' . $i . 'sem' . $a}[$x - 1]['gpa'], ":") + 1) * $json_a[$b]['ModuleCredit'];
                                 ${'year' . $i . 'sem' . $a . 'totalMC'} += $json_a[$b]['ModuleCredit'];

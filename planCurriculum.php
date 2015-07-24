@@ -28,7 +28,6 @@
         </style>
         <script src='assets/js/app.js'></script>
         <script>
-            
         <?php
         if ($_SESSION["cohort"] == "") {
             ?>
@@ -49,12 +48,11 @@
     <body ng-controller="MainCtrl">
         Still in development phase. -> Planning to aim 2014/15 and 2015/16 batch only<br><br>
         <div>
-            <button mypopover data-placement="right" class='btn btn-primary btn-xl wow tada col-lg-4 col-md-4 '><span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span> Click to see Updated Curriculum </button><br>
-        </div><br><br>
-        
+            <button mypopover data-placement="right" class='btn btn-info btn-xl wow tada col-lg-4 col-md-4 '><span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span> Click to see Updated Curriculum </button><br>
+        </div>
+        <br><br>
         <b>Step 1: </b>Exemption -> Additional Modules<br>
         Please indicate if you have any additional modules to be exempted from. <br>
-        <b>* Only relevant modules to your curriculum list will be shown in the exempted list</b><br>
         <b>* CP3200 is only applicable to Computer Science student.</b><br><br>
         <?php include("exemptedModules.php"); ?>
         <br>
@@ -66,21 +64,21 @@
             <input type="radio" name="poly" value="yes" <?php if ($_SESSION["poly"] == "yes") { echo "checked"; } ?>>    Yes  
             <input type="radio" name="poly" value="no" <?php if ($_SESSION["poly"] == "") { echo "checked"; } ?>>    No
             <br><br>
-            <button data-placement="right" class='btn btn-primary btn-xl wow tada col-lg-4 col-md-4 '><span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span> Update List for Step 1 & 2</button><br>
-        </form>
-            <br><br>
-            
+            <button data-placement="right" class='btn btn-primary btn-xl wow tada col-lg-4 col-md-4 '><span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span> Update List for Step 1 & 2</button>
+        </form><br><br><br>
+        
         <b>Step 3: </b><br>
         <b>* SOC requires students to take at least 16 MCs per semester except for IS4010 Industry Internship Programme</b><br><br>
         
-        <button popoverplan data-placement="right" class='btn btn-primary btn-xl wow tada col-lg-4 col-md-4 '><span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span> Click to see Planned Curriculum </button><br>
+        <button popoverplan data-placement="right" class='btn btn-info btn-xl wow tada col-lg-4 col-md-4 '><span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span> Click to see Planned Curriculum </button><br>
         <br><br>
         <?php
             include('planTable.php');
         ?>
         <br><br>
         * Click onto me when you are done editing<br>
-        <button onclick="reloadFunction()" data-placement="right" class='btn btn-primary btn-xl wow tada col-lg-4 col-md-4 '><span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span> Update Curriculum </button><br>
-        
+        <button onclick="reloadFunction()" data-placement="right" class='btn btn-primary btn-xl wow tada col-lg-4 col-md-4 '><span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span> Update Curriculum and Plan</button><br>
+        <br><br>
+        <?php print_r($_SESSION['totalModuleTaken']); ?>
     </body>
 </html>

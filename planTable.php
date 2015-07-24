@@ -84,7 +84,6 @@ session_start();
                 <th width="15%">Action</th>
             </tr>
             <?php
-            print_r($_SESSION['test']);
             for ($i = 0; $i < count($_SESSION['test']); $i++) {
                 ?>
                 <tr id="<?= $_SESSION['test'][$i]['id']; ?>">

@@ -86,8 +86,9 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     $gemExemption;
+    $_SESSION['test1'] = $_SESSION['modulesExempted'];
     while ($row = $result->fetch_assoc()) {
-        if (!in_array($row["Module Code"], $_SESSION['modulesExempted'])) {
+        if (!in_array($row["Module Code"], array_column($_SESSION['totalModuleTaken'], "ModuleCode"))) {
             $gemList .= "<tr><td>" . $row["Module Code"] . "</td><td>" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td>";
             $totalCreditNow += $row["Modules Credit"];
         } else {
@@ -151,7 +152,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        if (!in_array($row["Module Code"], $_SESSION['modulesExempted'])) {
+        if (!in_array($row["Module Code"], array_column($_SESSION['totalModuleTaken'], "ModuleCode"))) {
             if ($row['Module Code'] == "MA1521" || $row['Module Code'] == "MA1312") {
                 $ma1521 = $result->fetch_assoc();
                 $programCore .= "<tr><td>" . $row["Module Code"] . "<br>OR<br>" . $ma1521["Module Code"] . "</td><td>" . $row["Modules Name"] . "<br>OR<br>" . $ma1521["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td></tr>";
@@ -201,7 +202,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        if (!in_array($row["Module Code"], $_SESSION['modulesExempted'])) {
+        if (!in_array($row["Module Code"], array_column($_SESSION['totalModuleTaken'], "ModuleCode"))) {
             if ($row["Specialization"] == $specialization) {
                 if ($specialization == 'Services Science, Management and Engineering' && ($row["Module Code"] == 'IS3220' || $row["Module Code"] == 'IS4224')) {
                     $programCompulsory .= "<tr><td><b>" . $row["Module Code"] . "</b></td><td><b>" . $row["Modules Name"] . "</b></td><td align=center><b>" . $row["Modules Credit"] . "</b></td>";

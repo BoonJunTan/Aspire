@@ -9,6 +9,7 @@ session_start();
 if (!isset($_SESSION['modulesExempted'])) {
     $_SESSION['modulesExempted'] = [];
     $_SESSION['test'] = [];
+    $_SESSION['totalModuleTaken'] = [];
 }
 ?>
 <html>
