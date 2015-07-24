@@ -48,14 +48,23 @@
     </script>
     <body>
         <?php if ($_SESSION['planCurriculum'] != 'True') { ?>
-            <form>
-                <input placeholder="Please key in module code or name ;)" type="text" size="35" onkeyup="showResult(this.value)">
-                <div id="livesearch"></div>
-            </form>
+            <div class='panel panel-primary'>
+                <div class='panel-heading'>
+                    <h2 class='panel-title'> <h3>Searching for Module </h3> </h2>
+                </div>
+
+                <div class='panel-body'> 
+                    <form>
+                        <input placeholder="Please key in module code or name ;)" type="text" size="35" onkeyup="showResult(this.value)">
+                        <div id="livesearch"></div>
+                    </form>
+                    <br><b>Please kindly wait for a little while if nothing pop out ;)</b><br>
+                </div>
+            </div>
         <?php } else { ?>
             <div id="liveUpdate"></div><br>
             <input placeholder="Please key in module code or name ;)" type="text" size="35" onkeyup="showResult(this.value)">
             <div id="livesearch"></div>
         <?php } ?>
-</body>
+    </body>
 </html>

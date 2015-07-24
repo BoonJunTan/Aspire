@@ -75,50 +75,54 @@ session_start();
                 xmlhttp.send();
             }
             function planCurriculum() {
-                alert("Successfully Added");
-                //window.location.href = "planCurriculumView.php";
+                alert("Successfully Added, transferring to plan curriculum");
             }
         </script>
     </head>
     <body>
-        Still in development phase. -> Planning to aim 2014/15 and 2015/16 batch only<br><br>
-        <b>Currently only integrated for: <br> Cohort: 14/15 <br> Course: Information System <br> Specialization: All</b><br><br>
-        <form method="post" action="addCurriculum.php" onsubmit="planCurriculum()">
-            <table cellspacing="10">
-                <tr>
-                    <td>
-                        Please select Cohort: 
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>
-                        <select name="cohort" onchange="showItem(this.value, 'cohort')">
-                            <option value = ""></option>
-                            <option value = "14/15">2014/2015</option>
-                            <option value = "15/16">2015/2016</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Please select Course: 
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>
-                        <select name="course" id="courseHint" onchange="showItem(this.value, 'course')"></select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Please select Specialization:
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>
-                        <select name="specialization" id="specializationHint" onchange="generateCurriculum(this.value)"></div>
-                    </td>
-                </tr>
-            </table>
-            <br>
-            <div id="curriculumHint" onchange="generateCurriculum(this.value)"></div>
-        </form>
+        <div class='panel panel-primary'>
+            <div class='panel-heading'>
+                <h2 class='panel-title'> <h3>Curriculum List </h3> </h2>
+            </div>
+
+            <div class='panel-body'> 
+                <form method="post" action="addCurriculum.php" onsubmit="planCurriculum()">
+                    <table cellspacing="10">
+                        <tr>
+                            <td>
+                                Please select Cohort: 
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <select name="cohort" onchange="showItem(this.value, 'cohort')">
+                                    <option value = ""></option>
+                                    <option value = "14/15">2014/2015</option>
+                                    <option value = "15/16">2015/2016</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Please select Course: 
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <select name="course" id="courseHint" onchange="showItem(this.value, 'course')"></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Please select Specialization:
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <select name="specialization" id="specializationHint" onchange="generateCurriculum(this.value)"></div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="curriculumHint" onchange="generateCurriculum(this.value)"></div>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

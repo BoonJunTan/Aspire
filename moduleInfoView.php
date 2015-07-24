@@ -14,7 +14,7 @@ and open the template in the editor.
         session_start();
         $_SESSION['planCurriculum'] = 'False';
         $page_content = 'moduleInfo.php';
-        $content = "<br><b>Please kindly wait for a little while if nothing pop out ;)</b><br>";
+        $content = "";
         $header = 'Search for Module';
         $getActive = "Search Module";
         include('master.php');

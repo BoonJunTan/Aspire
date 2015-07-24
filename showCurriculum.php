@@ -21,7 +21,7 @@ $conn = new mysqli($server, $username, $password, $db);
   echo "Connected successfully";
   }
  */
-echo "<div class='panel panel-primary'>";
+echo "<br><div class='panel panel-primary'>";
 echo "<div class='panel-heading'>";
 echo "<h3 class='panel-title'>" . $course . " - Batch " . $cohort . " - " . $specialization . "</h3>";
 echo "</div>";
