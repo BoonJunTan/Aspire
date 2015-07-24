@@ -203,6 +203,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         if (!in_array($row["Module Code"], array_column($_SESSION['totalModuleTaken'], "ModuleCode"))) {
+            // Need take note now is Information Security (Information System) and Information Security (Computer Science)
             if ($row["Specialization"] == $specialization) {
                 if ($specialization == 'Services Science, Management and Engineering' && ($row["Module Code"] == 'IS3220' || $row["Module Code"] == 'IS4224')) {
                     $programCompulsory .= "<tr><td><b>" . $row["Module Code"] . "</b></td><td><b>" . $row["Modules Name"] . "</b></td><td align=center><b>" . $row["Modules Credit"] . "</b></td>";

@@ -29,7 +29,7 @@ echo "</div>";
 echo "<div class='panel-body'>";
 
 
-$tablePrinting = "<table width='100%' border=1 cellspacing=5 cellpadding=5><tr><td>Module Code</td><td>Module Name</td><td align>Module Credits</td></tr>";
+$tablePrinting = "<table width='100%' border=1 cellspacing=5 cellpadding=5><tr><td>&nbsp;&nbsp;Module Code</td><td>&nbsp;&nbsp;Module Name</td><td align><center>Module Credits</center></td></tr>";
 $totalCreditNow = 0;
 
 // Finding GEM
@@ -61,12 +61,12 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $gemList .= "<tr><td>" . $row["Module Code"] . "</td><td>" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td>";
+        $gemList .= "<tr><td>&nbsp;&nbsp;" . $row["Module Code"] . "</td><td>&nbsp;&nbsp;" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td>";
         $totalCreditNow += $row["Modules Credit"];
     }
 }
 
-$tablePrinting .= "<tr><th colspan='3'>University Level Requirements (ULR) (20 MCs)</th></tr>";
+$tablePrinting .= "<tr><th colspan='3'><font size='5'>&nbsp;&nbsp;University Level Requirements (ULR) (20 MCs)</font></th></tr>";
 $tablePrinting .= $gemList;
 $tablePrinting .= "<tr><td colspan='3' align='center'> Remaining ULR - " . (20 - count($gemList) * 4) . " MCs<br>";
 $tablePrinting .= (2 - count($gemList)) . " General Education, 1 Singapore Studies & 2 Breadth";
@@ -104,17 +104,17 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         if ($row['Module Code'] == "MA1521" || $row['Module Code'] == "MA1312") {
             $ma1521 = $result->fetch_assoc();
-            $programCore .= "<tr><td>" . $row["Module Code"] . "<br>OR<br>" . $ma1521["Module Code"] . "</td><td>" . $row["Modules Name"] . "<br>OR<br>" . $ma1521["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td></tr>";
+            $programCore .= "<tr><td>&nbsp;&nbsp;" . $row["Module Code"] . "<br>&nbsp;&nbsp;OR<br>&nbsp;&nbsp;" . $ma1521["Module Code"] . "</td><td>&nbsp;&nbsp;" . $row["Modules Name"] . "<br>&nbsp;&nbsp;OR<br>&nbsp;&nbsp;" . $ma1521["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td></tr>";
         } else if ($row['Module Code'] == "IS4010") {
-            $programInternship .= "<tr><td>" . $row["Module Code"] . "</td><td>" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td></tr>";
+            $programInternship .= "<tr><td>&nbsp;&nbsp;" . $row["Module Code"] . "</td><td>&nbsp;&nbsp;" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td></tr>";
         } else {
-            $programCore .= "<tr><td>" . $row["Module Code"] . "</td><td>" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td></tr>";
+            $programCore .= "<tr><td>&nbsp;&nbsp;" . $row["Module Code"] . "</td><td>&nbsp;&nbsp;" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td></tr>";
         }
         $totalCreditNow += $row["Modules Credit"];
     }
 }
 
-$tablePrinting .= "<tr><th colspan='3'>Programme Requirements - Core Modules (80 MCs)</th></tr>";
+$tablePrinting .= "<tr><th colspan='3'><font size='5'>&nbsp;&nbsp;Programme Requirements - Core Modules (80 MCs)</font></th></tr>";
 $tablePrinting .= $programCore;
 
 // Finding Program Electives
@@ -151,39 +151,40 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         if ($row["Specialization"] == $specialization) {
+            // Need take note now is Information Security (Information System) and Information Security (Computer Science)
             if ($specialization == 'Services Science, Management and Engineering' && ($row["Module Code"] == 'IS3220' || $row["Module Code"] == 'IS4224')) {
-                $programCompulsory .= "<tr><td><b>" . $row["Module Code"] . "</b></td><td><b>" . $row["Modules Name"] . "</b></td><td align=center><b>" . $row["Modules Credit"] . "</b></td>";
+                $programCompulsory .= "<tr><td><font size='3'><b>&nbsp;&nbsp;" . $row["Module Code"] . "</b></td><td><b>&nbsp;&nbsp;" . $row["Modules Name"] . "</b></td><td align=center><b>" . $row["Modules Credit"] . "</b></font></td>";
             } else {
-                $programElectives .= "<tr><td><b>" . $row["Module Code"] . "</b></td><td><b>" . $row["Modules Name"] . "</b></td><td align=center><b>" . $row["Modules Credit"] . "</b></td>";
+                $programElectives .= "<tr><td><font size='3'><b>&nbsp;&nbsp;" . $row["Module Code"] . "</b></td><td><b>&nbsp;&nbsp;" . $row["Modules Name"] . "</b></td><td align=center><b>" . $row["Modules Credit"] . "</b></font></td>";
             }
         } else {
-            $programElectivesNon .= "<tr><td>" . $row["Module Code"] . "</td><td>" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td>";
+            $programElectivesNon .= "<tr><td>&nbsp;&nbsp;" . $row["Module Code"] . "</td><td>&nbsp;&nbsp;" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td>";
         }
     }
 }
 
 // BUG -> 6 and 7 out of 8 LOGIC
-$tablePrinting .= "<tr><th colspan='3'>Programme Requirements - Core Electives (28 MCs)</th></tr>";
+$tablePrinting .= "<tr><th colspan='3'><font size='5'>&nbsp;&nbsp;Programme Requirements - Core Electives (28 MCs)</font></th></tr>";
 
 if ($specialization == "Information Security") {
-    $tablePrinting .= "<tr><td>Requirement 1: </td><td colspan='2'>Choose 7 modules to make up 28 MCs from the list of Programme Electives below. <br>3 of the 7 modules must be at level-4000</td></tr>";
-    $tablePrinting .= "<tr><td>Requirement 2: </td><td colspan='2'>For " . $specialization . " Specialization - Choose at least 6 Modules from highlighted list and remaining on any module</td></tr>";
+    $tablePrinting .= "<tr><td>&nbsp;&nbsp;Requirement 1: </td><td colspan='2'>&nbsp;&nbsp;Choose 7 modules to make up 28 MCs from the list of Programme Electives below. <br>&nbsp;&nbsp;3 of the 7 modules must be at level-4000</td></tr>";
+    $tablePrinting .= "<tr><td>&nbsp;&nbsp;Requirement 2: </td><td colspan='2'>&nbsp;&nbsp;For " . $specialization . " Specialization - Choose at least 6 Modules from highlighted list and remaining on any module</td></tr>";
 } else if ($specialization == "Services Science, Management and Engineering") {
-    $tablePrinting .= "<tr><td>Requirement 1: </td><td colspan='2'>Choose 7 modules to make up 28 MCs from the list of Programme Electives below. <br>3 of the 7 modules must be at level-4000</td></tr>";
-    $tablePrinting .= "<tr><td>Requirement 2: </td><td colspan='2'>For " . $specialization . " Specialization - Compulsory Modules</td></tr>";
+    $tablePrinting .= "<tr><td>&nbsp;&nbsp;Requirement 1: </td><td colspan='2'>&nbsp;&nbsp;Choose 7 modules to make up 28 MCs from the list of Programme Electives below. <br>&nbsp;&nbsp;3 of the 7 modules must be at level-4000</td></tr>";
+    $tablePrinting .= "<tr><td>&nbsp;&nbsp;Requirement 2: </td><td colspan='2'>&nbsp;&nbsp;For " . $specialization . " Specialization - Compulsory Modules</td></tr>";
     $tablePrinting .= $programCompulsory;
-    $tablePrinting .= "<tr><td>Requirement 3: </td><td colspan='2'>For " . $specialization . " Specialization - Choose at least 4 from from highlighted list and remaining on any module</td></tr>";
+    $tablePrinting .= "<tr><td>&nbsp;&nbsp;Requirement 3: </td><td colspan='2'>&nbsp;&nbsp;For " . $specialization . " Specialization - Choose at least 4 from from highlighted list and remaining on any module</td></tr>";
 } else {
-    $tablePrinting .= "<tr><td><b>Option 1: </b></td><td colspan='2'>Choose 7 modules to make up 28 MCs from the list of Programme Electives below. <br>3 of the 7 modules must be at level-4000</td></tr>";
-    $tablePrinting .= "<tr><td><b>Option 2: </b></td><td colspan='2'>Choose CP4101 and 4 modules to make up 28 MCs from the list of Programme Electives below.</td></tr>";
+    $tablePrinting .= "<tr><td><b>&nbsp;&nbsp;Option 1: </b></td><td colspan='2'>&nbsp;&nbsp;Choose 7 modules to make up 28 MCs from the list of Programme Electives below. <br>&nbsp;&nbsp;3 of the 7 modules must be at level-4000</td></tr>";
+    $tablePrinting .= "<tr><td><b>&nbsp;&nbsp;Option 2: </b></td><td colspan='2'>&nbsp;&nbsp;Choose CP4101 and 4 modules to make up 28 MCs from the list of Programme Electives below.</td></tr>";
 }
 
 $tablePrinting .= $programElectives;
 $tablePrinting .= $programElectivesNon;
 $totalCreditNow += 28;
-$tablePrinting .= "<tr><th colspan='3'>Programme Internship</th></tr>";
+$tablePrinting .= "<tr><th colspan='3'><font size='5'>&nbsp;&nbsp;Programme Internship</font></th></tr>";
 $tablePrinting .= $programInternship;
-$tablePrinting .= "<tr><th colspan='3'>Unrestricted Electives (20 MCs)</th></tr>";
+$tablePrinting .= "<tr><th colspan='3'><font size='5'>&nbsp;&nbsp;Unrestricted Electives (20 MCs)</font></th></tr>";
 $tablePrinting .= "<tr><td colspan='3' align='center'>5 Modules from outside of home faculty</td></tr>";
 $totalCreditNow += 20;
 $tablePrinting .= "<tr><td colspan='2' align='right'>Total <td align='center'>" . $totalCreditNow . "</td></tr>";
