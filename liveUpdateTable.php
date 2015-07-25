@@ -19,7 +19,7 @@ if (isset($_POST) && count($_POST)) {
         }
         $escapedPost = array_map('mysql_real_escape_string', $_POST);
         $escapedPost = array_map('htmlentities', $escapedPost);
-
+        
         $escapedPost["success"] = "1";
         $escapedPost["id"] = $_SESSION['tableID'];
         array_push($_SESSION['test'], $escapedPost);
