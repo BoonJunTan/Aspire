@@ -29,32 +29,32 @@ echo "</div>";
 echo "<div class='panel-body'>";
 
 
-$tablePrinting = "<table width='100%' border=1 cellspacing=5 cellpadding=5><tr><td>&nbsp;&nbsp;Module Code</td><td>&nbsp;&nbsp;Module Name</td><td align><center>Module Credits</center></td></tr>";
+$tablePrinting = "<table width='100%' border=1 cellspacing=5 cellpadding=5><tr><td width='15%'>&nbsp;&nbsp;Module Code</td><td>&nbsp;&nbsp;Module Name</td><td align><center>Module Credits</center></td></tr>";
 $totalCreditNow = 0;
 
 // Finding GEM
 $gemList;
 
 // For ClearDB
-  $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit'
-  FROM curriculum, requirements, modules, module_types
-  WHERE requirements.cohort = '" . $cohort . "'
-  AND requirements.major = '" . $course . "'
-  AND curriculum.type_id = '5'
-  AND curriculum.requirement_id = requirements.requirement_id
-  AND curriculum.module_id = modules.module_id
-  AND curriculum.type_id = module_types.type_id";
+$sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit'
+                FROM curriculum, requirements, modules, module_types
+                WHERE requirements.cohort = '" . $cohort . "'
+                    AND requirements.major = '" . $course . "'
+                    AND curriculum.type_id = '5'
+                    AND curriculum.requirement_id = requirements.requirement_id
+                    AND curriculum.module_id = modules.module_id
+                    AND curriculum.type_id = module_types.type_id";
 
 // For Localhost MySQL
 /*
 $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit'
             FROM test.curriculum, test.requirements, test.modules, test.module_types
             WHERE test.requirements.cohort = '" . $cohort . "' 
-                    AND test.requirements.major = '" . $course . "'
-                    AND test.curriculum.type_id = '5'
-                    AND test.curriculum.requirement_id = test.requirements.requirement_id
-                    AND test.curriculum.module_id = test.modules.module_id
-                    AND test.curriculum.type_id = test.module_types.type_id";
+                AND test.requirements.major = '" . $course . "'
+                AND test.curriculum.type_id = '5'
+                AND test.curriculum.requirement_id = test.requirements.requirement_id
+                AND test.curriculum.module_id = test.modules.module_id
+                AND test.curriculum.type_id = test.module_types.type_id";
 */
   
 $result = $conn->query($sql);
@@ -77,25 +77,25 @@ $programCore;
 $programInternship;
 
 // For ClearDB
-  $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit'
-  FROM curriculum, requirements, modules, module_types
-  WHERE requirements.cohort = '" . $cohort . "'
-  AND requirements.major = '" . $course . "'
-  AND curriculum.type_id = '1'
-  AND curriculum.requirement_id = requirements.requirement_id
-  AND curriculum.module_id = modules.module_id
-  AND curriculum.type_id = module_types.type_id";
+$sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit'
+            FROM curriculum, requirements, modules, module_types
+            WHERE requirements.cohort = '" . $cohort . "'
+                AND requirements.major = '" . $course . "'
+                AND curriculum.type_id = '1'
+                AND curriculum.requirement_id = requirements.requirement_id
+                AND curriculum.module_id = modules.module_id
+                AND curriculum.type_id = module_types.type_id";
 
 // For localhost
   /*
 $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit'
             FROM test.curriculum, test.requirements, test.modules, test.module_types
             WHERE test.requirements.cohort = '" . $cohort . "' 
-                    AND test.requirements.major = '" . $course . "'
-                    AND test.curriculum.type_id = '1'
-                    AND test.curriculum.requirement_id = test.requirements.requirement_id
-                    AND test.curriculum.module_id = test.modules.module_id
-                    AND test.curriculum.type_id = test.module_types.type_id";
+                AND test.requirements.major = '" . $course . "'
+                AND test.curriculum.type_id = '1'
+                AND test.curriculum.requirement_id = test.requirements.requirement_id
+                AND test.curriculum.module_id = test.modules.module_id
+                AND test.curriculum.type_id = test.module_types.type_id";
 */
   
 $result = $conn->query($sql);
@@ -121,29 +121,29 @@ $tablePrinting .= $programCore;
 $programElectives;
 
 // For ClearDB
-  $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit', specialization.specialization_name AS 'Specialization'
-  FROM curriculum, requirements, modules, module_types, specialization
-  WHERE requirements.cohort = '" . $cohort . "'
-  AND requirements.major = '" . $course . "'
-  AND curriculum.type_id = '6'
-  AND curriculum.requirement_id = requirements.requirement_id
-  AND curriculum.module_id = modules.module_id
-  AND curriculum.type_id = module_types.type_id
-  AND curriculum.specialization_id = specialization.specialization_id
-  ORDER BY modules.module_id";
+$sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit', specialization.specialization_name AS 'Specialization'
+            FROM curriculum, requirements, modules, module_types, specialization
+            WHERE requirements.cohort = '" . $cohort . "'
+                AND requirements.major = '" . $course . "'
+                AND curriculum.type_id = '6'
+                AND curriculum.requirement_id = requirements.requirement_id
+                AND curriculum.module_id = modules.module_id
+                AND curriculum.type_id = module_types.type_id
+                AND curriculum.specialization_id = specialization.specialization_id
+            ORDER BY modules.module_id";
 
 // For Localhost
   /*
 $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit', test.specialization.specialization_name AS 'Specialization'
             FROM test.curriculum, test.requirements, test.modules, test.module_types, test.specialization
             WHERE test.requirements.cohort = '" . $cohort . "' 
-                    AND test.requirements.major = '" . $course . "'
-                    AND test.curriculum.type_id = '6'
-                    AND test.curriculum.requirement_id = test.requirements.requirement_id
-                    AND test.curriculum.module_id = test.modules.module_id
-                    AND test.curriculum.type_id = test.module_types.type_id
-                    AND test.curriculum.specialization_id = test.specialization.specialization_id
-                    ORDER BY test.modules.module_id";
+                AND test.requirements.major = '" . $course . "'
+                AND test.curriculum.type_id = '6'
+                AND test.curriculum.requirement_id = test.requirements.requirement_id
+                AND test.curriculum.module_id = test.modules.module_id
+                AND test.curriculum.type_id = test.module_types.type_id
+                AND test.curriculum.specialization_id = test.specialization.specialization_id
+            ORDER BY test.modules.module_id";
 */
   
 $result = $conn->query($sql);
@@ -167,16 +167,16 @@ if ($result->num_rows > 0) {
 $tablePrinting .= "<tr><th colspan='3'><font size='5'>&nbsp;&nbsp;Programme Requirements - Core Electives (28 MCs)</font></th></tr>";
 
 if ($specialization == "Information Security") {
-    $tablePrinting .= "<tr><td>&nbsp;&nbsp;Requirement 1: </td><td colspan='2'>&nbsp;&nbsp;Choose 7 modules to make up 28 MCs from the list of Programme Electives below. <br>&nbsp;&nbsp;3 of the 7 modules must be at level-4000</td></tr>";
-    $tablePrinting .= "<tr><td>&nbsp;&nbsp;Requirement 2: </td><td colspan='2'>&nbsp;&nbsp;For " . $specialization . " Specialization - Choose at least 6 Modules from highlighted list and remaining on any module</td></tr>";
+    $tablePrinting .= "<tr><td><center>&nbsp;&nbsp;Requirement 1:</center></td><td colspan='2'>&nbsp;&nbsp;Choose 7 modules to make up 28 MCs from the list of Programme Electives below. <br>&nbsp;&nbsp;3 of the 7 modules must be at level-4000</td></tr>";
+    $tablePrinting .= "<tr><td><center>&nbsp;&nbsp;Requirement 2:</center></td><td colspan='2'>&nbsp;&nbsp;For " . $specialization . " Specialization - Choose at least 6 Modules from highlighted list and remaining on any module</td></tr>";
 } else if ($specialization == "Services Science, Management and Engineering") {
-    $tablePrinting .= "<tr><td>&nbsp;&nbsp;Requirement 1: </td><td colspan='2'>&nbsp;&nbsp;Choose 7 modules to make up 28 MCs from the list of Programme Electives below. <br>&nbsp;&nbsp;3 of the 7 modules must be at level-4000</td></tr>";
-    $tablePrinting .= "<tr><td>&nbsp;&nbsp;Requirement 2: </td><td colspan='2'>&nbsp;&nbsp;For " . $specialization . " Specialization - Compulsory Modules</td></tr>";
+    $tablePrinting .= "<tr><td><center>&nbsp;&nbsp;Requirement 1: </td><td colspan='2'>&nbsp;&nbsp;Choose 7 modules to make up 28 MCs from the list of Programme Electives below. <br>&nbsp;&nbsp;3 of the 7 modules must be at level-4000</td></tr>";
+    $tablePrinting .= "<tr><td><center>&nbsp;&nbsp;Requirement 2: </td><td colspan='2'>&nbsp;&nbsp;For " . $specialization . " Specialization - Compulsory Modules</td></tr>";
     $tablePrinting .= $programCompulsory;
-    $tablePrinting .= "<tr><td>&nbsp;&nbsp;Requirement 3: </td><td colspan='2'>&nbsp;&nbsp;For " . $specialization . " Specialization - Choose at least 4 from from highlighted list and remaining on any module</td></tr>";
+    $tablePrinting .= "<tr><td><center>&nbsp;&nbsp;Requirement 3: </td><td colspan='2'>&nbsp;&nbsp;For " . $specialization . " Specialization - Choose at least 4 from from highlighted list and remaining on any module</td></tr>";
 } else {
-    $tablePrinting .= "<tr><td><b>&nbsp;&nbsp;Option 1: </b></td><td colspan='2'>&nbsp;&nbsp;Choose 7 modules to make up 28 MCs from the list of Programme Electives below. <br>&nbsp;&nbsp;3 of the 7 modules must be at level-4000</td></tr>";
-    $tablePrinting .= "<tr><td><b>&nbsp;&nbsp;Option 2: </b></td><td colspan='2'>&nbsp;&nbsp;Choose CP4101 and 4 modules to make up 28 MCs from the list of Programme Electives below.</td></tr>";
+    $tablePrinting .= "<tr><td><b><center>&nbsp;&nbsp;Option 1: </center></b></td><td colspan='2'>&nbsp;&nbsp;Choose 7 modules to make up 28 MCs from the list of Programme Electives below. <br>&nbsp;&nbsp;3 of the 7 modules must be at level-4000</td></tr>";
+    $tablePrinting .= "<tr><td><b><center>&nbsp;&nbsp;Option 2: </center></b></td><td colspan='2'>&nbsp;&nbsp;Choose CP4101 and 4 modules to make up 28 MCs from the list of Programme Electives below.</td></tr>";
 }
 
 $tablePrinting .= $programElectives;
