@@ -101,7 +101,7 @@ $(document).ready(function () {
                 }
             });
             var serialized = $inputs.serialize();
-            alert(serialized);
+            //alert(serialized);
             ajax(serialized, "save");
         }
     });
@@ -248,7 +248,8 @@ createInput = function (i, str, editMode) {
 ajax = function (params, action) {
     $.ajax({
         type: "POST",
-        url: "http://nusplan.herokuapp.com/liveUpdateTable.php",
+        url: "http://nusplan.herokuapp.com/nliveUpdateTable.php",
+        //url:
         data: params + "&action=" + action,
         dataType: "json",
         success: function (response) {
