@@ -3,6 +3,7 @@
 session_start();
 
 $finalpath1 = getcwd() . "/assets/json/201415moduleInformation.json";
+$_SESSION['test1'] = getcwd() . "/assets/json/201415moduleInformation.json";
 $string1 = file_get_contents($finalpath1);
 $json_a = json_decode($string1, true);
 

@@ -254,6 +254,7 @@ ajax = function (params, action) {
         success: function (response) {
             switch (action) {
                 case "save":
+                    alert(location.origin);
                     var seclastRow = $("." + table + " tr").length;
                     if (response.success == 1) {
                         var html = "";

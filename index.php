@@ -37,7 +37,7 @@
 
     </head>
     <body id="page-top">
-        <?php session_start(); //print_r($_SESSION['test1']); echo "<br> 2+"; print_r($_SESSION['test2']); echo "<br>"; print_r($_SESSION['test3']);?>
+        <?php session_start(); print_r($_SESSION['test1']); echo "<br> 2+"; print_r($_SESSION['test2']); echo "<br>"; print_r($_SESSION['test3']);?>
         <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
             <!-- Carousel indicators -->
             <ol class="carousel-indicators">
