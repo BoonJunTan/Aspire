@@ -248,14 +248,12 @@ createInput = function (i, str, editMode) {
 ajax = function (params, action) {
     $.ajax({
         type: "POST",
-        url: "http://nusplan.herokuapp.com/liveUpdateTable.php",
-        //url:
+        url: "liveUpdateTable.php",
         data: params + "&action=" + action,
         dataType: "json",
         success: function (response) {
             switch (action) {
                 case "save":
-                    alert(location.origin);
                     var seclastRow = $("." + table + " tr").length;
                     if (response.success == 1) {
                         var html = "";
