@@ -57,6 +57,8 @@ if (isset($_POST) && count($_POST)) {
         $newData['success'] = 1;
         $newData['id'] = $id;
         $_SESSION['test'][array_search($id, array_column($_SESSION['test'], 'id'))] = $newData;
+        
+        //Improvement, remember to add satisfactory and unsatisfactory.
         $data = ['5', '4.5', '4', '3.5', '3', '2.5', '2', '1.5', '1', '0'];
         $data2 = ["A+/A : 5", "A- : 4.5", "B+ : 4", "B : 3.5", "B- : 3", "C+ : 2.5", "C : 2", "D+ : 1.5", "D : 1", "F : 0"];
         for ($x = 0; $x < count($data); $x++) {

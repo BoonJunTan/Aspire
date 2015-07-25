@@ -101,9 +101,8 @@ $(document).ready(function () {
                 }
             });
             var serialized = $inputs.serialize();
-            //if (requirementCheck == 1) {
-                ajax(serialized, "save");
-            //}
+            alert(serialized);
+            ajax(serialized, "save");
         }
     });
 
