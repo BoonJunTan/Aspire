@@ -22,7 +22,7 @@ if (isset($_POST) && count($_POST)) {
         
         $escapedPost["success"] = "1";
         $escapedPost["id"] = $_SESSION['tableID'];
-        $_SESSION['test3'] = $escapedPost;
+        $_SESSION['test3'] = $_POST;
         array_push($_SESSION['test'], $escapedPost);
 
         for ($a = 0; $a < count($json_a); $a++) {
