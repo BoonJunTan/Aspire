@@ -258,6 +258,7 @@ ajax = function (params, action) {
                     if (response.success == 1) {
                         var html = "";
                         for (i = 0; i < columns.length; i++) {
+                            alert(columns[i] + " " + response[columns[i]]);
                             html += '<td class="' + columns[i] + '">' + response[columns[i]] + '</td>';
                         }
                         html += '<td><a href="javascript:;" id="' + response["id"] + '" class="ajaxEdit"><img src="' + editImage + '"></a> <a href="javascript:;" id="' + response["id"] + '" class="' + deletebutton + '"><img src="' + deleteImage + '"></a></td>';
