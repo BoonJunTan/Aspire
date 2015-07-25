@@ -248,7 +248,7 @@ createInput = function (i, str, editMode) {
 ajax = function (params, action) {
     $.ajax({
         type: "POST",
-        url: "liveUpdateTable.php",
+        url: "http://nusplan.herokuapp.com/liveUpdateTable.php",
         data: params + "&action=" + action,
         dataType: "json",
         success: function (response) {
