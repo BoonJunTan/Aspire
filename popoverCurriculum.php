@@ -45,6 +45,7 @@ $gemCompleted = [];
 $breadthCompleted = [];
 $singaporeCompleted = [];
 $ueCompleted = [];
+$programElectivesCompleted = [];
 
 for ($i = 0; $i < count($_SESSION['totalModuleTaken']); $i++) {
     if ($_SESSION['totalModuleTaken'][$i]["requirement"] == "Breadth") {
@@ -55,7 +56,9 @@ for ($i = 0; $i < count($_SESSION['totalModuleTaken']); $i++) {
         array_push($ueCompleted, $_SESSION['totalModuleTaken'][$i]);
     } else if ($_SESSION['totalModuleTaken'][$i]["requirement"] == "General Education") {
         array_push($gemCompleted, $_SESSION['totalModuleTaken'][$i]);
-    }
+    } else if ($_SESSION['totalModuleTaken'][$i]["requirement"] == "Electives") {
+        array_push($programElectivesCompleted, $_SESSION['totalModuleTaken'][$i]);
+    } 
 }
 
 echo "<div class='panel panel-primary'>";
@@ -69,6 +72,7 @@ $tablePrinting = "<table width='100%' border=1 cellspacing=5 cellpadding=5><tr><
 $totalCreditNow = 0;
 
 // Finding GEM
+
 // For ClearDB
 
 $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit'
@@ -79,7 +83,7 @@ $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modul
                 AND curriculum.requirement_id = requirements.requirement_id
                 AND curriculum.module_id = modules.module_id
                 AND curriculum.type_id = module_types.type_id";
- 
+
 
 // For Localhost MySQL
 /*
@@ -179,7 +183,7 @@ $programInternship;
   AND curriculum.requirement_id = requirements.requirement_id
   AND curriculum.module_id = modules.module_id
   AND curriculum.type_id = module_types.type_id";
- 
+
 
 // For localhost
 /*
@@ -243,7 +247,7 @@ $programElectives;
   AND curriculum.type_id = module_types.type_id
   AND curriculum.specialization_id = specialization.specialization_id
   ORDER BY modules.module_id";
- 
+
 
 // For Localhost
 /*
@@ -274,11 +278,20 @@ if ($result->num_rows > 0) {
             } else {
                 $programElectivesNon .= "<tr><td>&nbsp;&nbsp;" . $row["Module Code"] . "</td><td>&nbsp;&nbsp;" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td>";
             }
+        } else {
+            if ($row["Specialization"] == $specialization) {
+                if ($specialization == 'Services Science, Management and Engineering' && ($row["Module Code"] == 'IS3220' || $row["Module Code"] == 'IS4224')) {
+                    $programCompulsory .= "<tr><td><b>&nbsp;&nbsp;<strike>" . $row["Module Code"] . "</strike></b></td><td><b>&nbsp;&nbsp;<strike>" . $row["Modules Name"] . "</strike></b></td><td align=center><b><strike>" . $row["Modules Credit"] . "</strike></b></td>";
+                } else {
+                    $programElectives .= "<tr><td><b>&nbsp;&nbsp;<strike>" . $row["Module Code"] . "</strike></b></td><td><b>&nbsp;&nbsp;<strike>" . $row["Modules Name"] . "</strike></b></td><td align=center><b><strike>" . $row["Modules Credit"] . "</strike></b></td>";
+                }
+            } else {
+                $programElectivesNon .= "<tr><td>&nbsp;&nbsp;<strike>" . $row["Module Code"] . "</strike></td><td>&nbsp;&nbsp;<strike>" . $row["Modules Name"] . "</strike></td><td align=center><strike>" . $row["Modules Credit"] . "</strike></td>";
+            }
         }
     }
 }
 
-// BUG -> 6 and 7 out of 8 LOGIC
 $tablePrinting .= "<tr><th colspan='3'><font size='3'>&nbsp;&nbsp;Programme Requirements - Core Electives (28 MCs)</font></th></tr>";
 
 if ($specialization == "Information Security") {
@@ -296,18 +309,31 @@ if ($specialization == "Information Security") {
 
 $tablePrinting .= $programElectives;
 $tablePrinting .= $programElectivesNon;
-$totalCreditNow += 28;
+$totalCreditNow += 28 - (count($programElectivesCompleted) * 4);
 $tablePrinting .= "<tr><th colspan='3'><font size='3'>&nbsp;&nbsp;Programme Internship</font></th></tr>";
 $tablePrinting .= $programInternship;
+
 if ($exemption == "yes") {
-    $tablePrinting .= "<tr><th colspan='3'><font size='3'>&nbsp;&nbsp;Unrestricted Electives (8 MCs)</font></th></tr>";
-    $tablePrinting .= "<tr><td colspan='3' align='center'>2 Modules from outside of home faculty</td></tr>";
-    $totalCreditNow += 8;
+    $ueAmount = 2;
 } else {
-    $tablePrinting .= "<tr><th colspan='3'><font size='3'>&nbsp;&nbsp;Unrestricted Electives (20 MCs)</font></th></tr>";
-    $tablePrinting .= "<tr><td colspan='3' align='center'>5 Modules from outside of home faculty</td></tr>";
-    $totalCreditNow += 20;
+    $ueAmount = 5; 
 }
+
+$ueAmount -= count($ueCompleted);
+$totalCreditNow += $ueAmount * 4;
+
+$tablePrinting .= "<tr><th colspan='3'><font size='3'>&nbsp;&nbsp;Unrestricted Electives (";
+if ($ueAmount == 5) {
+    $tablePrinting .= ($ueAmount * 4) . " MCs)</font></th></tr>";
+} else {
+    $tablePrinting .= "<strike>20</strike> " . ($ueAmount * 4) . " MCs)</font></th></tr>";
+}
+if ($ueAmount == 5) {
+    $tablePrinting .= "<tr><td colspan='3' align='center'>" . $ueAmount . " Modules from outside of home faculty</td></tr>";
+} else {
+    $tablePrinting .= "<tr><td colspan='3' align='center'><strike>5</strike> " . $ueAmount . " Modules from outside of home faculty</td></tr>";
+}
+
 $tablePrinting .= "<tr><td colspan='2' align='right'>Total Remaining&nbsp;&nbsp;<td align='center'>" . $totalCreditNow . "</td></tr>";
 
 echo $tablePrinting;

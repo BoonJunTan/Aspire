@@ -169,7 +169,6 @@ if ($result->num_rows > 0) {
     }
 }
 
-// BUG -> 6 and 7 out of 8 LOGIC
 $tablePrinting .= "<tr><th colspan='3'><font size='5'>&nbsp;&nbsp;Programme Requirements - Core Electives (28 MCs)</font></th></tr>";
 
 if ($specialization == "Information Security") {
