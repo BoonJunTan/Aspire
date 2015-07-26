@@ -69,13 +69,17 @@
                 <h2 class='panel-title'> <h3>About NUSPlan</h3> </h2>
             </div>
             <div class='panel-body'>
-                <center><iframe width="560" height="315" src="https://youtu.be/osQjStOAci0?t=2h17m" frameborder="0" allowfullscreen></center></iframe>
                 <br>
-                <center>Iteration 1</center><br><br>
-                <center><iframe width="560" height="315" src="https://www.youtube.com/watch?v=lgqyCgx6mBg" frameborder="0" allowfullscreen></center></iframe>
+                <center><h3>Iteration 1</h3></center>
+                <br><br>
+                <center><iframe width="560" height="315" src="https://www.youtube.com/embed/osQjStOAci0" frameborder="0" allowfullscreen ></iframe></center>
                 <br>
-                <center>Iteration 2</center>
+                <center><h3>Iteration 2</h3></center>
+                <br><br>
+                <center><iframe width="560" height="315" src="https://www.youtube.com/embed/lgqyCgx6mBg" frameborder="0" allowfullscreen></iframe></center>
+                <br>
             </div>
         </div>
+        
     </body>
 </html>
