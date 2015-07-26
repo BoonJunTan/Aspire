@@ -37,7 +37,7 @@
 
     </head>
     <body id="page-top">
-        <?php session_start(); print_r($_SESSION['totalModuleTaken']); echo "<br> 2+"; print_r($_SESSION['test']); echo "<br>"; print_r($_SESSION['test3']);?>
+        <?php session_start(); print_r($_SESSION['test1']); echo "<br> 2+"; print_r($_SESSION['test2']); echo "<br>"; print_r($_SESSION['test3']);?>
         <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
             <!-- Carousel indicators -->
             <ol class="carousel-indicators">
@@ -182,7 +182,7 @@
             
             <div>
                
-            <form method="post" action="submitFeedback.php" onsubmit="thankYou()">
+            <form name="feedbackForm" method="post" action="submitFeedback.php" onsubmit="return thankYou()">
                 <div class="form-group">
                     <input name="name" class="form-control" id="exampleInputName1" placeholder="Enter name" style="width:400px;">
                 </div>
@@ -221,8 +221,17 @@
     <!-- Feedback Form Submission -->
     <script>
             function thankYou() {
-                alert("Thank you for your feedback");
-                window.location.reload();
+                var w = document.forms["feedbackForm"]["name"].value;
+                var x = document.forms["feedbackForm"]["email"].value;
+                var y = document.forms["feedbackForm"]["subject"].value;
+                var z = document.forms["feedbackForm"]["message"].value;
+                if (w == null || w == "" || x == null || x == "" || y == null || y == "" || z == null || z == "") {
+                    alert("Please fill in all details");
+                    return false;
+                } else {
+                    alert("Thank you for your feedback");
+                    return true;
+                }
             }
     </script>
     

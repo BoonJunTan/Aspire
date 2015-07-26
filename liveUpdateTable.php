@@ -22,12 +22,16 @@ if (isset($_POST) && count($_POST)) {
         $escapedPost = $_POST;
         $escapedPost["success"] = "1";
         $escapedPost["id"] = $_SESSION['tableID'];
-        $_SESSION['test3'] = $_POST;
         array_push($_SESSION['test'], $escapedPost);
 
         for ($a = 0; $a < count($json_a); $a++) {
             if ($json_a[$a]["ModuleCode"] == $escapedPost['moduleCode']) {
+                $json_a[$a]["requirement"] = $escapedPost['requirement'];
                 array_push($_SESSION['totalModuleTaken'], $json_a[$a]);
+                break;
+            } else if ($escapedPost['moduleCode'] == "IS4010") {
+                $_POST["ModuleCode"] = "IS4010";
+                array_push($_SESSION['totalModuleTaken'], $_POST);
                 break;
             }
         }
@@ -60,8 +64,8 @@ if (isset($_POST) && count($_POST)) {
         $_SESSION['test'][array_search($id, array_column($_SESSION['test'], 'id'))] = $newData;
         
         //Improvement, remember to add satisfactory and unsatisfactory.
-        $data = ['5', '4.5', '4', '3.5', '3', '2.5', '2', '1.5', '1', '0'];
-        $data2 = ["A+/A : 5", "A- : 4.5", "B+ : 4", "B : 3.5", "B- : 3", "C+ : 2.5", "C : 2", "D+ : 1.5", "D : 1", "F : 0"];
+        $data = ['5', '4.5', '4', '3.5', '3', '2.5', '2', 'Satisfactory', 'Unsatisfactory', '1.5', '1', '0'];
+        $data2 = ["A+/A : 5", "A- : 4.5", "B+ : 4", "B : 3.5", "B- : 3", "C+ : 2.5", "C : 2", "Satisfactory", "Unsatisfactory", "D+ : 1.5", "D : 1", "F : 0"];
         for ($x = 0; $x < count($data); $x++) {
             if (substr($_POST['gpa'], strpos($_POST['gpa'], ':') + 2) == $data[$x]) {
                 $newData['gpa'] = $data2[$x];

@@ -93,9 +93,9 @@ $(document).ready(function () {
                 for (i = 0; i < data.length; i++) {
                     if (data[i]['ModuleCode'] == array[2]) {
                         if (data[i]['Prerequisite'] == null) {
-                            alert("No prerequisite");
+                            //alert("No prerequisite");
                         } else {
-                            alert(data[i]['Prerequisite']);
+                            //alert(data[i]['Prerequisite']);
                         }
                     }
                 }
@@ -258,7 +258,6 @@ ajax = function (params, action) {
                     if (response.success == 1) {
                         var html = "";
                         for (i = 0; i < columns.length; i++) {
-                            alert(columns[i] + " " + response[columns[i]]);
                             html += '<td class="' + columns[i] + '">' + response[columns[i]] + '</td>';
                         }
                         html += '<td><a href="javascript:;" id="' + response["id"] + '" class="ajaxEdit"><img src="' + editImage + '"></a> <a href="javascript:;" id="' + response["id"] + '" class="' + deletebutton + '"><img src="' + deleteImage + '"></a></td>';
@@ -302,15 +301,16 @@ ajax = function (params, action) {
                     for (i = 0; i < columns.length; i++) {
                         if (i = columns.length - 1) {
                             var result = response[columns[i]].substring(response[columns[i]].indexOf(":") + 2);
-                            var data = ['5', '4.5', '4', '3.5', '3', '2.5', '2', '1.5', '1', '0'];
-                            var data2 = ["A+/A : 5", "A- : 4.5", "B+ : 4", "B : 3.5", "B- : 3", "C+ : 2.5", "C : 2", "D+ : 1.5", "D : 1", "F : 0"];
+                            var data = ['5', '4.5', '4', '3.5', '3', '2.5', '2', 'atisfactory', 'nsatisfactory', '1.5', '1', '0'];
+                            var data2 = ["A+/A : 5", "A- : 4.5", "B+ : 4", "B : 3.5", "B- : 3", "C+ : 2.5", "C : 2", "Satisfactory", "Unsatisfactory", "D+ : 1.5", "D : 1", "F : 0"];
                             for (x = 0; x < data.length; x++) {
                                 if (data[x] == result) {
+                                    
                                     $("tr[id='" + response.id + "'] td[class='" + columns[i] + "']").html(data2[x]);
                                 }
                             }
                         } else {
-                            alert(response.id + " " + columns[i] + " " + response[columns[i]]);
+                            //alert(response.id + " " + columns[i] + " " + response[columns[i]]);
                             $("tr[id='" + response.id + "'] td[class='" + columns[i] + "']").html(response[columns[i]]);
                         }
                     }
