@@ -36,7 +36,7 @@ $totalCreditNow = 0;
 $gemList;
 
 // For ClearDB
-
+/*
 $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit'
                 FROM curriculum, requirements, modules, module_types
                 WHERE requirements.cohort = '" . $cohort . "'
@@ -45,10 +45,10 @@ $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modul
                     AND curriculum.requirement_id = requirements.requirement_id
                     AND curriculum.module_id = modules.module_id
                     AND curriculum.type_id = module_types.type_id";
-
+*/
 
 // For Localhost MySQL
-/*
+
 $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit'
             FROM test.curriculum, test.requirements, test.modules, test.module_types
             WHERE test.requirements.cohort = '" . $cohort . "' 
@@ -57,13 +57,18 @@ $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name
                 AND test.curriculum.requirement_id = test.requirements.requirement_id
                 AND test.curriculum.module_id = test.modules.module_id
                 AND test.curriculum.type_id = test.module_types.type_id";
-*/
+
 
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $gemList .= "<tr><td>&nbsp;&nbsp;" . $row["Module Code"] . "</td><td>&nbsp;&nbsp;" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td>";
+        if ($row["Module Code"] == "GEK1901") {
+            $gek1549 = $result->fetch_assoc();
+            $gemList .= "<tr><td>&nbsp;&nbsp;" . $row["Module Code"] . "<br>&nbsp;&nbsp;OR<br>&nbsp;&nbsp;" . $gek1549["Module Code"] . "</td>";
+            $gemList .= "<td>&nbsp;&nbsp;" . $row["Modules Name"] . "<br>&nbsp;&nbsp;OR<br>&nbsp;&nbsp;" . $gek1549["Modules Name"] . "</td>";
+            $gemList .= "<td><center>" . $row["Modules Credit"] . "</center></td></tr>";
+        }
         $totalCreditNow += $row["Modules Credit"];
     }
 }
@@ -79,7 +84,7 @@ $programCore;
 $programInternship;
 
 // For ClearDB
-
+/*
 $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit'
             FROM curriculum, requirements, modules, module_types
             WHERE requirements.cohort = '" . $cohort . "'
@@ -88,10 +93,10 @@ $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modul
                 AND curriculum.requirement_id = requirements.requirement_id
                 AND curriculum.module_id = modules.module_id
                 AND curriculum.type_id = module_types.type_id";
-
+*/
 
 // For localhost
-/*
+
 $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit'
             FROM test.curriculum, test.requirements, test.modules, test.module_types
             WHERE test.requirements.cohort = '" . $cohort . "' 
@@ -100,12 +105,14 @@ $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name
                 AND test.curriculum.requirement_id = test.requirements.requirement_id
                 AND test.curriculum.module_id = test.modules.module_id
                 AND test.curriculum.type_id = test.module_types.type_id";
-*/
+
 
 $result = $conn->query($sql);
 
+$test = 0;
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        
         if ($row['Module Code'] == "MA1521" || $row['Module Code'] == "MA1312") {
             $ma1521 = $result->fetch_assoc();
             $programCore .= "<tr><td>&nbsp;&nbsp;" . $row["Module Code"] . "<br>&nbsp;&nbsp;OR<br>&nbsp;&nbsp;" . $ma1521["Module Code"] . "</td><td>&nbsp;&nbsp;" . $row["Modules Name"] . "<br>&nbsp;&nbsp;OR<br>&nbsp;&nbsp;" . $ma1521["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td></tr>";
@@ -125,7 +132,7 @@ $tablePrinting .= $programCore;
 $programElectives;
 
 // For ClearDB
-
+/*
 $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit', specialization.specialization_name AS 'Specialization'
             FROM curriculum, requirements, modules, module_types, specialization
             WHERE requirements.cohort = '" . $cohort . "'
@@ -136,10 +143,10 @@ $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modul
                 AND curriculum.type_id = module_types.type_id
                 AND curriculum.specialization_id = specialization.specialization_id
             ORDER BY modules.module_id";
-
+*/
 
 // For Localhost
-/*
+
 $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit', test.specialization.specialization_name AS 'Specialization'
             FROM test.curriculum, test.requirements, test.modules, test.module_types, test.specialization
             WHERE test.requirements.cohort = '" . $cohort . "' 
@@ -150,7 +157,7 @@ $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name
                 AND test.curriculum.type_id = test.module_types.type_id
                 AND test.curriculum.specialization_id = test.specialization.specialization_id
             ORDER BY test.modules.module_id";
-*/
+
 
 $result = $conn->query($sql);
 
@@ -192,7 +199,7 @@ $tablePrinting .= $programInternship;
 $tablePrinting .= "<tr><th colspan='3'><font size='5'>&nbsp;&nbsp;Unrestricted Electives (20 MCs)</font></th></tr>";
 $tablePrinting .= "<tr><td colspan='3' align='center'>5 Modules from outside of home faculty</td></tr>";
 $totalCreditNow += 20;
-$tablePrinting .= "<tr><td colspan='2' align='right'>Total <td align='center'>" . $totalCreditNow . "</td></tr>";
+$tablePrinting .= "<tr><td colspan='2' align='right'>Total&nbsp;&nbsp;<td align='center'>" . $totalCreditNow . "</td></tr>";
 
 if ($_GET['plan'] == false) {
     $tablePrinting .= "<tr><td colspan='3'><button type='submit' class='btn btn-primary btn-xl wow tada col-lg-4 col-md-4 col-md-offset-4'>"

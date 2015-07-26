@@ -25,7 +25,7 @@ if ($current == 'cohort') {
     if ($q == "Information System") {
         echo "<option value='No Specialization'>No Specialization</option>";
         if ($cohort == "14/15") {
-            echo "<option value='Information Security'>Information Security</option>";
+            echo "<option value='Information Security (Information Systems)'>Information Security</option>";
             echo "<option value='Services Science, Management and Engineering'>Services Science, Management and Engineering</option>";
         } else if ($cohort == "15/16") {
             echo "<option value='elecCommerce'>Electronic Commerce</option>";
