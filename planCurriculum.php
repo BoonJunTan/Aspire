@@ -75,8 +75,9 @@
             
             <div class='panel-body'>
                 <b>Requirement:</b><br>
-                * Students are to take at least 18 MCs per semester except for IS4010 Industry Internship Programme.<br><br>
-
+                * Students are to take at least 18 MCs per semester except for IS4010 Industry Internship Programme.<br>
+                * For <b>Module Code</b>, Please use the above search module code to ensure you type in the exact code with <b>CAPITAL</b> Letters<br>
+                * We are sorry that we are currently facing bug with the <b>EDIT BUTTON *Pencil Image*</b>. (Solving in progress)<br><br>
                 <?php
                     include('planTable.php');
                 ?>
