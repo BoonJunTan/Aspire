@@ -4,11 +4,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>NUSPlan - Plan to be efficient ;)</title> 
-        <style type="text/css">
-            hr.style18 { 
-                height: 30px; 
-                border-style: solid; 
+        <meta http-equiv="X-Frame-Options" content="allow">
                 border-color: #8c8b8b; 
                 border-width: 1px 0 0 0; 
                 border-radius: 20px; 
@@ -57,7 +53,7 @@
                         </td>
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <td>
-                            <p>This is me. And I love to create new things out of nowhere</p>
+                            <p>Hi, I am Boon Jun. I hope that NUSPlan will help NUS students especially those freshmen when things are still new to them.</p>
                         </td>   
                     </tr> 
                 </table> 
