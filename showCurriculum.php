@@ -159,18 +159,21 @@ $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modul
 
 $result = $conn->query($sql);
 
-$list1;
+$list1; 
 $list2;
-
+            
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         if ($row["Specialization"] == $specialization && $specialization != "No Specialization") {
             // Need take note now is Information Security (Information System) and Information Security (Computer Science)
             if ($specialization == 'Services Science, Management and Engineering' && ($row["Module Code"] == 'IS3220' || $row["Module Code"] == 'IS4224')) {
                 $programCompulsory .= "<tr><td><font size='3'><b>&nbsp;&nbsp;" . $row["Module Code"] . "</b></td><td><b>&nbsp;&nbsp;" . $row["Modules Name"] . "</b></td><td align=center><b>" . $row["Modules Credit"] . "</b></font></td>";
-            } else {
-                $programElectives .= "<tr><td><font size='3'><b>&nbsp;&nbsp;" . $row["Module Code"] . "</b></td><td><b>&nbsp;&nbsp;" . $row["Modules Name"] . "</b></td><td align=center><b>" . $row["Modules Credit"] . "</b></font></td>";
+            } else if ($specialization == 'Electronic Commerce' && ($row["Module Code"] == 'IS3150' || $row["Module Code"] == 'IS4150' || $row["Module Code"] == 'IS4260')) {
+                $programCompulsory .= "<tr><td><font size='3'><b>&nbsp;&nbsp;" . $row["Module Code"] . "</b></td><td><b>&nbsp;&nbsp;" . $row["Modules Name"] . "</b></td><td align=center><b>" . $row["Modules Credit"] . "</b></font></td>";
             }
+            else {
+                $programElectives .= "<tr><td><font size='3'><b>&nbsp;&nbsp;" . $row["Module Code"] . "</b></td><td><b>&nbsp;&nbsp;" . $row["Modules Name"] . "</b></td><td align=center><b>" . $row["Modules Credit"] . "</b></font></td>";
+            } 
         } else {
             if ($course == "Electronic Commerce") {
                 if ($row["Module Code"] == "ACC1002X" || $row["Module Code"] == "ACC2002" || $row["Module Code"] == "BSP1004X" || $row["Module Code"] == "BSP1005" || $row["Module Code"] == "DSC2006" || $row["Module Code"] == "DSC3201" || $row["Module Code"] == "FIN2004" || $row["Module Code"] == "MNO1001X" || $row["Module Code"] == "MKT1003X" || $row["Module Code"] == "MKT2412" || $row["Module Code"] == "TR2201" || $row["Module Code"] == "TR2202" || $row["Module Code"] == "TR3001") {
@@ -181,11 +184,6 @@ if ($result->num_rows > 0) {
                     $programElectivesNon .= "<tr><td>&nbsp;&nbsp;" . $row["Module Code"] . "</td><td>&nbsp;&nbsp;" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td>";
                 }
             } else {
-                if ($specialization == 'Electronic Commerce' && ($row["Module Code"] == 'IS3150' || $row["Module Code"] == 'IS4150' || $row["Module Code"] == 'IS4260')) {
-                    $programCompulsory .= "<tr><td><font size='3'><b>&nbsp;&nbsp;" . $row["Module Code"] . "</b></td><td><b>&nbsp;&nbsp;" . $row["Modules Name"] . "</b></td><td align=center><b>" . $row["Modules Credit"] . "</b></font></td>";
-                } else {
-                    $programElectives .= "<tr><td><font size='3'><b>&nbsp;&nbsp;" . $row["Module Code"] . "</b></td><td><b>&nbsp;&nbsp;" . $row["Modules Name"] . "</b></td><td align=center><b>" . $row["Modules Credit"] . "</b></font></td>";
-                }
                 $programElectivesNon .= "<tr><td>&nbsp;&nbsp;" . $row["Module Code"] . "</td><td>&nbsp;&nbsp;" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td>";
             }
         }
