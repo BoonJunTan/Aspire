@@ -75,7 +75,7 @@ session_start();
                 xmlhttp.send();
             }
             function planCurriculum() {
-                alert("Successfully Added, transferring to plan curriculum");
+                alert("Successfully Added. Transferring to Plan Curriculum.");
             }
         </script>
     </head>
@@ -87,7 +87,7 @@ session_start();
 
             <div class='panel-body'> 
                 <form method="post" action="addCurriculum.php" onsubmit="planCurriculum()">
-                    <table cellspacing="10">
+                    <table width="">
                         <tr>
                             <td>
                                 Please select Cohort: 
@@ -120,6 +120,10 @@ session_start();
                             </td>
                         </tr>
                     </table>
+                    <br>
+                    <b>As we are adding more curriculum list, we apologise that only Information System 14/15 with or without specialization can plan.</b>
+                    <b>Curriculum List Status: Information System -> Done, EC -> Done.</b>
+                    <br>
                     <div id="curriculumHint" onchange="generateCurriculum(this.value)"></div>
                 </form>
             </div>

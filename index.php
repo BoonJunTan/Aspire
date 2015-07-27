@@ -33,7 +33,7 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-        
+
 
     </head>
     <body id="page-top">
@@ -59,26 +59,21 @@
                             Be it searching for a module, planning your module, or finding more about how NUSPlan works!
 
                         </p>
-                        <a href="" class="btn btn-default btn-xl">Get Started!</a>
+                        <a href="curriculumView.php" class="btn btn-default btn-xl">Get Started!</a>
                         <br>
                         <br>
                     </div>
 
                 </div>
                 <div class="item">
-                    <br>
-                    <h2>Slide 2</h2>
-                    <div class="carousel-caption">
-                        <h3>Second slide label</h3>
-                        <p>Aliquam sit amet gravida nibh, facilisis gravida odio.</p>
-                    </div>
+                    <img src="assets/images/slide2.jpg" style="width:100%;height:350px;">
                 </div>
                 <div class="item">
-                    <br>
-                    <h2>Slide 3</h2>
-                    <div class="carousel-caption">
-                        <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    <img src="assets/images/back-to-school.jpg" style="width:100%;height:400px">
+
+                    <div class="carousel-caption" style="top: 25%">
+                        <h2>Welcome back to school!</h2>
+                        <p>We hope that you have enjoy yourself during the summer break! Do enjoy using NUSPlan.</p>
                     </div>
                 </div>
             </div>
@@ -138,15 +133,15 @@
 
     <aside class="bg-dark">
         <div class="container text-center">
-            
+
             <div class="col-lg-8 col-lg-offset-2 text-center">
                 <h2 class="section-heading">Let's Get In Touch!             
                 </h2>
-                 
+
                 <hr class="primary">
                 <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!
                 <p>If not you can also leave your feedback at the form below!</p>
-             
+
             </div>
             <div class="col-lg-4 col-lg-offset-2 text-center">
                 <i class="fa fa-phone fa-3x wow bounceIn"></i>
@@ -155,48 +150,48 @@
             <div class="col-lg-4 text-center">
                 <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
                 <p><a href="mailto:a0125464h@nus.edu.sg">feedback@nusplan.com</a></p>
-                <br>
-                 
             </div>
-            <div class ="col-lg-10 col-lg-offset-4 text-left">
-            <!-- FaceBook Like and Share -->
-            <table>
-                <tr>
-                <tr>
-                <div
-                    class="fb-like"
-                    data-share="true"
-                    data-width="450"
-                    colorscheme ="dark"
-                    data-show-faces="false">
-                    
-                  </div> 
-            </tr>
-             <!-- Goggle +1 -->
-             <tr>
-            <div class="g-plusone" data-annotation="inline" data-width="300" data-href="https://nusplan.herokuapp.com/"></div>
-            </tr>   
-               </table>
+            <div class="">
+                <!-- FaceBook Like and Share -->
+                <table width="100%">
+                    <tr>
+                        <td align="right" width="46%">
+                            <div
+                                class="fb-like"
+                                data-share="true"
+                                data-width="300"
+                                colorscheme ="dark"
+                                data-show-faces="false">
+                            </div> 
+                        </td>
+                        <td width="13%">&nbsp;</td>
+                        <!-- Goggle +1 -->
+                        <td align="left">
+                            <div class="g-plusone" data-annotation="inline" data-width="300" data-href="https://nusplan.herokuapp.com/"></div>
+                        </td>
+                    </tr>   
+                    <tr><td>&nbsp;&nbsp;</td></tr>
+                </table>
             </div>
-        
-            
+
+
             <div>
-               
-            <form name="feedbackForm" method="post" action="submitFeedback.php" onsubmit="return thankYou()">
-                <div class="form-group">
-                    <input name="name" class="form-control" id="exampleInputName1" placeholder="Enter name" style="width:400px;">
-                </div>
-                <div class="form-group">
-                    <input name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" style="width:400px;">
-                </div>
-                <div class="form-group">
-                    <input name="subject" class="form-control" id="exampleInputSubject1" placeholder="Enter subject" style="width:400px;">
-                </div>
-                <div class="form-group">
-                    <textarea name= "message" class="form-control" id="exampleInputMessage" placeholder="Enter message" rows="4"></textarea>
-                </div>
-                <button type="submit" class="btn btn-default btn-xl wow tada col-lg-4 col-md-4 col-md-offset-4"><span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>Submit!</button>
-            </form>
+
+                <form name="feedbackForm" method="post" action="submitFeedback.php" onsubmit="return thankYou()">
+                    <div class="form-group">
+                        <input width="100%" name="name" class="form-control" id="exampleInputName1" placeholder="Enter name" style="width:100%;">
+                    </div>
+                    <div class="form-group">
+                        <input name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" style="width:100%;">
+                    </div>
+                    <div class="form-group">
+                        <input name="subject" class="form-control" id="exampleInputSubject1" placeholder="Enter subject" style="width:100%;">
+                    </div>
+                    <div class="form-group">
+                        <textarea name= "message" class="form-control" id="exampleInputMessage" placeholder="Enter message" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default btn-xl wow tada col-lg-4 col-md-4 col-md-offset-4"><span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>Submit!</button>
+                </form>
             </div>
         </div>
     </aside>
@@ -217,50 +212,56 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="assets/js/creative.js" type="text/javascript"></script>
-    
+
     <!-- Feedback Form Submission -->
     <script>
-            function thankYou() {
-                var w = document.forms["feedbackForm"]["name"].value;
-                var x = document.forms["feedbackForm"]["email"].value;
-                var y = document.forms["feedbackForm"]["subject"].value;
-                var z = document.forms["feedbackForm"]["message"].value;
-                if (w == null || w == "" || x == null || x == "" || y == null || y == "" || z == null || z == "") {
-                    alert("Please fill in all details");
-                    return false;
-                } else {
-                    alert("Thank you for your feedback");
-                    return true;
-                }
-            }
+                    function thankYou() {
+                        var w = document.forms["feedbackForm"]["name"].value;
+                        var x = document.forms["feedbackForm"]["email"].value;
+                        var y = document.forms["feedbackForm"]["subject"].value;
+                        var z = document.forms["feedbackForm"]["message"].value;
+                        if (w == null || w == "" || x == null || x == "" || y == null || y == "" || z == null || z == "") {
+                            alert("Please fill in all details");
+                            return false;
+                        } else {
+                            alert("Thank you for your feedback");
+                            return true;
+                        }
+                    }
     </script>
-    
+
     <!-- FaceBook SDK -->
     <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '689822974457698',
-        xfbml      : true,
-        version    : 'v2.3'
-      });
-    };
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '689822974457698',
+                xfbml: true,
+                version: 'v2.3'
+            });
+        };
 
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "//connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
     </script>
-    
+
     <!-- Google +1 -->
     <script type="text/javascript">
-      (function() {
-        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-        po.src = 'https://apis.google.com/js/platform.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-      })();
+        (function () {
+            var po = document.createElement('script');
+            po.type = 'text/javascript';
+            po.async = true;
+            po.src = 'https://apis.google.com/js/platform.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(po, s);
+        })();
     </script>
 
 </body>

@@ -59,10 +59,15 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        if ($row["Module Code"] == "GEK1901") {
+        if ($cohort == "14/15" && $row["Module Code"] == "GEK1901") {
             $gek1549 = $result->fetch_assoc();
             $gemList .= "<tr><td>&nbsp;&nbsp;" . $row["Module Code"] . "<br>&nbsp;&nbsp;OR<br>&nbsp;&nbsp;" . $gek1549["Module Code"] . "</td>";
             $gemList .= "<td>&nbsp;&nbsp;" . $row["Modules Name"] . "<br>&nbsp;&nbsp;OR<br>&nbsp;&nbsp;" . $gek1549["Modules Name"] . "</td>";
+            $gemList .= "<td><center>" . $row["Modules Credit"] . "</center></td></tr>";
+        } else if ($cohort == "15/16" && $row["Module Code"] == "GET1006") {
+            $get1021 = $result->fetch_assoc();
+            $gemList .= "<tr><td>&nbsp;&nbsp;" . $row["Module Code"] . "<br>&nbsp;&nbsp;OR<br>&nbsp;&nbsp;" . $get1021["Module Code"] . "</td>";
+            $gemList .= "<td>&nbsp;&nbsp;" . $row["Modules Name"] . "<br>&nbsp;&nbsp;OR<br>&nbsp;&nbsp;" . $get1021["Modules Name"] . "</td>";
             $gemList .= "<td><center>" . $row["Modules Credit"] . "</center></td></tr>";
         }
         $totalCreditNow += $row["Modules Credit"];
@@ -87,10 +92,10 @@ $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modul
                 AND curriculum.type_id = '1'
                 AND curriculum.requirement_id = requirements.requirement_id
                 AND curriculum.module_id = modules.module_id
-                AND curriculum.type_id = module_types.type_id";
+                AND curriculum.type_id = module_types.type_id
+            ORDER BY modules.module_id";
 
 // For localhost
-
 //$sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit'
 //            FROM test.curriculum, test.requirements, test.modules, test.module_types
 //            WHERE test.requirements.cohort = '" . $cohort . "' 
@@ -98,15 +103,14 @@ $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modul
 //                AND test.curriculum.type_id = '1'
 //                AND test.curriculum.requirement_id = test.requirements.requirement_id
 //                AND test.curriculum.module_id = test.modules.module_id
-//                AND test.curriculum.type_id = test.module_types.type_id";
-
+//                AND test.curriculum.type_id = test.module_types.type_id
+//            ORDER BY test.modules.module_id";
 
 $result = $conn->query($sql);
 
 $test = 0;
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        
         if ($row['Module Code'] == "MA1521" || $row['Module Code'] == "MA1312") {
             $ma1521 = $result->fetch_assoc();
             $programCore .= "<tr><td>&nbsp;&nbsp;" . $row["Module Code"] . "<br>&nbsp;&nbsp;OR<br>&nbsp;&nbsp;" . $ma1521["Module Code"] . "</td><td>&nbsp;&nbsp;" . $row["Modules Name"] . "<br>&nbsp;&nbsp;OR<br>&nbsp;&nbsp;" . $ma1521["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td></tr>";
@@ -119,14 +123,17 @@ if ($result->num_rows > 0) {
     }
 }
 
-$tablePrinting .= "<tr><th colspan='3'><font size='5'>&nbsp;&nbsp;Programme Requirements - Core Modules (80 MCs)</font></th></tr>";
+if ($course == "Information System") {
+    $tablePrinting .= "<tr><th colspan='3'><font size='5'>&nbsp;&nbsp;Programme Requirements - Core Modules (80 MCs)</font></th></tr>";
+} else if ($course == "Electronic Commerce") {
+    $tablePrinting .= "<tr><th colspan='3'><font size='5'>&nbsp;&nbsp;Programme Requirements - Core Modules (60 MCs)</font></th></tr>";
+}
 $tablePrinting .= $programCore;
 
 // Finding Program Electives
 $programElectives;
 
 // For ClearDB
-
 $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit', specialization.specialization_name AS 'Specialization'
             FROM curriculum, requirements, modules, module_types, specialization
             WHERE requirements.cohort = '" . $cohort . "'
@@ -137,7 +144,6 @@ $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modul
                 AND curriculum.type_id = module_types.type_id
                 AND curriculum.specialization_id = specialization.specialization_id
             ORDER BY modules.module_id";
-
 
 // For Localhost
 //$sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit', test.specialization.specialization_name AS 'Specialization'
@@ -153,24 +159,44 @@ $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modul
 
 $result = $conn->query($sql);
 
+$list1; 
+$list2;
+            
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        if ($row["Specialization"] == $specialization) {
+        if ($row["Specialization"] == $specialization && $specialization != "No Specialization") {
             // Need take note now is Information Security (Information System) and Information Security (Computer Science)
             if ($specialization == 'Services Science, Management and Engineering' && ($row["Module Code"] == 'IS3220' || $row["Module Code"] == 'IS4224')) {
                 $programCompulsory .= "<tr><td><font size='3'><b>&nbsp;&nbsp;" . $row["Module Code"] . "</b></td><td><b>&nbsp;&nbsp;" . $row["Modules Name"] . "</b></td><td align=center><b>" . $row["Modules Credit"] . "</b></font></td>";
-            } else {
-                $programElectives .= "<tr><td><font size='3'><b>&nbsp;&nbsp;" . $row["Module Code"] . "</b></td><td><b>&nbsp;&nbsp;" . $row["Modules Name"] . "</b></td><td align=center><b>" . $row["Modules Credit"] . "</b></font></td>";
+            } else if ($specialization == 'Electronic Commerce' && ($row["Module Code"] == 'IS3150' || $row["Module Code"] == 'IS4150' || $row["Module Code"] == 'IS4260')) {
+                $programCompulsory .= "<tr><td><font size='3'><b>&nbsp;&nbsp;" . $row["Module Code"] . "</b></td><td><b>&nbsp;&nbsp;" . $row["Modules Name"] . "</b></td><td align=center><b>" . $row["Modules Credit"] . "</b></font></td>";
             }
+            else {
+                $programElectives .= "<tr><td><font size='3'><b>&nbsp;&nbsp;" . $row["Module Code"] . "</b></td><td><b>&nbsp;&nbsp;" . $row["Modules Name"] . "</b></td><td align=center><b>" . $row["Modules Credit"] . "</b></font></td>";
+            } 
         } else {
-            $programElectivesNon .= "<tr><td>&nbsp;&nbsp;" . $row["Module Code"] . "</td><td>&nbsp;&nbsp;" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td>";
+            if ($course == "Electronic Commerce") {
+                if ($row["Module Code"] == "ACC1002X" || $row["Module Code"] == "ACC2002" || $row["Module Code"] == "BSP1004X" || $row["Module Code"] == "BSP1005" || $row["Module Code"] == "DSC2006" || $row["Module Code"] == "DSC3201" || $row["Module Code"] == "FIN2004" || $row["Module Code"] == "MNO1001X" || $row["Module Code"] == "MKT1003X" || $row["Module Code"] == "MKT2412" || $row["Module Code"] == "TR2201" || $row["Module Code"] == "TR2202" || $row["Module Code"] == "TR3001") {
+                    $list2 .= "<tr><td><font size='3'><b>&nbsp;&nbsp;" . $row["Module Code"] . "</td><td>&nbsp;&nbsp;" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</font></b></td>";
+                } else if ($row["Module Code"] == "IS3220" || $row["Module Code"] == "IS3240" || $row["Module Code"] == "IS3241" || $row["Module Code"] == "CS4880") {
+                    $list1 .= "<tr><td><font size='3'><b>&nbsp;&nbsp;" . $row["Module Code"] . "</td><td>&nbsp;&nbsp;" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</font></b></td>";
+                } else {
+                    $programElectivesNon .= "<tr><td>&nbsp;&nbsp;" . $row["Module Code"] . "</td><td>&nbsp;&nbsp;" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td>";
+                }
+            } else {
+                $programElectivesNon .= "<tr><td>&nbsp;&nbsp;" . $row["Module Code"] . "</td><td>&nbsp;&nbsp;" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td>";
+            }
         }
     }
 }
 
-$tablePrinting .= "<tr><th colspan='3'><font size='5'>&nbsp;&nbsp;Programme Requirements - Core Electives (28 MCs)</font></th></tr>";
+if ($course == "Information System") {
+    $tablePrinting .= "<tr><th colspan='3'><font size='5'>&nbsp;&nbsp;Programme Requirements - Core Electives (28 MCs)</font></th></tr>";
+} else if ($course == "Electronic Commerce") {
+    $tablePrinting .= "<tr><th colspan='3'><font size='5'>&nbsp;&nbsp;Programme Requirements - Programme Electives (48 MCs)</font></th></tr>";
+}
 
-if ($specialization == "Information Security") {
+if ($specialization == "Information Security (Information Systems)") {
     $tablePrinting .= "<tr><td><center>&nbsp;&nbsp;Requirement 1:</center></td><td colspan='2'>&nbsp;&nbsp;Choose 7 modules to make up 28 MCs from the list of Programme Electives below. <br>&nbsp;&nbsp;3 of the 7 modules must be at level-4000</td></tr>";
     $tablePrinting .= "<tr><td><center>&nbsp;&nbsp;Requirement 2:</center></td><td colspan='2'>&nbsp;&nbsp;For " . $specialization . " Specialization - Choose at least 6 Modules from highlighted list and remaining on any module</td></tr>";
 } else if ($specialization == "Services Science, Management and Engineering") {
@@ -178,6 +204,19 @@ if ($specialization == "Information Security") {
     $tablePrinting .= "<tr><td><center>&nbsp;&nbsp;Requirement 2: </td><td colspan='2'>&nbsp;&nbsp;For " . $specialization . " Specialization - Compulsory Modules</td></tr>";
     $tablePrinting .= $programCompulsory;
     $tablePrinting .= "<tr><td><center>&nbsp;&nbsp;Requirement 3: </td><td colspan='2'>&nbsp;&nbsp;For " . $specialization . " Specialization - Choose at least 4 from from highlighted list and remaining on any module</td></tr>";
+} else if ($specialization == "Electronic Commerce") {
+    $tablePrinting .= "<tr><td><center>&nbsp;&nbsp;Requirement 1: </td><td colspan='2'>&nbsp;&nbsp;Choose 7 modules to make up 28 MCs from the list of Programme Electives below. <br>&nbsp;&nbsp;3 of the 7 modules must be at level-4000</td></tr>";
+    $tablePrinting .= "<tr><td><center>&nbsp;&nbsp;Requirement 2: </td><td colspan='2'>&nbsp;&nbsp;For " . $specialization . " Specialization - Compulsory Modules</td></tr>";
+    $tablePrinting .= $programCompulsory;
+    $tablePrinting .= "<tr><td><center>&nbsp;&nbsp;Requirement 3: </td><td colspan='2'>&nbsp;&nbsp;For " . $specialization . " Specialization - Choose at least 3 from from highlighted list and remaining on any module</td></tr>";
+} else if ($course == "Electronic Commerce") {
+    $tablePrinting .= "<tr><td><center>&nbsp;&nbsp;Requirement 1: </td><td colspan='2'>&nbsp;&nbsp;Students are required to choose 2 out of the 4 modules in this list:</td></tr>";
+    $tablePrinting .= $list1;
+    $tablePrinting .= "<tr><td><center>&nbsp;&nbsp;Requirement 2: </td><td colspan='2'>&nbsp;&nbsp;Students are required to choose 3 modules from this list of School of Business modules:</td></tr>";
+    $tablePrinting .= $list2;
+    $tablePrinting .= "<tr><td><center>&nbsp;&nbsp;Requirement 3: </td><td colspan='2'>&nbsp;&nbsp;Choose either Option 1 or 2:</td></tr>";
+    $tablePrinting .= "<tr><td><b><center>&nbsp;&nbsp;Option 1: </center></b></td><td colspan='2'>&nbsp;&nbsp;Choose 7 modules to make up 28 MCs from the list of Programme Electives below. <br>&nbsp;&nbsp;3 of the 7 modules must be at level-4000</b></td></tr>";
+    $tablePrinting .= "<tr><td><b><center>&nbsp;&nbsp;Option 2: </center></b></td><td colspan='2'>&nbsp;&nbsp;Choose CP4101 and 4 modules to make up 28 MCs from the list of Programme Electives below.</b></td></tr>";
 } else {
     $tablePrinting .= "<tr><td><b><center>&nbsp;&nbsp;Option 1: </center></b></td><td colspan='2'>&nbsp;&nbsp;Choose 7 modules to make up 28 MCs from the list of Programme Electives below. <br>&nbsp;&nbsp;3 of the 7 modules must be at level-4000</td></tr>";
     $tablePrinting .= "<tr><td><b><center>&nbsp;&nbsp;Option 2: </center></b></td><td colspan='2'>&nbsp;&nbsp;Choose CP4101 and 4 modules to make up 28 MCs from the list of Programme Electives below.</td></tr>";
@@ -185,7 +224,11 @@ if ($specialization == "Information Security") {
 
 $tablePrinting .= $programElectives;
 $tablePrinting .= $programElectivesNon;
-$totalCreditNow += 28;
+if ($course == "Electronic Commerce") {
+    $totalCreditNow += 48;
+} else {
+    $totalCreditNow += 28;
+}
 $tablePrinting .= "<tr><th colspan='3'><font size='5'>&nbsp;&nbsp;Programme Internship</font></th></tr>";
 $tablePrinting .= $programInternship;
 $tablePrinting .= "<tr><th colspan='3'><font size='5'>&nbsp;&nbsp;Unrestricted Electives (20 MCs)</font></th></tr>";

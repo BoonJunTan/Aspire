@@ -7,7 +7,7 @@ $cohort = $_GET["cohort"];
 
 if ($current == 'cohort') {
     echo "<option value=''></option>";
-    echo "<option value='Business Analytics'>Business Analytics</option>";
+    echo "<option value='Business Analytics'>Business Analytics</option selected='selected'>";
     echo "<option value='Computer Engineering'>Computer Engineering</option>";
     echo "<option value='Computer Science'>Computer Science</option>";
 
@@ -28,9 +28,11 @@ if ($current == 'cohort') {
             echo "<option value='Information Security (Information Systems)'>Information Security</option>";
             echo "<option value='Services Science, Management and Engineering'>Services Science, Management and Engineering</option>";
         } else if ($cohort == "15/16") {
-            echo "<option value='elecCommerce'>Electronic Commerce</option>";
+            echo "<option value='Electronic Commerce'>Electronic Commerce</option>";
         }
-    }
+    } else if ($q == "Business Analytics" || $q == "Electronic Commerce") {
+        echo "<option value='No Specialization'>No Specialization</option>";
+    } 
     echo "</select>";
 }
 ?>
