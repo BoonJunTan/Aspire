@@ -21,13 +21,13 @@ if (!empty($_SESSION['modulesExempted'])) {
     $conn = new mysqli($server, $username, $password, $db);
 
     // For Heroku
-    /*
+    
     $sql = "SELECT DISTINCT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit'
         FROM curriculum, requirements, modules, module_types
         WHERE curriculum.requirement_id = requirements.requirement_id
         AND curriculum.module_id = modules.module_id
         AND curriculum.type_id = module_types.type_id";
-    */
+    
     
     // Localhost
     

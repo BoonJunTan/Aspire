@@ -58,7 +58,7 @@ for ($i = 0; $i < count($_SESSION['totalModuleTaken']); $i++) {
         array_push($gemCompleted, $_SESSION['totalModuleTaken'][$i]);
     } else if ($_SESSION['totalModuleTaken'][$i]["requirement"] == "Electives") {
         array_push($programElectivesCompleted, $_SESSION['totalModuleTaken'][$i]);
-    } 
+    }
 }
 
 echo "<div class='panel panel-primary'>";
@@ -72,21 +72,20 @@ $tablePrinting = "<table width='100%' border=1 cellspacing=5 cellpadding=5><tr><
 $totalCreditNow = 0;
 
 // Finding GEM
-
 // For ClearDB
-/*
-$sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit'
-            FROM curriculum, requirements, modules, module_types
-            WHERE requirements.cohort = '" . $cohort . "'
-                AND requirements.major = '" . $course . "'
-                AND curriculum.type_id = '5'
-                AND curriculum.requirement_id = requirements.requirement_id
-                AND curriculum.module_id = modules.module_id
-                AND curriculum.type_id = module_types.type_id";
-*/
+
+  $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit'
+  FROM curriculum, requirements, modules, module_types
+  WHERE requirements.cohort = '" . $cohort . "'
+  AND requirements.major = '" . $course . "'
+  AND curriculum.type_id = '5'
+  AND curriculum.requirement_id = requirements.requirement_id
+  AND curriculum.module_id = modules.module_id
+  AND curriculum.type_id = module_types.type_id";
+
 
 // For Localhost MySQL
-
+/*
 $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit'
             FROM test.curriculum, test.requirements, test.modules, test.module_types
             WHERE test.requirements.cohort = '" . $cohort . "'
@@ -95,7 +94,7 @@ $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name
                 AND test.curriculum.requirement_id = test.requirements.requirement_id
                 AND test.curriculum.module_id = test.modules.module_id
                 AND test.curriculum.type_id = test.module_types.type_id";
-
+*/
 
 $result = $conn->query($sql);
 
@@ -108,12 +107,23 @@ if ($result->num_rows > 0) {
     $gemExemption = [];
     while ($row = $result->fetch_assoc()) {
         if (!in_array($row["Module Code"], array_column($_SESSION['totalModuleTaken'], "ModuleCode"))) {
-            $gemList .= "<tr><td>&nbsp;&nbsp;" . $row["Module Code"] . "</td><td>&nbsp;&nbsp;" . $row["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td>";
+            if ($row['Module Code'] == "GEK1901" || $row['Module Code'] == "GEK1549") {
+                $gek1549 = $result->fetch_assoc();
+                if (!in_array($gek1549['Module Code'], array_column($_SESSION['totalModuleTaken'], "ModuleCode"))) {
+                    $gemList .= "<tr><td>&nbsp;&nbsp;" . $row["Module Code"] . "<br>&nbsp;&nbsp;OR<br>&nbsp;&nbsp;" . $gek1549["Module Code"] . "</td><td>&nbsp;&nbsp;" . $row["Modules Name"] . "<br>&nbsp;&nbsp;OR<br>&nbsp;&nbsp;" . $gek1549["Modules Name"] . "</td><td align=center>" . $row["Modules Credit"] . "</td></tr>";
+                    $gemAmount -= 1;
+                } else {
+                    $gemList .= "<tr><td>&nbsp;&nbsp;<strike>" . $row["Module Code"] . "</strike><br>&nbsp;&nbsp;<strike>OR</strike><br>&nbsp;&nbsp;<strike>" . $gek1549["Module Code"] . "</strike></td><td>&nbsp;&nbsp;<strike>" . $row["Modules Name"] . "</strike><br>&nbsp;&nbsp;<strike>OR</strike><br>&nbsp;&nbsp;<strike>" . $gek1549["Modules Name"] . "</strike></td><td align=center><strike>" . $row["Modules Credit"] . "</strike></td></tr>";
+                    //$totalCreditNow -= $row["Modules Credit"];
+                }
+            }
         } else {
-            $gemList .= "<tr><td>&nbsp;&nbsp;<strike>" . $row["Module Code"] . "</strike></td><td>&nbsp;&nbsp;<strike>" . $row["Modules Name"] . "</strike></td><td align=center><strike>" . $row["Modules Credit"] . "</strike></td>";
-            array_push($gemExemption, $row["Module Code"]);
+            if ($row['Module Code'] == "GEK1901" || $row['Module Code'] == "GEK1549") {
+                $gek1549 = $result->fetch_assoc();
+                $gemList .= "<tr><td>&nbsp;&nbsp;<strike>" . $row["Module Code"] . "</strike><br>&nbsp;&nbsp;<strike>OR</strike><br>&nbsp;&nbsp;<strike>" . $gek1549["Module Code"] . "</strike></td><td>&nbsp;&nbsp;<strike>" . $row["Modules Name"] . "</strike><br>&nbsp;&nbsp;<strike>OR</strike><br>&nbsp;&nbsp;<strike>" . $gek1549["Modules Name"] . "</strike></td><td align=center><strike>" . $row["Modules Credit"] . "</strike></td></tr>";
+                array_push($gemExemption, $row["Module Code"]);
+            }
         }
-        $gemAmount -= 1;
     }
 }
 
@@ -127,7 +137,7 @@ if ($exemption == "yes") {
 }
 
 for ($i = 0; $i < count($gemCompleted); $i++) {
-    if ($gemCompleted[$i]["ModuleCode"] != "GEK1901") {
+    if ($gemCompleted[$i]["ModuleCode"] != "GEK1901" || $gemCompleted[$i]["ModuleCode"] != "GEK1549") {
         $gemAmount -= 1;
     }
 }
@@ -174,7 +184,7 @@ $programCore;
 $programInternship;
 
 // For ClearDB
-/*
+
   $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit'
   FROM curriculum, requirements, modules, module_types
   WHERE requirements.cohort = '" . $cohort . "'
@@ -183,10 +193,10 @@ $programInternship;
   AND curriculum.requirement_id = requirements.requirement_id
   AND curriculum.module_id = modules.module_id
   AND curriculum.type_id = module_types.type_id";
- */
+
 
 // For localhost
-
+/*
 $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit'
             FROM test.curriculum, test.requirements, test.modules, test.module_types
             WHERE test.requirements.cohort = '" . $cohort . "'
@@ -195,7 +205,7 @@ $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name
                 AND test.curriculum.requirement_id = test.requirements.requirement_id
                 AND test.curriculum.module_id = test.modules.module_id
                 AND test.curriculum.type_id = test.module_types.type_id";
-
+*/
 
 $result = $conn->query($sql);
 
@@ -236,7 +246,7 @@ $tablePrinting .= $programCore;
 $programElectives;
 
 // For ClearDB
-/*
+
   $sql = "SELECT modules.module_id AS 'Module Code', modules.module_name AS 'Modules Name', modules.module_credit AS 'Modules Credit', specialization.specialization_name AS 'Specialization'
   FROM curriculum, requirements, modules, module_types, specialization
   WHERE requirements.cohort = '" . $cohort . "'
@@ -247,10 +257,10 @@ $programElectives;
   AND curriculum.type_id = module_types.type_id
   AND curriculum.specialization_id = specialization.specialization_id
   ORDER BY modules.module_id";
- */
+ 
 
 // For Localhost
-
+/*
 $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit', test.specialization.specialization_name AS 'Specialization'
             FROM test.curriculum, test.requirements, test.modules, test.module_types, test.specialization
             WHERE test.requirements.cohort = '" . $cohort . "'
@@ -261,7 +271,7 @@ $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name
                 AND test.curriculum.type_id = test.module_types.type_id
                 AND test.curriculum.specialization_id = test.specialization.specialization_id
             ORDER BY test.modules.module_id";
-
+*/
 
 $result = $conn->query($sql);
 
@@ -316,7 +326,7 @@ $tablePrinting .= $programInternship;
 if ($exemption == "yes") {
     $ueAmount = 2;
 } else {
-    $ueAmount = 5; 
+    $ueAmount = 5;
 }
 
 $ueAmount -= count($ueCompleted);
