@@ -164,7 +164,7 @@ $list2;
             
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        if ($row["Specialization"] == $specialization && $specialization != "No Specialization") {
+        if ($row["Specialization"] == $specialization && $course != "Electronic Commerce") {
             // Need take note now is Information Security (Information System) and Information Security (Computer Science)
             if ($specialization == 'Services Science, Management and Engineering' && ($row["Module Code"] == 'IS3220' || $row["Module Code"] == 'IS4224')) {
                 $programCompulsory .= "<tr><td><font size='3'><b>&nbsp;&nbsp;" . $row["Module Code"] . "</b></td><td><b>&nbsp;&nbsp;" . $row["Modules Name"] . "</b></td><td align=center><b>" . $row["Modules Credit"] . "</b></font></td>";
