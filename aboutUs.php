@@ -5,6 +5,10 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-Frame-Options" content="allow">
+        <style type="text/css">
+            hr.style18 { 
+                height: 30px; 
+                border-style: solid; 
                 border-color: #8c8b8b; 
                 border-width: 1px 0 0 0; 
                 border-radius: 20px; 
@@ -20,7 +24,6 @@
                 border-radius: 20px; 
             }
         </style>
-
     </head>
     <body>   
         <div class='panel panel-primary'>
@@ -68,7 +71,7 @@
                 <br>
                 <center><h3>Iteration 1</h3></center>
                 <br><br>
-                <center><iframe width="560" height="315" src="https://youtu.be/osQjStOAci0?t=2h17m1s" frameborder="0" allowfullscreen ></iframe></center>
+                <center><iframe width="560" height="315" src="https://www.youtube.com/embed/osQjStOAci0" frameborder="0" allowfullscreen ></iframe></center>
                 <br>
                 <center><h3>Iteration 2</h3></center>
                 <br><br>
