@@ -205,7 +205,7 @@ $sql = "SELECT test.modules.module_id AS 'Module Code', test.modules.module_name
                 AND test.curriculum.requirement_id = test.requirements.requirement_id
                 AND test.curriculum.module_id = test.modules.module_id
                 AND test.curriculum.type_id = test.module_types.type_id";
-*/
+
 
 $result = $conn->query($sql);
 

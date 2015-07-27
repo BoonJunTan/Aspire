@@ -30,13 +30,13 @@ if (!empty($_SESSION['modulesExempted'])) {
     
     
     // Localhost
-    
+    /*
     $sql = "SELECT DISTINCT test.modules.module_id AS 'Module Code', test.modules.module_name AS 'Modules Name', test.modules.module_credit AS 'Modules Credit'
         FROM test.curriculum, test.requirements, test.modules, test.module_types
         WHERE test.curriculum.requirement_id = test.requirements.requirement_id
         AND test.curriculum.module_id = test.modules.module_id
         AND test.curriculum.type_id = test.module_types.type_id";
-    
+    */
     
     $result = $conn->query($sql);
 
