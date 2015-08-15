@@ -18,7 +18,6 @@ if (isset($_POST) && count($_POST)) {
             $_SESSION['tableID'] = 1;
         }
         $escapedPost = $_POST;
-        $_SESSION['test1'] = $escapedPost;
         $escapedPost["success"] = "1";
         $escapedPost["id"] = $_SESSION['tableID'];
         array_push($_SESSION['test'], $escapedPost);
@@ -30,6 +29,10 @@ if (isset($_POST) && count($_POST)) {
                 break;
             } else if ($escapedPost['moduleCode'] == "IS4010") {
                 $_POST["ModuleCode"] = "IS4010";
+                array_push($_SESSION['totalModuleTaken'], $_POST);
+                break;
+            } else if ($escapedPost['moduleCode'] == "IS4234") {
+                $_POST["ModuleCode"] = "IS4234";
                 array_push($_SESSION['totalModuleTaken'], $_POST);
                 break;
             }
