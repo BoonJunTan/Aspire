@@ -5,6 +5,9 @@ $finalpath1 = getcwd() . "/assets/json/201415moduleInformation.json";
 $string1 = file_get_contents($finalpath1);
 $json_a = json_decode($string1, true);
 
+array_push($json_a, array("ModuleCode" => "IS4010", "ModuleTitle" => "Industry Internship Programme"));
+array_push($json_a, array("ModuleCode" => "IS4234", "ModuleTitle" => "Control and Audit of Information Systems"));
+
 $minYear = 0;
 $maxYear = 0;
 
