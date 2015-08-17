@@ -5,10 +5,10 @@ $finalpath1 = getcwd() . "/assets/json/201415moduleInformation.json";
 $string1 = file_get_contents($finalpath1);
 $json_a = json_decode($string1, true);
 
-array_push($json_a, array("ModuleCode" => "IS4010", "ModuleTitle" => "Industry Internship Programme"));
-array_push($json_a, array("ModuleCode" => "IS4234", "ModuleTitle" => "Control and Audit of Information Systems"));
-array_push($json_a, array("ModuleCode" => "GET1006", "ModuleTitle" => "Critical Thinking in the Information Age"));
-array_push($json_a, array("ModuleCode" => "GET1021", "ModuleTitle" => "Critical Thinking and Writing"));
+array_push($json_a, array("ModuleCode" => "IS4010", "ModuleTitle" => "Industry Internship Programme", "ModuleCredit" => "12"));
+array_push($json_a, array("ModuleCode" => "IS4234", "ModuleTitle" => "Control and Audit of Information Systems", "ModuleCredit" => "4"));
+array_push($json_a, array("ModuleCode" => "GET1006", "ModuleTitle" => "Critical Thinking in the Information Age", "ModuleCredit" => "4"));
+array_push($json_a, array("ModuleCode" => "GET1021", "ModuleTitle" => "Critical Thinking and Writing", "ModuleCredit" => "4"));
 
 $minYear = 0;
 $maxYear = 0;
