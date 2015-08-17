@@ -35,6 +35,14 @@ if (isset($_POST) && count($_POST)) {
                 $_POST["ModuleCode"] = "IS4234";
                 array_push($_SESSION['totalModuleTaken'], $_POST);
                 break;
+            } else if ($escapedPost['moduleCode'] == "GET1006") {
+                $_POST["ModuleCode"] = "GET1006";
+                array_push($_SESSION['totalModuleTaken'], $_POST);
+                break;
+            } else if ($escapedPost['moduleCode'] == "GET1021") {
+                $_POST["ModuleCode"] = "GET1021";
+                array_push($_SESSION['totalModuleTaken'], $_POST);
+                break;
             }
         }
 
