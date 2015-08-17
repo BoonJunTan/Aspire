@@ -213,10 +213,13 @@ $programInternship;
 
 $result = $conn->query($sql);
 
-//print_r($_SESSION['totalModuleTaken']);
+print_r($_SESSION['totalModuleTaken']);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        if ($row["Module Code"] == "IS4102 ") {
+            $row["Module Code"] = "IS4102";
+        }
         if (!in_array($row["Module Code"], array_column($_SESSION['totalModuleTaken'], "ModuleCode"))) {
             if ($row['Module Code'] == "MA1521" || $row['Module Code'] == "MA1312") {
                 $ma1521 = $result->fetch_assoc();
