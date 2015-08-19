@@ -9,6 +9,7 @@ array_push($json_a, array("ModuleCode" => "IS4010", "ModuleTitle" => "Industry I
 array_push($json_a, array("ModuleCode" => "IS4234", "ModuleTitle" => "Control and Audit of Information Systems", "ModuleCredit" => "4"));
 array_push($json_a, array("ModuleCode" => "GET1006", "ModuleTitle" => "Critical Thinking in the Information Age", "ModuleCredit" => "4"));
 array_push($json_a, array("ModuleCode" => "GET1021", "ModuleTitle" => "Critical Thinking and Writing", "ModuleCredit" => "4"));
+array_push($json_a, array("ModuleCode" => "IS4204", "ModuleTitle" => "IT Governance", "ModuleCredit" => "4"));
 
 $minYear = 0;
 $maxYear = 0;

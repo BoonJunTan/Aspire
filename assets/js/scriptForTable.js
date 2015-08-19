@@ -299,19 +299,20 @@ ajax = function (params, action) {
                 case "update":
                     $("." + cancelbutton).trigger("click");
                     for (i = 0; i < columns.length; i++) {
+                        
                         if (i = columns.length - 1) {
                             var result = response[columns[i]].substring(response[columns[i]].indexOf(":") + 2);
                             var data = ['5', '4.5', '4', '3.5', '3', '2.5', '2', 'atisfactory', 'nsatisfactory', '1.5', '1', '0'];
                             var data2 = ["A+/A : 5", "A- : 4.5", "B+ : 4", "B : 3.5", "B- : 3", "C+ : 2.5", "C : 2", "Satisfactory", "Unsatisfactory", "D+ : 1.5", "D : 1", "F : 0"];
                             for (x = 0; x < data.length; x++) {
                                 if (data[x] == result) {
-                                    
                                     $("tr[id='" + response.id + "'] td[class='" + columns[i] + "']").html(data2[x]);
+                                    alert(response.id + "" + columns[i] + " " + data2[x]);
                                 }
                             }
                         } else {
-                            //alert(response.id + " " + columns[i] + " " + response[columns[i]]);
                             $("tr[id='" + response.id + "'] td[class='" + columns[i] + "']").html(response[columns[i]]);
+                            alert(response.id + " " + columns[i] + " " + response[columns[i]]);
                         }
                     }
                     break;

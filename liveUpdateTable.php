@@ -43,6 +43,10 @@ if (isset($_POST) && count($_POST)) {
                 $_POST["ModuleCode"] = "GET1021";
                 array_push($_SESSION['totalModuleTaken'], $_POST);
                 break;
+            } else if ($escapedPost['moduleCode'] == "IS4204") {
+                $_POST["ModuleCode"] = "IS4204";
+                array_push($_SESSION['totalModuleTaken'], $_POST);
+                break;
             }
         }
 
