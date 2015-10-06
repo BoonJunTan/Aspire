@@ -1,7 +1,11 @@
 <?php
 
+
 session_start();
 
+echo "Test <br>";
+
+print_r($_POST['params']);
 
 $data = $_GET['params'];
 
