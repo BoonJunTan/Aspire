@@ -5,9 +5,9 @@ session_start();
 
 echo "Test <br>";
 
-echo ($_POST['username']) . ($_POST['mobno']);
+print_r($_POST);
 
-$data = $_GET['params'];
+print_r($_GET);
 
 $_SESSION['test'] = $data;
 
